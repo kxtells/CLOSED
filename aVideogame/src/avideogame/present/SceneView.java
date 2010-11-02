@@ -7,21 +7,21 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import avideogame.domain.DomainController;
+import avideogame.domain.Scene;
 
 public class SceneView extends View {
 	private Paint paint = new Paint();
 	private DomainController dc;
-	private Context ctx;
+	private Scene scene;
 	
 	public SceneView(Context context) {
 		super(context);
 		dc = DomainController.instance(this.getResources());
-		ctx = context;
 	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {
-		// TODO Auto-generated method stub
+		//canvas.drawBitmap(scene.getImages().get(scene.getCurrentScene()),0,0, null);
 		super.onDraw(canvas);
 	}
 

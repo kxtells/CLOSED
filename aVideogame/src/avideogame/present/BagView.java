@@ -5,20 +5,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import avideogame.domain.DomainController;
 
 public class BagView extends View {
 	private Paint paint = new Paint();
 	private DomainController dc;
-	private Context ctx;
 	
 	public BagView(Context context) {
 		super(context);
 		dc = DomainController.instance(this.getResources());
-		ctx = context;
 	}
 
 	@Override

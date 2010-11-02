@@ -28,8 +28,9 @@ public class aVideogame extends Activity {
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		Log.d("OnTouchEvent","ZZ");
-		Intent myIntent = new Intent(getBaseContext(), BagActivity.class);
-		startActivity(myIntent);
+		Intent sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
+		sceneIntent.putExtra("SceneIndex", 0);
+		startActivity(sceneIntent);
 		return super.onTouchEvent(event);
 
 	}

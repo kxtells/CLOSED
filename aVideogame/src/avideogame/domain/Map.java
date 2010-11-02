@@ -66,5 +66,13 @@ public class Map {
 	public void setImagemap(Bitmap imagemap) {
 		this.imagemap = imagemap;
 	}
+
+	public ArrayList<MapHotSpot> getMhs() {
+		return mhs;
+	}
+
+	public void setMhs(ArrayList<MapHotSpot> mhs) {
+		this.mhs = mhs;
+	}
 	
 }
