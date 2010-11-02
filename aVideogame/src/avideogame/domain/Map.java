@@ -2,6 +2,8 @@ package avideogame.domain;
 
 import java.util.ArrayList;
 
+import android.graphics.Bitmap;
+
 /**
  * A class that represents the game map
  * 
@@ -10,8 +12,8 @@ import java.util.ArrayList;
  */
 public class Map {
 	//un atribut per a la imatge que pot ser l'string de l'ID de Android Resources
-	String image;
-	String imagemap;
+	Bitmap image;
+	Bitmap imagemap;
 	ArrayList<MapHotSpot> mhs = new ArrayList<MapHotSpot>();
 	
 	
@@ -47,4 +49,22 @@ public class Map {
 	public MapHotSpot getNearestHotSpot(int x, int y){
 		return null;
 	}
+	
+	//Getters and Setters
+	public Bitmap getImage() {
+		return image;
+	}
+
+	public void setImage(Bitmap image) {
+		this.image = image;
+	}
+
+	public Bitmap getImagemap() {
+		return imagemap;
+	}
+
+	public void setImagemap(Bitmap imagemap) {
+		this.imagemap = imagemap;
+	}
+	
 }

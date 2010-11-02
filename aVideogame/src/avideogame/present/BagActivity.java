@@ -1,18 +1,16 @@
 package avideogame.present;
 
-
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
+import avideogame.domain.CollectableObject;
 import avideogame.domain.DomainController;
 
-
-public class aVideogame extends Activity {
-	private DomainController dc;
-    
+public class BagActivity extends Activity {
+	DomainController dc;
+	View view;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -20,19 +18,19 @@ public class aVideogame extends Activity {
         dc = DomainController.instance(getResources());
         
         //Remove window title
-        requestWindowFeature(Window.FEATURE_NO_TITLE);       
-        setContentView(new MapView(this));
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        view = new BagView(this);
+        setContentView(view);
     }
-
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
-		Log.d("OnTouchEvent","ZZ");
-		Intent myIntent = new Intent(getBaseContext(), BagActivity.class);
-		startActivity(myIntent);
+		if(event.getAction() == MotionEvent.ACTION_DOWN){
+			dc.player.dropObject(0);
+		}
+		
+		//Invalidates the whole view forcing a redraw
+		view.invalidate();
 		return super.onTouchEvent(event);
-
 	}
-
-    
 }

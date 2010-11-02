@@ -16,6 +16,22 @@ public class Player {
 		bag.add(co);
 	}
 	
+	/**
+	 * Drops a specific Object from the player's bag
+	 * @param co
+	 */
+	public void dropObject(int co){
+		bag.remove(co);
+	}
+	
+	/**
+	 * Returns the object with the specified index
+	 * @param index
+	 * @return
+	 */
+	public CollectableObject getBagObject(int index){
+		return bag.get(index);
+	}
 	
 	//GETTERS & SETTERS
 	public Player(int x, int y) {
