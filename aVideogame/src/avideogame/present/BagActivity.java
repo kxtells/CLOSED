@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import avideogame.domain.DomainController;
 
 public class BagActivity extends Activity {
@@ -16,8 +15,6 @@ public class BagActivity extends Activity {
         super.onCreate(savedInstanceState);
         //dc = DomainController.instance(getResources());
         
-        //Remove window title
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         view = new BagView(this);
         setContentView(view);
     }

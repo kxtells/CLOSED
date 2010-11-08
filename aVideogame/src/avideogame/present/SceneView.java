@@ -1,13 +1,16 @@
 package avideogame.present;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
+import android.util.Log;
 import android.view.View;
 import avideogame.domain.DomainController;
 import avideogame.domain.Scene;
+import avideogame.domain.SceneHotSpot;
 
 public class SceneView extends View {
 	private Paint paint = new Paint();
@@ -22,25 +25,27 @@ public class SceneView extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		//canvas.drawBitmap(scene.getImages().get(scene.getCurrentScene()),0,0, null);
+		
+		int nhs = scene.getHotspots().size();
+		ArrayList<SceneHotSpot> sch = scene.getHotspots();
+		
+		canvas.drawBitmap(scene.getCurrentBackgound(),0,0,null);
+		
+		
+		paint.setColor(Color.parseColor("#44FF0000"));
+		for(int i=0;i<nhs;i++){
+			canvas.drawRect((float)sch.get(i).getX(), 
+							(float)sch.get(i).getY(), 
+							(float)sch.get(i).getX() + (float)sch.get(i).getWidth(), 
+							(float)sch.get(i).getY() + (float)sch.get(i).getHeight(), 
+							paint);	
+		}
+		
 		super.onDraw(canvas);
 	}
 
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// TODO Auto-generated method stub
-		return super.onKeyDown(keyCode, event);
-	}
-
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		// TODO Auto-generated method stub
-		return super.onTouchEvent(event);
-	}
-
-	@Override
-	public boolean onTrackballEvent(MotionEvent event) {
-		// TODO Auto-generated method stub
-		return super.onTrackballEvent(event);
+	public void setScene(Scene scene) {
+		this.scene = scene;
 	}
 
 	

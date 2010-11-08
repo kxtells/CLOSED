@@ -12,9 +12,9 @@ import android.graphics.Bitmap;
  */
 public class Map {
 	//un atribut per a la imatge que pot ser l'string de l'ID de Android Resources
-	Bitmap image;
-	Bitmap imagemap;
-	ArrayList<MapHotSpot> mhs = new ArrayList<MapHotSpot>();
+	private Bitmap image;
+	private Bitmap imagemap;
+	private ArrayList<MapHotSpot> mhs = new ArrayList<MapHotSpot>();
 	
 	
 	/**

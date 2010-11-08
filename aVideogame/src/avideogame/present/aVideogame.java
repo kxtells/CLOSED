@@ -12,15 +12,16 @@ import avideogame.domain.DomainController;
 
 public class aVideogame extends Activity {
 	private DomainController dc;
-    
+	
+	
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dc = DomainController.instance(getResources());
         
-        //Remove window title
-        requestWindowFeature(Window.FEATURE_NO_TITLE);       
+        dc = DomainController.instance(getResources());
+
         setContentView(new MapView(this));
     }
 
@@ -28,11 +29,12 @@ public class aVideogame extends Activity {
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		Log.d("OnTouchEvent","ZZ");
-		Intent sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
-		sceneIntent.putExtra("SceneIndex", 0);
+		
+		Intent sceneIntent = new Intent(getBaseContext(), BagActivity.class);
+		sceneIntent.putExtra("SceneIndex", (int)0);
 		startActivity(sceneIntent);
+		
 		return super.onTouchEvent(event);
-
 	}
 
     

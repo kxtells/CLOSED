@@ -15,12 +15,14 @@ public class Scene {
 	private ArrayList<Bitmap> images = new ArrayList<Bitmap>();
 	//
 	private ArrayList<SceneHotSpot> hotspots = new ArrayList<SceneHotSpot>();
-	private int currentScene;
+	private int current_scene;
 	
 	
 	public Scene() {
-		currentScene = 0;
+		super();
+		current_scene = 0;
 	}
+
 
 	/**
 	 * @ToImplement
@@ -28,16 +30,20 @@ public class Scene {
 	 * @param y position y
 	 * @return SceneHotSpot The nearest SceneHotSpot in a defined radius, null if no hotspot found 
 	 */
-	public SceneHotSpot getNearestSceneHotSpot(int x, int y){		
+	public SceneHotSpot getSceneHotSpot(double x, double y){		
+		int ln = hotspots.size();
+		for(int i=0;i<ln;i++){
+			if(hotspots.get(i).isInside(x, y)){return hotspots.get(i);}
+		}
 		return null;
 	}
 
 	
-	//Getters & Setters
-	public ArrayList<Bitmap> getImages() {
-		return images;
+	public Bitmap getCurrentBackgound(){
+		return images.get(current_scene);
 	}
-
+	
+	//Getters & Setters
 	public void setImages(ArrayList<Bitmap> images) {
 		this.images = images;
 	}
@@ -48,14 +54,6 @@ public class Scene {
 
 	public void setHotspots(ArrayList<SceneHotSpot> hotspots) {
 		this.hotspots = hotspots;
-	}
-
-	public int getCurrentScene() {
-		return currentScene;
-	}
-
-	public void setCurrentScene(int currentScene) {
-		this.currentScene = currentScene;
 	}
 
 }

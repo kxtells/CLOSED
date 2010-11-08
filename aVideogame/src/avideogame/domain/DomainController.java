@@ -27,10 +27,7 @@ public class DomainController {
 	}
 
 	public Scene getScene(int i){
-		Scene s = map.mhs.get(i).s;
-		int x = 3;
-		int j = 4;
-		int w = 4+x;
+		Scene s = map.getMhs().get(i).s;
 		return s; 
 	}
 	
@@ -61,19 +58,22 @@ public class DomainController {
 		images.add(BitmapFactory.decodeResource(resources, R.drawable.cuina));
 		s1.setImages(images);
 		SceneHotSpot shs1 = new SceneHotSpot();
-		shs1.setX(0);
-		shs1.setY(0);
-		shs1.setWidth(10);
-		shs1.setHeight(10);
+		shs1.setX(286);
+		shs1.setY(15);
+		shs1.setWidth(193);
+		shs1.setHeight(80);
+		shs1.setInfo("Sembla ser un armari");
 		
 		SceneHotSpot shs2 = new SceneHotSpot();
-		shs2.setX(30);
-		shs2.setY(40);
-		shs2.setWidth(20);
-		shs2.setHeight(10);
+		shs2.setX(298);
+		shs2.setY(121);
+		shs2.setWidth(50);
+		shs2.setHeight(70);
+		shs2.setInfo("Una aixeta Podrida");
 		
 		ArrayList<SceneHotSpot> arshs1 = new ArrayList<SceneHotSpot>();
 		arshs1.add(shs1);arshs1.add(shs2);
+		s1.setHotspots(arshs1);
 		
 		
 		//Define all Map data
@@ -87,6 +87,7 @@ public class DomainController {
 		 mhs1.setHeight(10);
 		 
 		 ArrayList<MapHotSpot> armhs1 = new ArrayList<MapHotSpot>();
+		 armhs1.add(mhs1);
 		 map.setMhs(armhs1);
 		 
 	}
