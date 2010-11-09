@@ -30,7 +30,7 @@ public class aVideogame extends Activity {
 		// TODO Auto-generated method stub
 		Log.d("OnTouchEvent","ZZ");
 		
-		Intent sceneIntent = new Intent(getBaseContext(), BagActivity.class);
+		Intent sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
 		sceneIntent.putExtra("SceneIndex", (int)0);
 		startActivity(sceneIntent);
 		

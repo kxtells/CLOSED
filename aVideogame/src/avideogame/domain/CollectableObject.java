@@ -11,10 +11,11 @@ import android.graphics.Bitmap;
  *
  */
 public class CollectableObject {
+	private int id;
 	//A name for the object
 	private String name;
 	//A image for the Object
-	private Bitmap image;
+	private int image;
 	//String a mostrar a la vista d'objectes, NO a l'escena
 	private String info;
 	//llista amb els objectes que pots combinar-ho i llista amb el resultat de tal combinació
@@ -22,10 +23,10 @@ public class CollectableObject {
 	private ArrayList<CollectableObject> transformsto = new ArrayList<CollectableObject>();
 	
 	//GETTERS  & SETTERS
-	public Bitmap getImage() {
+	public int getImage() {
 		return image;
 	}
-	public void setImage(Bitmap image) {
+	public void setImage(int image) {
 		this.image = image;
 	}
 	public String getInfo() {
@@ -51,6 +52,12 @@ public class CollectableObject {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getId() {
+		return id;
 	}
 	
 	

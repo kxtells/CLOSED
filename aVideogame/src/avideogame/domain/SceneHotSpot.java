@@ -1,13 +1,12 @@
 package avideogame.domain;
 
-import java.util.ArrayList;
-
 public class SceneHotSpot extends HotSpot {
 	private boolean isobject;
 	private boolean isinfo;
 	private boolean isgrab;
 	//string a mostrar quan es demani informació sobre el punt
 	private String  info;
+	private String  grabtext;
 	private CollectableObject co;
 	
 	
@@ -59,6 +58,16 @@ public class SceneHotSpot extends HotSpot {
 
 	public void setInfo(String info) {
 		this.info = info;
+	}
+
+
+	public void setGrabtext(String grabtext) {
+		this.grabtext = grabtext;
+	}
+
+
+	public String getGrabtext() {
+		return grabtext;
 	}
 	
 	

@@ -11,7 +11,7 @@ import avideogame.present.R;
 public class DomainController {
 	protected static DomainController dc;
 	public static Map map;
-	public static Player player;
+	private static Player player;
 	
 	
 	public DomainController() {
@@ -40,16 +40,22 @@ public class DomainController {
 		Log.d("INITDATA","INITDATA");
 		//Define all objects
 		CollectableObject c = new CollectableObject();
-		c.setImage(BitmapFactory.decodeResource(resources, R.drawable.caja));
-		c.setName("Caja");
+		c.setImage(R.drawable.cofeecup);
+		c.setName("Tassa cafè");
+		c.setInfo("Una tassa de cafè de vidre normal i corrent");
+		c.setId(0);
 		CollectableObject c2 = new CollectableObject();
-		c.setImage(BitmapFactory.decodeResource(resources, R.drawable.caja));
-		c.setName("Caja2");
+		c2.setImage(R.drawable.lighter);
+		c2.setName("Encenedor");
+		c2.setInfo("Un encenedor força bonic eternament encès, deu ser màgic");
+		c2.setId(1);
 		
 		//Define all player data
-		player = new Player(0,0);
-		player.addObject(c);
-		player.addObject(c2);
+		setPlayer(new Player(0,0));
+		getPlayer().addObject(c);
+		getPlayer().addObject(c2);
+
+		getPlayer().setCurrent_action(0);
 		
 		//Define Scenes
 		 //Kitchen Scene 1
@@ -63,6 +69,7 @@ public class DomainController {
 		shs1.setWidth(193);
 		shs1.setHeight(80);
 		shs1.setInfo("Sembla ser un armari");
+		shs1.setGrabtext("T'asseguro que està buit, ho he vist");
 		
 		SceneHotSpot shs2 = new SceneHotSpot();
 		shs2.setX(298);
@@ -70,6 +77,7 @@ public class DomainController {
 		shs2.setWidth(50);
 		shs2.setHeight(70);
 		shs2.setInfo("Una aixeta Podrida");
+		shs2.setGrabtext("No ho puc arrencar pas!");
 		
 		ArrayList<SceneHotSpot> arshs1 = new ArrayList<SceneHotSpot>();
 		arshs1.add(shs1);arshs1.add(shs2);
@@ -91,6 +99,15 @@ public class DomainController {
 		 map.setMhs(armhs1);
 		 
 	}
+
+	public static void setPlayer(Player player) {
+		DomainController.player = player;
+	}
+
+	public static Player getPlayer() {
+		return player;
+	}
+	
 	
 	
 }
