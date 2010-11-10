@@ -5,7 +5,7 @@ public class HotSpot {
 	private double y;
 	private double width;
 	private double height;
-	
+	protected Scene s = null;
 	
 	/**
 	 * NEEDS REVISION, NOT CHECKED for ANDROID
@@ -42,5 +42,13 @@ public class HotSpot {
 	}
 	public void setY(int y) {
 		this.y = y;
+	}
+
+	public Scene getS() {
+		return s;
+	}
+
+	public void setS(Scene s) {
+		this.s = s;
 	}
 }

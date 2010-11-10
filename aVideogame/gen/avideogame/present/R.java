@@ -16,14 +16,18 @@ public final class R {
         public static final int cofeecup=0x7f020002;
         public static final int combine=0x7f020003;
         public static final int cuina=0x7f020004;
-        public static final int grab=0x7f020005;
-        public static final int icon=0x7f020006;
-        public static final int info=0x7f020007;
-        public static final int lighter=0x7f020008;
-        public static final int planta1=0x7f020009;
-        public static final int rope=0x7f02000a;
-        public static final int trash=0x7f02000b;
-        public static final int usar=0x7f02000c;
+        public static final int cuinapomes1=0x7f020005;
+        public static final int cuinapomes2=0x7f020006;
+        public static final int grab=0x7f020007;
+        public static final int hammer=0x7f020008;
+        public static final int icon=0x7f020009;
+        public static final int info=0x7f02000a;
+        public static final int lighter=0x7f02000b;
+        public static final int planta1=0x7f02000c;
+        public static final int rope=0x7f02000d;
+        public static final int trash=0x7f02000e;
+        public static final int usar=0x7f02000f;
+        public static final int zippo=0x7f020010;
     }
     public static final class id {
         public static final int gridview=0x7f050000;

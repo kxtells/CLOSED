@@ -1,7 +1,9 @@
 package avideogame.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
+import avideogame.present.SceneActivity;
 
 public class Utilities {
 	

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import android.graphics.Bitmap;
 
 public class Scene {
-	
+	private int id;
 	//Llista d'imatges
 	private ArrayList<Bitmap> images = new ArrayList<Bitmap>();
 	//
@@ -38,7 +38,20 @@ public class Scene {
 		return null;
 	}
 
+	public void addHotSpot(SceneHotSpot shs){
+		this.hotspots.add(shs);
+	}
 	
+	public void dropHotSpot(SceneHotSpot shs){
+		this.hotspots.remove(shs);
+	}
+	
+	/**
+	 * Sets the image to view to the next image
+	 */
+	public void skipSceneImage(){
+		this.current_scene++;
+	}
 	public Bitmap getCurrentBackgound(){
 		return images.get(current_scene);
 	}
@@ -54,6 +67,26 @@ public class Scene {
 
 	public void setHotspots(ArrayList<SceneHotSpot> hotspots) {
 		this.hotspots = hotspots;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public int getCurrent_scene() {
+		return current_scene;
+	}
+
+
+	public void setCurrent_scene(int currentScene) {
+		current_scene = currentScene;
 	}
 
 }

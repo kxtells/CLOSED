@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SubMenu;
-import android.widget.Toast;
 import avideogame.domain.CollectableObject;
 import avideogame.domain.DomainController;
 import avideogame.domain.Scene;
@@ -19,9 +18,10 @@ import avideogame.utils.Constants;
 import avideogame.utils.Utilities;
 
 public class SceneActivity extends Activity {
-	DomainController dc;
-	SceneView view;
-	Scene sc;
+	private DomainController dc;
+	private SceneView view;
+	private Scene sc;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,8 +30,9 @@ public class SceneActivity extends Activity {
         
         int scene_index = this.getIntent().getIntExtra("SceneIndex", -1);
         view = new SceneView(this);
-        sc = dc.getScene(scene_index);
+        sc = dc.getSceneById(scene_index);
         view.setScene(sc);
+        DomainController.getPlayer().setCurrent_action(Constants.MENU_INFO);
         setContentView(view);
     }
 	
@@ -41,6 +42,7 @@ public class SceneActivity extends Activity {
 		double y = event.getY();
     	if(event.getAction() == MotionEvent.ACTION_DOWN){
 			SceneHotSpot shs = sc.getSceneHotSpot(x, y);
+			Log.d("a","a");
 			if(shs!=null){
 				String text="";
 				switch(DomainController.getPlayer().getCurrent_action()){
@@ -49,6 +51,22 @@ public class SceneActivity extends Activity {
 						break;
 					case Constants.MENU_GRAB:
 						text = shs.getGrabtext();
+						Utilities.drawText(text,getBaseContext());
+						if(shs.getS()!=null){
+							int id = shs.getS().getId();
+							Intent sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
+							sceneIntent.putExtra("SceneIndex", id);
+							startActivity(sceneIntent);
+						}
+						if(shs.getObject()!=null){
+							text = shs.getGrabtext();
+							Utilities.drawText(text,getBaseContext()); //escriure text
+							sc.skipSceneImage(); //passa a seguent imatge (imatge sense objecte)
+							DomainController.getPlayer().addObject(shs.getObject()); //afegeix objecte a jugador
+							sc.dropHotSpot(shs); //treu el hotspot
+							view.invalidate(); //invalida la vista per repintar-la
+						}
+						
 						break;
 					case Constants.MENU_OBJ:
 						text = "No puc usar això aquí";
@@ -72,7 +90,7 @@ public class SceneActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, Constants.MENU_INFO, 0, "info").setIcon(R.drawable.info);
-		menu.add(0, Constants.MENU_GRAB, 0, "Agafar").setIcon(R.drawable.grab);
+		menu.add(0, Constants.MENU_GRAB, 0, "Interactuar").setIcon(R.drawable.grab);
 		SubMenu s = menu.addSubMenu(0, Constants.MENU_OBJ, 0,"UsarObjecte").setIcon(R.drawable.usar);
 		menu.add(0, Constants.MENU_BAG,  0, "Veure Objectes").setIcon(R.drawable.briefcase);
 		

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.Window;
 import avideogame.domain.DomainController;
+import avideogame.utils.Utilities;
 
 
 public class aVideogame extends Activity {
@@ -31,7 +32,7 @@ public class aVideogame extends Activity {
 		Log.d("OnTouchEvent","ZZ");
 		
 		Intent sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
-		sceneIntent.putExtra("SceneIndex", (int)0);
+		sceneIntent.putExtra("SceneIndex", 0);
 		startActivity(sceneIntent);
 		
 		return super.onTouchEvent(event);

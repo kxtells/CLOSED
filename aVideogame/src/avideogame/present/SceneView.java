@@ -17,12 +17,11 @@ import avideogame.utils.Constants;
 
 public class SceneView extends View {
 	private Paint paint = new Paint();
-	private DomainController dc;
 	private Scene scene;
 	
 	public SceneView(Context context) {
 		super(context);
-		dc = DomainController.instance(this.getResources());
+		DomainController.instance(this.getResources());
 	}
 
 	@Override
@@ -37,13 +36,13 @@ public class SceneView extends View {
 		drawInfoSquare(canvas);
 		
 		paint.setColor(Color.parseColor("#44FF0000"));
-		for(int i=0;i<nhs;i++){
+		/*for(int i=0;i<nhs;i++){
 			canvas.drawRect((float)sch.get(i).getX(), 
 							(float)sch.get(i).getY(), 
 							(float)sch.get(i).getX() + (float)sch.get(i).getWidth(), 
 							(float)sch.get(i).getY() + (float)sch.get(i).getHeight(), 
 							paint);	
-		}
+		}*/
 		
 		super.onDraw(canvas);
 	}
