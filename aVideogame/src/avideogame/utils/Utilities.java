@@ -1,13 +1,13 @@
 package avideogame.utils;
 
 import android.content.Context;
-import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
-import avideogame.present.SceneActivity;
 
 public class Utilities {
 	
 	public static void drawText(String text,Context context){
+		Log.d("Toast",""+text);
 		Toast.makeText(context, text, text.length() * 20).show();
 	}
 }

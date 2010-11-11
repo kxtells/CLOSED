@@ -7,12 +7,12 @@ package avideogame.domain;
 
 import java.util.ArrayList;
 
-import android.graphics.Bitmap;
+import android.util.Log;
 
 public class Scene {
 	private int id;
 	//Llista d'imatges
-	private ArrayList<Bitmap> images = new ArrayList<Bitmap>();
+	private ArrayList<Integer> images = new ArrayList<Integer>();
 	//
 	private ArrayList<SceneHotSpot> hotspots = new ArrayList<SceneHotSpot>();
 	private int current_scene;
@@ -52,12 +52,16 @@ public class Scene {
 	public void skipSceneImage(){
 		this.current_scene++;
 	}
-	public Bitmap getCurrentBackgound(){
+	public Integer getCurrentBackgound(){
 		return images.get(current_scene);
 	}
 	
+	public void addImageBackground(int imgid){
+		this.images.add(imgid);
+	}
+	
 	//Getters & Setters
-	public void setImages(ArrayList<Bitmap> images) {
+	public void setImages(ArrayList<Integer> images) {
 		this.images = images;
 	}
 

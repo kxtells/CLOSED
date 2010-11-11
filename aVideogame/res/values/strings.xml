@@ -2,4 +2,15 @@
 <resources>
     <string name="hello">Hello World, aVideogame!</string>
     <string name="app_name">aVideogame</string>
+
+<string name="pomes_encenedor">Poma cremada amb encenedor de petroli? no gràcies!</string>
+<string name="pomes_martell">Ara no és moment de fer pasta de poma</string>
+
+<string name="no_hs_object_text">No puc usar això aquí</string>
+<string name="menu_info">Informació</string>
+<string name="menu_touch">Interactuar</string>
+<string name="menu_bag">Veure Objectes</string>
+<string name="menu_use">Usar Objecte</string>
+<string name="menu_comb">combinar</string>
+<string name="menu_drop">Tirar</string>
 </resources>

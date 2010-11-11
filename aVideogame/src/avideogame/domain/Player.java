@@ -2,6 +2,8 @@ package avideogame.domain;
 
 import java.util.ArrayList;
 
+import avideogame.present.R;
+
 public class Player {
 	private int x;
 	private int y;
@@ -37,6 +39,19 @@ public class Player {
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * Returns the id of the object (is the same as the resource image id)
+	 * or -1 if the object is not found in the player's bag
+	 * @return
+	 */
+	public int getCurrentObjectDrawResource(){
+		int ln = bag.size();
+		for(int i=0;i<ln;i++){
+			if(bag.get(i).getId() == this.current_object) return bag.get(i).getImage();
+		}
+		return -1;
 	}
 	
 	//GETTERS & SETTERS

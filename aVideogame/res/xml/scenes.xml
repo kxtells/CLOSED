@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+<scene id="@drawable/sccuinapomes1" note="Cuina amb pomes">
+		<image image="@drawable/sccuinapomes1"></image>
+		<image image="@drawable/sccuinapomes2"></image>
+		<hs x="190" y="84" w="105" h="155" infotext="Un pot ple de pomes verdes" grabtext="Ara mateix no tinc gana, si em servís per algo ja sé on és" objectid="-1" sceneid="-1" note="Pot de pomes" id="0"></hs>
+		<hs x="160" y="180" w="30" h="20" infotext="Un encenedor"
+			grabtext="Això ha de ser per mi" objectid="@drawable/zippo"
+			sceneid="-1" note="HotSpot per a l'objecte zippo" id="1">
+		</hs>
+</scene><scene id="@drawable/sccuina" note="kitchen principal">
+	<image image="@drawable/sccuina"></image>
+	<hs x="286" y="15" w="193" h="80" infotext="Sembla ser un armari"
+		grabtext="T'asseguro que està buit, ho he vist" objectid="-1"
+		sceneid="-1" note="Armari de la cuina" id="2">
+	</hs>
+	<hs x="298" y="121" w="50" h="70" infotext="Una aixeta Podrida"
+		grabtext="No ho puc arrencar pas!" objectid="-1" sceneid="-1"
+		note="la aixeta" id="3">
+	</hs>
+	<hs x="200" y="121" w="20" h="30" infotext="Un pot amb pomes"
+		grabtext="A veure que hi trobem" sceneid="@drawable/sccuinapomes1"
+		objectid="-1" note="" id="4">
+	</hs>
+	<hs x="134" y="33" w="25" h="55" infotext="Un grup d'Ampolles"
+		grabtext="Simplement és decoratiu, no té importància" sceneid="-1"
+		objectid="-1" note="" id="5">
+	</hs>
+
+</scene>
+	
+</resources>

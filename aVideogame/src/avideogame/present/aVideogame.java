@@ -22,7 +22,6 @@ public class aVideogame extends Activity {
         super.onCreate(savedInstanceState);
         
         dc = DomainController.instance(getResources());
-
         setContentView(new MapView(this));
     }
 
@@ -32,7 +31,7 @@ public class aVideogame extends Activity {
 		Log.d("OnTouchEvent","ZZ");
 		
 		Intent sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
-		sceneIntent.putExtra("SceneIndex", 0);
+		sceneIntent.putExtra("SceneIndex", R.drawable.sccuina); //the main drawable id is the scene id
 		startActivity(sceneIntent);
 		
 		return super.onTouchEvent(event);

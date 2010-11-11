@@ -32,7 +32,9 @@ public class BagActivity extends Activity {
         current_action = Constants.OBJ_INFO;
         
         setContentView(R.layout.baglayout);
-        GridView gridview = (GridView) findViewById(R.id.gridview);
+        view = findViewById(R.id.gridview);
+        GridView gridview = (GridView) view;
+        view.setBackgroundResource(R.drawable.bagactbackground);
         gridview.setAdapter(new ImageAdapter(this));
         
         
@@ -44,9 +46,9 @@ public class BagActivity extends Activity {
      */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, Constants.OBJ_INFO, 0, "info").setIcon(R.drawable.info);
-		menu.add(0, Constants.OBJ_COMB, 0, "Combinar").setIcon(R.drawable.combine);
-		menu.add(0, Constants.OBJ_DROP,  0, "Tirar").setIcon(R.drawable.trash);
+		menu.add(0, Constants.OBJ_INFO, 0, getString(R.string.menu_info)).setIcon(R.drawable.magnifier_menu);
+		menu.add(0, Constants.OBJ_COMB, 0, getString(R.string.menu_comb)).setIcon(R.drawable.combine);
+		menu.add(0, Constants.OBJ_DROP,  0, getString(R.string.menu_drop)).setIcon(R.drawable.trash);
 		return super.onCreateOptionsMenu(menu);
 	}
 	

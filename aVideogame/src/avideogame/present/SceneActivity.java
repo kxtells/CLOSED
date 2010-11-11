@@ -18,7 +18,6 @@ import avideogame.utils.Constants;
 import avideogame.utils.Utilities;
 
 public class SceneActivity extends Activity {
-	private DomainController dc;
 	private SceneView view;
 	private Scene sc;
 	
@@ -26,14 +25,14 @@ public class SceneActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dc = DomainController.instance(getResources());
         
         int scene_index = this.getIntent().getIntExtra("SceneIndex", -1);
         view = new SceneView(this);
-        sc = dc.getSceneById(scene_index);
+        sc = DomainController.getSceneById(scene_index);
         view.setScene(sc);
         DomainController.getPlayer().setCurrent_action(Constants.MENU_INFO);
         setContentView(view);
+        Log.d("a","v");
     }
 	
     @Override
@@ -42,38 +41,18 @@ public class SceneActivity extends Activity {
 		double y = event.getY();
     	if(event.getAction() == MotionEvent.ACTION_DOWN){
 			SceneHotSpot shs = sc.getSceneHotSpot(x, y);
-			Log.d("a","a");
 			if(shs!=null){
-				String text="";
 				switch(DomainController.getPlayer().getCurrent_action()){
 					case Constants.MENU_INFO:
-						text = shs.getInfo();
+						Utilities.drawText(shs.getInfo(),getBaseContext());
 						break;
 					case Constants.MENU_GRAB:
-						text = shs.getGrabtext();
-						Utilities.drawText(text,getBaseContext());
-						if(shs.getS()!=null){
-							int id = shs.getS().getId();
-							Intent sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
-							sceneIntent.putExtra("SceneIndex", id);
-							startActivity(sceneIntent);
-						}
-						if(shs.getObject()!=null){
-							text = shs.getGrabtext();
-							Utilities.drawText(text,getBaseContext()); //escriure text
-							sc.skipSceneImage(); //passa a seguent imatge (imatge sense objecte)
-							DomainController.getPlayer().addObject(shs.getObject()); //afegeix objecte a jugador
-							sc.dropHotSpot(shs); //treu el hotspot
-							view.invalidate(); //invalida la vista per repintar-la
-						}
-						
+						menuGrabAction(shs);
 						break;
 					case Constants.MENU_OBJ:
-						text = "No puc usar això aquí";
+						Utilities.drawText(getString(R.string.no_hs_object_text),getBaseContext());
 						break;
-				}
-				Utilities.drawText(text,getBaseContext());
-				
+				}				
 			}
 			else{
 				Utilities.drawText("x:"+x+" y:"+y,getBaseContext());
@@ -81,6 +60,27 @@ public class SceneActivity extends Activity {
 		}
 		return true;
 	}
+    
+    /**
+     * Action to do when a HotSpot is clicked and the action is Grab/Interact
+     * @param shs
+     */
+    public void menuGrabAction(SceneHotSpot shs){
+		if(shs.getScene()!=null){ //el hotspot té una escena per activar
+			Utilities.drawText(shs.getGrabtext(),getBaseContext());
+			int id = shs.getScene().getId();
+			Intent sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
+			sceneIntent.putExtra("SceneIndex", id);
+			startActivity(sceneIntent);
+		}
+		if(shs.getObject()!=null){ //el hot spot té un objecte per agafar
+			Utilities.drawText(shs.getGrabtext(),getBaseContext()); //escriure text
+			sc.skipSceneImage(); //passa a seguent imatge (imatge sense objecte)
+			DomainController.getPlayer().addObject(shs.getObject()); //afegeix objecte a jugador
+			sc.dropHotSpot(shs); //treu el hotspot
+			view.invalidate(); //invalida la vista per repintar-la
+		}
+    }
 
 
 
@@ -89,16 +89,11 @@ public class SceneActivity extends Activity {
      */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, Constants.MENU_INFO, 0, "info").setIcon(R.drawable.info);
-		menu.add(0, Constants.MENU_GRAB, 0, "Interactuar").setIcon(R.drawable.grab);
-		SubMenu s = menu.addSubMenu(0, Constants.MENU_OBJ, 0,"UsarObjecte").setIcon(R.drawable.usar);
-		menu.add(0, Constants.MENU_BAG,  0, "Veure Objectes").setIcon(R.drawable.briefcase);
-		
-		ArrayList<CollectableObject> objects = DomainController.getPlayer().getBag();
-		for(int i=0;i<objects.size();i++){
-			s.add(1, objects.get(i).getId(), i, objects.get(i).getName());
-		}
-		
+		menu.add(0, Constants.MENU_INFO, 0, getString(R.string.menu_info)).setIcon(R.drawable.magnifier_menu);
+		menu.add(0, Constants.MENU_GRAB, 0, getString(R.string.menu_touch)).setIcon(R.drawable.grab);
+		menu.add(0, Constants.MENU_BAG,  0, getString(R.string.menu_bag)).setIcon(R.drawable.briefcase);
+		SubMenu s = menu.addSubMenu(1, Constants.MENU_OBJ, 1, getString(R.string.menu_bag)).setIcon(R.drawable.usar);
+
 		return super.onCreateOptionsMenu(menu);
 	}
 	
@@ -111,18 +106,27 @@ public class SceneActivity extends Activity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
+		//menu.removeItem(Constants.MENU_OBJ);
 		menu.removeItem(Constants.MENU_OBJ);
-		
-		SubMenu s = menu.addSubMenu(0, Constants.MENU_OBJ, 0,"UsarObjecte").setIcon(R.drawable.usar);
-		ArrayList<CollectableObject> objects = DomainController.getPlayer().getBag();
-		for(int i=0;i<objects.size();i++){
-			s.add(1, objects.get(i).getId(), i, objects.get(i).getName());
+		int ln = DomainController.getPlayer().getBag().size();
+		if(ln>0){
+			SubMenu s = menu.addSubMenu(0,Constants.MENU_OBJ,0,getString(R.string.menu_bag)).setIcon(R.drawable.usar);
+			
+			for(int i=0;i<ln;i++){
+				int id = DomainController.getPlayer().getBag().get(i).getId();
+				String name = DomainController.getPlayer().getBag().get(i).getName();
+				s.add(1,id,0,name);
+			}
 		}
-		return super.onPrepareOptionsMenu(menu);
+		else{
+			menu.add(0, Constants.MENU_OBJ, 0, "Usar Objecte").setIcon(R.drawable.usar).setEnabled(false);
+		}
+		return super.onCreateOptionsMenu(menu);
 	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		Log.d("MENU","itemid: "+item.getItemId()+"|groupid: "+item.getGroupId());
 		switchPlayerAction(item.getItemId(),item.getGroupId());
 		view.invalidate(); //Repaint screen
 		return true;
@@ -134,7 +138,6 @@ public class SceneActivity extends Activity {
 	 * @param itemid
 	 */
 	private void switchPlayerAction(int itemid,int groupid){
-		Log.d("item:",""+itemid);
 		if(groupid==0){ //es tracta d'una acció bàsica (mirar,agafar,veure objectes)
 			switch(itemid){
 			case Constants.MENU_INFO:
@@ -144,7 +147,6 @@ public class SceneActivity extends Activity {
 				DomainController.getPlayer().setCurrent_action(Constants.MENU_GRAB);
 				break;
 			case Constants.MENU_OBJ:
-				DomainController.getPlayer().setCurrent_action(Constants.MENU_OBJ);
 				break;
 			case Constants.MENU_BAG: //Anar a la vista de Bag
 				Intent sceneIntent = new Intent(getBaseContext(), BagActivity.class);

@@ -1,6 +1,7 @@
 package avideogame.domain;
 
 public class HotSpot {
+	private int id;
 	private double x;
 	private double y;
 	private double width;
@@ -22,33 +23,41 @@ public class HotSpot {
 	public double getWidth() {
 		return width;
 	}
-	public void setWidth(int width) {
+	public void setWidth(double width) {
 		this.width = width;
 	}
 	public double getHeight() {
 		return height;
 	}
-	public void setHeight(int height) {
+	public void setHeight(double height) {
 		this.height = height;
 	}
 	public double getX() {
 		return x;
 	}
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x = x;
 	}
 	public double getY() {
 		return y;
 	}
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 
-	public Scene getS() {
+	public Scene getScene() {
 		return s;
 	}
 
-	public void setS(Scene s) {
+	public void setScene(Scene s) {
 		this.s = s;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
 	}
 }
