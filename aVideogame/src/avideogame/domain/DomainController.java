@@ -145,6 +145,7 @@ public class DomainController {
 						String ginfo 	= xrp.getAttributeValue(null, "grabtext");
 						int sceneid 	= xrp.getAttributeResourceValue(null, "sceneid",-1);
 						int objid 		= xrp.getAttributeResourceValue(null, "objectid",-1);
+						int soundid		= xrp.getAttributeResourceValue(null,"sound",-1);
 						
 						SceneHotSpot shs = new SceneHotSpot();
 						currentscene.addHotSpot(shs);
@@ -157,6 +158,8 @@ public class DomainController {
 						shs.setGrabtext(ginfo);
 						shs.setObject(getObjectById(objid));
 						shs.setScene(getSceneById(sceneid));
+						shs.setSound(soundid);
+						
 					}
 				}
 				xrp.next();

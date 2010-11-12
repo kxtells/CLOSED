@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 <c_object id="@drawable/zippo" infotext="Un encenedor força bonic d'aquells que fan tanta pudor" name="Encenedor"></c_object>
-	<c_object id="@drawable/hammer" infotext="Un martell que té pinta de ser nou" name="Encenedor"></c_object>
+	<c_object id="@drawable/hammer" infotext="Un martell que té pinta de ser nou" name="Martell"></c_object>
 </resources>

@@ -7,6 +7,7 @@ public class HotSpot {
 	private double width;
 	private double height;
 	protected Scene s = null;
+	private int soundres = -1;
 	
 	/**
 	 * NEEDS REVISION, NOT CHECKED for ANDROID
@@ -59,5 +60,13 @@ public class HotSpot {
 
 	public int getId() {
 		return id;
+	}
+
+	public void setSound(int soundres) {
+		this.soundres = soundres;
+	}
+
+	public int getSound() {
+		return soundres;
 	}
 }

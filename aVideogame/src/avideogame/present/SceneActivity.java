@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -66,19 +67,22 @@ public class SceneActivity extends Activity {
      * @param shs
      */
     public void menuGrabAction(SceneHotSpot shs){
+    	Utilities.drawText(shs.getGrabtext(),getBaseContext());
 		if(shs.getScene()!=null){ //el hotspot té una escena per activar
-			Utilities.drawText(shs.getGrabtext(),getBaseContext());
 			int id = shs.getScene().getId();
 			Intent sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
 			sceneIntent.putExtra("SceneIndex", id);
 			startActivity(sceneIntent);
 		}
 		if(shs.getObject()!=null){ //el hot spot té un objecte per agafar
-			Utilities.drawText(shs.getGrabtext(),getBaseContext()); //escriure text
 			sc.skipSceneImage(); //passa a seguent imatge (imatge sense objecte)
 			DomainController.getPlayer().addObject(shs.getObject()); //afegeix objecte a jugador
 			sc.dropHotSpot(shs); //treu el hotspot
+			Utilities.playSound(R.raw.ohhh,getBaseContext());
 			view.invalidate(); //invalida la vista per repintar-la
+		}
+		if(shs.getSound() != -1){
+			Utilities.playSound(shs.getSound(), getBaseContext());
 		}
     }
 
@@ -158,6 +162,6 @@ public class SceneActivity extends Activity {
 			DomainController.getPlayer().setCurrent_action(Constants.MENU_OBJ); //object use action
 			DomainController.getPlayer().setCurrent_object(itemid); //object to use
 		}
-	}	
+	}
     
 }
