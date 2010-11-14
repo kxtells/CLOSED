@@ -5,17 +5,13 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import avideogame.domain.CollectableObject;
 import avideogame.domain.DomainController;
 import avideogame.utils.Constants;
 import avideogame.utils.Utilities;
@@ -47,6 +43,7 @@ public class BagActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, Constants.OBJ_INFO, 0, getString(R.string.menu_info)).setIcon(R.drawable.magnifier_menu);
+		menu.add(0, Constants.OBJ_INTE, 0, getString(R.string.menu_touch)).setIcon(R.drawable.grab);
 		menu.add(0, Constants.OBJ_COMB, 0, getString(R.string.menu_comb)).setIcon(R.drawable.combine);
 		menu.add(0, Constants.OBJ_DROP,  0, getString(R.string.menu_drop)).setIcon(R.drawable.trash);
 		return super.onCreateOptionsMenu(menu);
@@ -70,8 +67,6 @@ public class BagActivity extends Activity {
 	}
 	
 	
-	
-	
 	/**
 	 * Subclass ImageAdapter to fill the
 	 * grid with player's object images
@@ -93,6 +88,7 @@ public class BagActivity extends Activity {
 	     * Fill the bag_items_img_id with all the object ids
 	     */
 	    private void fillImageIds(){
+	    	bag_items_img_id.clear();
 	    	for(int i = 0;i<DomainController.getPlayer().getBag().size();i++){
 	    		bag_items_img_id.add(DomainController.getPlayer().getBag().get(i).getImage());
 	    		bag_items_id.add(DomainController.getPlayer().getBag().get(i).getId());
@@ -140,6 +136,26 @@ public class BagActivity extends Activity {
 	                	case Constants.OBJ_INFO:
 	                		String text = DomainController.getPlayer().getBagObjectById(bag_items_id.get(position)).getInfo();
 		                	Utilities.drawText(text, mContext);
+	                		break;
+	                	case Constants.OBJ_INTE:
+	                		int objectid = bag_items_id.get(position);
+	                		//si no combina amb res
+	                		if(DomainController.getPlayer().getBagObjectById(objectid).getCombines_with() == -1){
+	                			//si hi ha objectes en la seva llista de transformacions
+	                			int size = DomainController.getPlayer().getBagObjectById(objectid).getTransforms_to().size(); 
+	                			if(size>0){
+	                				//afegeix tots els objectes a la bossa del jugador
+	                				for(int i=0;i<size;i++){
+	                					int id = DomainController.getPlayer().getBagObjectById(objectid).getTransforms_to().get(i);
+	                					DomainController.getPlayer().addObject(DomainController.getObjectById(id));
+	                				}
+	                				//esborra l'objecte original de la bossa del jugador
+	                				DomainController.getPlayer().dropObject(DomainController.getObjectById(objectid));
+	                				fillImageIds();
+	                				notifyDataSetChanged();
+	                			}
+	                		}
+
 	                		break;
 	                	}
 	                }

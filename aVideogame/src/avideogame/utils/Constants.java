@@ -10,4 +10,5 @@ public class Constants {
 	public static final int OBJ_INFO = 4;
 	public static final int OBJ_COMB = 5;
 	public static final int OBJ_DROP = 6;
+	public static final int OBJ_INTE = 7;
 }

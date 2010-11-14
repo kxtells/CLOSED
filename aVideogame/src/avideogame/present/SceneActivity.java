@@ -1,17 +1,15 @@
 package avideogame.present;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.media.MediaPlayer;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SubMenu;
-import avideogame.domain.CollectableObject;
 import avideogame.domain.DomainController;
 import avideogame.domain.Scene;
 import avideogame.domain.SceneHotSpot;
@@ -33,7 +31,7 @@ public class SceneActivity extends Activity {
         view.setScene(sc);
         DomainController.getPlayer().setCurrent_action(Constants.MENU_INFO);
         setContentView(view);
-        Log.d("a","v");
+        
     }
 	
     @Override
@@ -163,5 +161,18 @@ public class SceneActivity extends Activity {
 			DomainController.getPlayer().setCurrent_object(itemid); //object to use
 		}
 	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode == KeyEvent.KEYCODE_BACK){
+			if(sc.getSound_exit() != -1){
+				Utilities.playSound(sc.getSound_exit(), getBaseContext());
+			}
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+	
+	
+	
     
 }

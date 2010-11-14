@@ -18,9 +18,13 @@ public class CollectableObject {
 	private int image;
 	//String a mostrar a la vista d'objectes, NO a l'escena
 	private String info;
-	//llista amb els objectes que pots combinar-ho i llista amb el resultat de tal combinació
-	private ArrayList<CollectableObject> combwith = new ArrayList<CollectableObject>();
-	private ArrayList<CollectableObject> transformsto = new ArrayList<CollectableObject>();
+	private int combines_with = -1;
+	private ArrayList<Integer> transforms_to = new ArrayList<Integer>();
+	
+	
+	public void addTransformstoObjectId(int newid){
+		transforms_to.add(newid);
+	}
 	
 	//GETTERS  & SETTERS
 	public int getImage() {
@@ -35,18 +39,6 @@ public class CollectableObject {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-	public ArrayList<CollectableObject> getCombwith() {
-		return combwith;
-	}
-	public void setCombwith(ArrayList<CollectableObject> combwith) {
-		this.combwith = combwith;
-	}
-	public ArrayList<CollectableObject> getTransformsto() {
-		return transformsto;
-	}
-	public void setTransformsto(ArrayList<CollectableObject> transformsto) {
-		this.transformsto = transformsto;
-	}
 	public String getName() {
 		return name;
 	}
@@ -59,6 +51,19 @@ public class CollectableObject {
 	public int getId() {
 		return id;
 	}
+	public void setCombines_with(int combines_with) {
+		this.combines_with = combines_with;
+	}
+	public int getCombines_with() {
+		return combines_with;
+	}
+	public void setTransforms_to(ArrayList<Integer> transforms_to) {
+		this.transforms_to = transforms_to;
+	}
+	public ArrayList<Integer> getTransforms_to() {
+		return transforms_to;
+	}
+
 	
 	
 }

@@ -48,7 +48,7 @@ public class DomainController {
 		return null; 
 	}
 	
-	protected static CollectableObject getObjectById(int objectid){
+	public static CollectableObject getObjectById(int objectid){
 		int ln = objects.size();
 		for(int i=0;i<ln;i++){
 			if(objects.get(i).getId() == objectid){
@@ -88,6 +88,7 @@ public class DomainController {
 	
 	private static void parseObjectsXML(Resources resources) throws XmlPullParserException{
 		XmlResourceParser xrp = resources.getXml(R.xml.collectableobjects);
+		CollectableObject c = null;
 		while (xrp.getEventType() != XmlResourceParser.END_DOCUMENT) {
 			try {
 			
@@ -99,12 +100,18 @@ public class DomainController {
 						String sname 	= xrp.getAttributeValue(null, "name");
 						String sinfo 	= xrp.getAttributeValue(null, "infotext");
 						
-						CollectableObject c = new CollectableObject();
+						
+						c = new CollectableObject();
 						c.setImage(id);
 						c.setName(sname);
 						c.setInfo(sinfo);
 						c.setId(id);
+						
 						objects.add(c);
+					}
+					else if(s.equals("transformsto")){
+						int newobjid = xrp.getAttributeResourceValue(null, "newobj",-1);
+						c.addTransformstoObjectId(newobjid);
 					}
 				}
 				xrp.next();
@@ -127,8 +134,10 @@ public class DomainController {
 					String s = xrp.getName();
 					if(s.equals("scene")){
 						int id   = xrp.getAttributeResourceValue(null, "id",-1);
+						int sound_exit = xrp.getAttributeResourceValue(null, "sound_exit",-1);
 						currentscene = new Scene();
 						currentscene.setId(id);
+						currentscene.setSound_exit(sound_exit);
 						scenes.add(currentscene);
 					}
 					if(s.equals("image")){ //per a cada tag d'imatge afegir

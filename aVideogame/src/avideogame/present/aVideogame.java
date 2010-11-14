@@ -43,6 +43,7 @@ public class aVideogame extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0,R.drawable.sccuina,0,"Cuina");
 		menu.add(0,R.drawable.scestanteriafront,0,"Lleixes");
+		menu.add(0,R.drawable.schabllit,0,"Llit");
 		return super.onCreateOptionsMenu(menu);
 	}
 

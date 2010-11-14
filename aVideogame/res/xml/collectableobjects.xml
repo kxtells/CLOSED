@@ -2,4 +2,9 @@
 <resources>
 <c_object id="@drawable/zippo" infotext="Un encenedor força bonic d'aquells que fan tanta pudor" name="Encenedor"></c_object>
 	<c_object id="@drawable/hammer" infotext="Un martell que té pinta de ser nou" name="Martell"></c_object>
+	<c_object id="@drawable/cords" infotext="Els cordons negres de la sabata" name="Cordons de sabata"></c_object>
+	<c_object id="@drawable/shoes2" infotext="Les bambes sense cordons" name="Bambes sense cordons"></c_object>
+	<c_object id="@drawable/shoes" infotext="Unes Bambes grogues molt molones" name="Bambes" combines="-1">
+		<transformsto newobj="@drawable/shoes2"></transformsto>
+		<transformsto newobj="@drawable/cords"></transformsto></c_object>
 </resources>

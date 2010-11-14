@@ -3,67 +3,113 @@
 <scene id="@drawable/sccuinapomes1" note="Cuina amb pomes">
 		<image image="@drawable/sccuinapomes1"></image>
 		<image image="@drawable/sccuinapomes2"></image>
-		<hs x="190" y="84" w="105" h="155" infotext="Un pot ple de pomes verdes" grabtext="Ara mateix no tinc gana, si em servís per algo ja sé on és" objectid="-1" sceneid="-1" note="Pot de pomes" id="0"></hs>
+		<hs x="190" y="84" w="105" h="155" infotext="Un pot ple de pomes verdes" grabtext="Ara mateix no tinc gana, si em servís per algo ja sé on és" objectid="-1" sceneid="-1" note="Pot de pomes" id="10"></hs>
 		<hs x="160" y="180" w="30" h="20" infotext="Un encenedor"
 			grabtext="Això ha de ser per mi" objectid="@drawable/zippo"
-			sceneid="-1" note="HotSpot per a l'objecte zippo" id="1">
+			sceneid="-1" note="HotSpot per a l'objecte zippo" id="11">
 		</hs>
 </scene><scene id="@drawable/sccuina" note="kitchen principal">
 	<image image="@drawable/sccuina"></image>
 	<hs x="286" y="15" w="193" h="80" infotext="Sembla ser un armari"
 		grabtext="T'asseguro que està buit, ho he vist" objectid="-1"
-		sceneid="-1" note="Armari de la cuina" id="2">
+		sceneid="-1" note="Armari de la cuina" id="20">
 	</hs>
 	<hs x="298" y="121" w="50" h="70" infotext="Una aixeta Podrida"
 		grabtext="Almenys l'aigua que corre té un color acceptable"
-		objectid="-1" sceneid="-1" note="la aixeta" id="3" sound="@raw/grifo">
+		objectid="-1" sceneid="-1" note="la aixeta" id="21" sound="@raw/grifo">
 	</hs>
 	<hs x="200" y="121" w="20" h="30" infotext="Un pot amb pomes"
 		grabtext="A veure que hi trobem" sceneid="@drawable/sccuinapomes1"
-		objectid="-1" note="" id="4">
+		objectid="-1" note="" id="22">
 	</hs>
 	<hs x="134" y="33" w="25" h="55" infotext="Un grup d'Ampolles"
 		grabtext="Simplement és decoratiu, no té importància" sceneid="-1"
-		objectid="-1" note="" id="5">
+		objectid="-1" note="" id="23">
 	</hs>
 
 </scene>
-	<scene id="@drawable/scestanteriacalaix1" note="El calaix de l'estanteria amb tots els utensilis">
+	<scene id="@drawable/scestanteriacalaix1" note="El calaix de l'estanteria amb tots els utensilis" sound_exit="@raw/calaix_tancar">
 		<image image="@drawable/scestanteriacalaix1"></image>
 		<image image="@drawable/scestanteriacalaix2"></image>
 			<hs x="0" y="230" w="70" h="120" infotext="Un compàs, com els que jo feia servir de petit a classe" grabtext="De moment no necessito fer cercles" objectid="-1"
-			sceneid="-1" note="GameBoy" id="11">
+			sceneid="-1" note="GameBoy" id="30">
 			</hs>
 			<hs x="276" y="89" w="55" h="50" infotext="Una Game boy Original!! li déiem Game Boy totxo" grabtext="No té piles, en tot cas baixa't l'emulador per android" objectid="-1"
-			sceneid="-1" note="" id="12">
+			sceneid="-1" note="" id="31">
 			</hs>
 			<hs x="230" y="135" w="40" h="40" infotext="Un paquet de caramels de pescadors" grabtext="Són massa forts, i no em serveixen per a sortir de l'habitació" objectid="-1"
-			sceneid="-1" note="" id="13">
+			sceneid="-1" note="" id="32">
 			</hs>
 			<hs x="134" y="189" w="110" h="70" infotext="Un martell comú, es veu en bon estat" grabtext="Hah, ara puc intentar trencar la porta a cops" objectid="@drawable/hammer"
-			sceneid="-1" note="" id="14">
+			sceneid="-1" note="" id="33">
 			</hs>
 	</scene>
 	<scene id="@drawable/scestanteriafront" note="Escena Principal de l'estanteria">
 		<image image="@drawable/scestanteriafront"></image>
 		<hs x="75" y="8" w="250" h="50" infotext="Un conjunt de llibres de colors" grabtext="Això està massa amunt per mi" objectid="-1"
-			sceneid="-1" note="" id="6">
+			sceneid="-1" note="" id="40">
 		</hs>
 		<hs x="75" y="57" w="100" h="75" infotext="La enciclopèdia de la teva vida, o això diu" grabtext="No vull anar carregant això per tota la casa" objectid="-1"
-			sceneid="-1" note="" id="7">
+			sceneid="-1" note="" id="41">
 		</hs>
 				<hs x="207" y="62" w="30" h="75" infotext="El llibre del sol" grabtext="Hi faig una ullada ràpida, però no diu res, sols és de dibuixos" objectid="-1"
-			sceneid="-1" note="" id="8">
+			sceneid="-1" note="" id="42">
 		</hs>
 				<hs x="215" y="147" w="40" h="50" infotext="Una ploma seca, és més decoratiu que útil" grabtext="Amb la ploma potser podria intentar obrir el pany de la porta... no crec." objectid="-1"
-			sceneid="-1" note="" id="9">
+			sceneid="-1" note="" id="43">
 		</hs>
 				<hs x="209" y="280" w="120" h="40" infotext="Un forat de calaix" grabtext="No hi ha res per agafar aquí dins" objectid="-1"
-			sceneid="-1" note="" id="10">
+			sceneid="-1" note="" id="44">
 		</hs>
 				<hs x="68" y="277" w="130" h="50" infotext="Un calaix ben colocat, no com l'altre" grabtext="A veure si l'estiro" objectid="-1"
-			sceneid="@drawable/scestanteriacalaix1" note="" id="10" sound="@raw/calaix">
+			sceneid="@drawable/scestanteriacalaix1" note="" id="45" sound="@raw/calaix">
 		</hs>		
 		</scene>
-	
+	<scene id="@drawable/schabtauletaesqcalendar" note="Calendari de la tauleta de ni esquerra">
+		<image image="@drawable/schabtauletaesqcalendar"></image></scene>
+	<scene id="@drawable/schabsotallit1" note="dessota del llit">
+		<image image="@drawable/schabsotallit1"></image>
+		<image image="@drawable/schabsotallit2"></image>
+		<hs x="265" y="71" w="130" h="80"
+			infotext="Unes sabates de color groc canari"
+			grabtext="això em podria servir per alguna cosa ho pressento"
+			objectid="@drawable/shoes" sceneid="-1" id="1000">
+		</hs>
+	</scene>
+	<scene id="@drawable/schabtauletaesq" note="Tauleta de nit de l'esquerra">
+		<image image="@drawable/schabtauletaesq"></image>
+		<hs x="0" y="27" w="129" h="200"
+			infotext="Una làmpada igual que la de l'altre tauleta"
+			grabtext="La casa està prou iluminada, a més, sembla ser que no funciona"
+			id="50">
+		</hs>
+		<hs x="179" y="171" w="80" h="60" infotext="Un ràdiodespertador"
+			grabtext="Goita, la competència!" id="51">
+		</hs>
+		<hs x="271" y="126" w="60" h="60" infotext="Un calendari amb còmic" grabtext="A veure quin còmic toca..." sceneid="@drawable/schabtauletaesqcalendar"
+			id="52">
+		</hs>
+		<hs x="321" y="293" w="50" h="40" id="53" infotext="El dessota del llit" grabtext="Em tapo el nas per si hi ha gaire pols"
+			sceneid="@drawable/schabsotallit1">
+		</hs></scene>
+	<scene id="@drawable/schabtauletadret" note="Tauleta de nit de la dreta">
+		<image image="@drawable/schabtauletadret"></image></scene>
+	<scene id="@drawable/schabllit" note="Escena de cares al llit">
+		<image image="@drawable/schabllit"></image>
+		<hs x="17" y="120" w="100" h="60" infotext="Una tauleta de nit" grabtext="Fem-hi una ullada!" objectid="-1"
+			sceneid="@drawable/schabtauletaesq" note="" id="70">
+		</hs>
+		<hs x="134" y="170" w="200" h="190" infotext="Un llit tant ben fet que no se li veu cap arruga" grabtext="Podria fer una becaina, però tinc coses més importants a tractar" objectid="-1"
+			sceneid="-1" note="" id="71">
+		</hs>
+				<hs x="336" y="130" w="114" h="86" infotext="Una tauleta de nit" grabtext="Una ulladeta no em farà mal" objectid="-1"
+			sceneid="@drawable/schabtauletadret" note="" id="72">
+		</hs>
+				<hs x="286" y="33" w="33" h="93" infotext="Un quadre.. sembla un tros d'alzina surera" grabtext="No vull aquest quadre per res." objectid="-1"
+			sceneid="-1" note="" id="73">
+		</hs>
+				<hs x="150" y="43" w="35" h="79" infotext="Un tros de fusta que simula un quadre" grabtext="No vull fusta" objectid="-1"
+			sceneid="-1" note="" id="74">
+		</hs>		
+		</scene>
 </resources>

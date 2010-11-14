@@ -2,8 +2,6 @@ package avideogame.domain;
 
 import java.util.ArrayList;
 
-import avideogame.present.R;
-
 public class Player {
 	private int x;
 	private int y;
@@ -23,7 +21,7 @@ public class Player {
 	 * Drops a specific Object from the player's bag
 	 * @param co
 	 */
-	public void dropObject(int co){
+	public void dropObject(CollectableObject co){
 		bag.remove(co);
 	}
 	

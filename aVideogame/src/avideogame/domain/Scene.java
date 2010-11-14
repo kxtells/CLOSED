@@ -16,6 +16,7 @@ public class Scene {
 	//
 	private ArrayList<SceneHotSpot> hotspots = new ArrayList<SceneHotSpot>();
 	private int current_scene;
+	private int sound_exit = -1;
 	
 	
 	public Scene() {
@@ -91,6 +92,16 @@ public class Scene {
 
 	public void setCurrent_scene(int currentScene) {
 		current_scene = currentScene;
+	}
+
+
+	public void setSound_exit(int sound_exit) {
+		this.sound_exit = sound_exit;
+	}
+
+
+	public int getSound_exit() {
+		return sound_exit;
 	}
 
 }
