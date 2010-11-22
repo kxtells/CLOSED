@@ -69,7 +69,7 @@ public class SceneActivity extends Activity {
     	if(shs.getUseobj() != null && shs.getUseobj().getId() == objectid){
     		if(sc.skipSceneImage()){
     			if(sc.isFinalImage()){
-    				Utilities.playSound(sc.getSound_final(), getBaseContext());
+    				if(sc.getSound_final()!= -1) Utilities.playSound(sc.getSound_final(), getBaseContext());
     				applyCustomChanges(shs);
     			}
     			else{
@@ -85,6 +85,8 @@ public class SceneActivity extends Activity {
     private void applyCustomChanges(SceneHotSpot shs) {
 		switch(sc.getId()){
 		case R.drawable.schabporta:
+			sc.dropHotSpot(shs);
+		case R.drawable.habfosca:
 			sc.dropHotSpot(shs);
 		default:
 		}

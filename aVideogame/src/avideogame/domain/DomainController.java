@@ -75,6 +75,7 @@ public class DomainController {
 		//Define all Map data
 		map = new Map();
 		map.setImage(BitmapFactory.decodeResource(resources, R.drawable.planta1));
+		map.setImagemap(BitmapFactory.decodeResource(resources, R.drawable.walkability));
 	}
 
 	public static void setPlayer(Player player) {

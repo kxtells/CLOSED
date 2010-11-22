@@ -3,8 +3,8 @@ package avideogame.domain;
 import java.util.ArrayList;
 
 public class Player {
-	private int x;
-	private int y;
+	private double x;
+	private double y;
 	private ArrayList<CollectableObject> bag = new ArrayList<CollectableObject>();
 	private int current_action; //info,grab o usar objecte (veure constants MENU_XXX)
 	private int current_object;
@@ -53,22 +53,22 @@ public class Player {
 	}
 	
 	//GETTERS & SETTERS
-	public Player(int x, int y) {
+	public Player(double x, double y) {
 		super();
 		this.x = x;
 		this.y = y;
 	}
 	
-	public int getX() {
+	public double getX() {
 		return x;
 	}
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x = x;
 	}
-	public int getY() {
+	public double getY() {
 		return y;
 	}
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 	public ArrayList<CollectableObject> getBag() {

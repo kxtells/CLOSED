@@ -24,7 +24,7 @@ public class aVideogame extends Activity {
         super.onCreate(savedInstanceState);
         
         dc = DomainController.instance(getResources());
-        setContentView(new MapView(this));
+        
     }
 
 	@Override
@@ -45,15 +45,22 @@ public class aVideogame extends Activity {
 		menu.add(0,R.drawable.scestanteriafront,0,"Lleixes");
 		menu.add(0,R.drawable.schabllit,0,"Llit");
 		menu.add(0,R.drawable.schabporta,0,"PortaHab");
+		menu.add(1,1,0,"MAPA");
 		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 
-		Intent sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
-		sceneIntent.putExtra("SceneIndex", item.getItemId()); //the main drawable id is the scene id
-		startActivity(sceneIntent);
+		if(item.getGroupId()==1){
+			Intent sceneIntent = new Intent(getBaseContext(), MapActivity.class);
+			startActivity(sceneIntent);
+		}
+		else{
+			Intent sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
+			sceneIntent.putExtra("SceneIndex", item.getItemId()); //the main drawable id is the scene id
+			startActivity(sceneIntent);
+		}
 		return true;
 	}
 

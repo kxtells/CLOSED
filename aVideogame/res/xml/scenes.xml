@@ -112,14 +112,23 @@
 			sceneid="-1" note="" id="74">
 		</hs>		
 		</scene>
+	<scene id="@drawable/habfosca" note="habitació fosca que per defecte surt tot negre">
+		<image image="@drawable/habfosca"></image>
+		<hs x="0" y="0" w="480" h="320"
+			infotext="Mare meva, no veig res"
+			grabtext="Ves a saber què estic tocant" useobject="@drawable/hammer"
+			id="110">
+		</hs>
+		<image image="@drawable/sccuinapomes1"></image></scene>
 	<scene id="@drawable/schabporta" note="" sound_final="@raw/trencaporta">
 		<image image="@drawable/schabporta"></image>
 		<hs x="218" y="34" w="74" h="235" id="100"
 			infotext="Una entrada tancada amb fusta."
 			grabtext="si home, com ho obro això?" sound="@raw/trucaporta" useobject="@drawable/hammer" useobjectsound="@raw/copmartell"></hs>
 		<hs x="218" y="34" w="74" h="235" id="100"
-			infotext="La porta que he trencat a cops"
-			grabtext="Està molt fosc, no veig res, em podria fer mal"></hs>
+			infotext="La porta que he trencat a cops" grabtext="A invesigar!"
+			sceneid="@drawable/habfosca">
+		</hs>
 		<hs x="349" y="76" w="89" h="123" id="100"
 			infotext="Un quadre famós que van robar una vegada"
 			grabtext="Ja l'han robat una vegada, no cal tornar-hi">

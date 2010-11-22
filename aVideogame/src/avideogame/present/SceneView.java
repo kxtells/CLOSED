@@ -28,14 +28,25 @@ public class SceneView extends View {
 	protected void onDraw(Canvas canvas) {
 		//canvas.drawBitmap(scene.getImages().get(scene.getCurrentScene()),0,0, null);
 		
-		int nhs = scene.getHotspots().size();
-		ArrayList<SceneHotSpot> sch = scene.getHotspots();
-		
 		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), scene.getCurrentBackgound()),0,0,null);
 		
 		drawInfoSquare(canvas);
 		
 		paint.setColor(Color.parseColor("#44FF0000"));
+
+		//drawHintSquares(canvas);
+		
+		super.onDraw(canvas);
+	}
+
+	/**
+	 * This function draws squares where the HotSpots are
+	 * @param canvas the canvas where the squares are drawn
+	 */
+	private void drawHintSquares(Canvas canvas){
+		int nhs = scene.getHotspots().size();
+		ArrayList<SceneHotSpot> sch = scene.getHotspots();
+		
 		for(int i=0;i<nhs;i++){
 			canvas.drawRect((float)sch.get(i).getX(), 
 							(float)sch.get(i).getY(), 
@@ -43,10 +54,7 @@ public class SceneView extends View {
 							(float)sch.get(i).getY() + (float)sch.get(i).getHeight(), 
 							paint);	
 		}
-		
-		super.onDraw(canvas);
 	}
-
 	public void setScene(Scene scene) {
 		this.scene = scene;
 	}
