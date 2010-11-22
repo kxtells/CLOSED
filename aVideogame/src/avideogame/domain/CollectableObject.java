@@ -18,6 +18,7 @@ public class CollectableObject {
 	private int image;
 	//String a mostrar a la vista d'objectes, NO a l'escena
 	private String info;
+	private String interacttext;
 	private int combines_with = -1;
 	private ArrayList<Integer> transforms_to = new ArrayList<Integer>();
 	
@@ -62,6 +63,14 @@ public class CollectableObject {
 	}
 	public ArrayList<Integer> getTransforms_to() {
 		return transforms_to;
+	}
+
+	public void setInteracttext(String interacttext) {
+		this.interacttext = interacttext;
+	}
+
+	public String getInteracttext() {
+		return interacttext;
 	}
 
 	

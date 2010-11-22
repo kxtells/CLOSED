@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-<c_object id="@drawable/zippo" infotext="Un encenedor força bonic d'aquells que fan tanta pudor" name="Encenedor"></c_object>
-	<c_object id="@drawable/hammer" infotext="Un martell que té pinta de ser nou" name="Martell"></c_object>
-	<c_object id="@drawable/cords" infotext="Els cordons negres de la sabata" name="Cordons de sabata"></c_object>
-	<c_object id="@drawable/shoes2" infotext="Les bambes sense cordons" name="Bambes sense cordons"></c_object>
-	<c_object id="@drawable/shoes" infotext="Unes Bambes grogues molt molones" name="Bambes" combines="-1">
+	<c_object id="@drawable/zippo"
+		infotext="Un encenedor força bonic d'aquells que fan tanta pudor"
+		name="Encenedor" interacttext="No desmuntaré això, em podria fer mal">
+	</c_object>
+	<c_object id="@drawable/hammer" infotext="Un martell que té pinta de ser nou" name="Martell" interacttext="Res d'especial, un martell dels de sempre"></c_object>
+	<c_object id="@drawable/cords"
+		infotext="Els cordons negres de la sabata" name="Cordons de sabata"
+		interacttext="uns cordons, no en puc treure res més">
+	</c_object>
+	<c_object id="@drawable/shoes2" infotext="Les bambes sense cordons"
+		name="Bambes sense cordons" interacttext="Ja li he tret els cordons, què més podria necessitar?">
+	</c_object>
+	<c_object id="@drawable/shoes"
+		infotext="Unes Bambes grogues molt molones" name="Bambes"
+		combines="-1" interacttext="Mhm, li podria desmuntar els cordons">
 		<transformsto newobj="@drawable/shoes2"></transformsto>
-		<transformsto newobj="@drawable/cords"></transformsto></c_object>
+		<transformsto newobj="@drawable/cords"></transformsto>
+	</c_object>
 </resources>

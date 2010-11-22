@@ -99,6 +99,7 @@ public class DomainController {
 						int id 			= xrp.getAttributeResourceValue(null, "id",-1);
 						String sname 	= xrp.getAttributeValue(null, "name");
 						String sinfo 	= xrp.getAttributeValue(null, "infotext");
+						String sinter 	= xrp.getAttributeValue(null, "interacttext");
 						
 						
 						c = new CollectableObject();
@@ -106,6 +107,7 @@ public class DomainController {
 						c.setName(sname);
 						c.setInfo(sinfo);
 						c.setId(id);
+						c.setInteracttext(sinter);
 						
 						objects.add(c);
 					}

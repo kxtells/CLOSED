@@ -67,7 +67,7 @@ public class SceneView extends View {
 		}
 		
 		if(draw_identifier == -1) draw_identifier = R.drawable.error;
-		paint.setColor(Color.parseColor("#660011FF"));
+		paint.setColor(Color.parseColor("#770011FF"));
 		RectF rd = new RectF(0,0,65,65);
 		Rect rect = new Rect(0,0,64,64);
 		canvas.drawRoundRect(rd, 10, 10, paint);
