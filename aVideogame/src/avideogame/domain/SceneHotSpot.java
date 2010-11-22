@@ -8,6 +8,7 @@ public class SceneHotSpot extends HotSpot {
 	private String  info;
 	private String  grabtext;
 	private CollectableObject co = null;
+	private CollectableObject useobj = null;
 	
 	
 	/**
@@ -78,6 +79,16 @@ public class SceneHotSpot extends HotSpot {
 
 	public CollectableObject getObject() {
 		return co;
+	}
+
+
+	public void setUseobj(CollectableObject useobj) {
+		this.useobj = useobj;
+	}
+
+
+	public CollectableObject getUseobj() {
+		return useobj;
 	}
 	
 	

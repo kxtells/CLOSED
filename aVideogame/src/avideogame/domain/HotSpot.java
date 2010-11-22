@@ -8,6 +8,7 @@ public class HotSpot {
 	private double height;
 	protected Scene s = null;
 	private int soundres = -1;
+	private int usesoundres = -1;
 	
 	/**
 	 * NEEDS REVISION, NOT CHECKED for ANDROID
@@ -68,5 +69,13 @@ public class HotSpot {
 
 	public int getSound() {
 		return soundres;
+	}
+
+	public void setUsesoundres(int usesoundres) {
+		this.usesoundres = usesoundres;
+	}
+
+	public int getUsesoundres() {
+		return usesoundres;
 	}
 }

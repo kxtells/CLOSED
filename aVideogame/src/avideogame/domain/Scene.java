@@ -17,6 +17,7 @@ public class Scene {
 	private ArrayList<SceneHotSpot> hotspots = new ArrayList<SceneHotSpot>();
 	private int current_scene;
 	private int sound_exit = -1;
+	private int sound_final = -1;
 	
 	
 	public Scene() {
@@ -24,6 +25,9 @@ public class Scene {
 		current_scene = 0;
 	}
 
+	public boolean isFinalImage(){
+		return (this.current_scene == this.images.size()-1);
+	}
 
 	/**
 	 * @ToImplement
@@ -50,8 +54,15 @@ public class Scene {
 	/**
 	 * Sets the image to view to the next image
 	 */
-	public void skipSceneImage(){
-		this.current_scene++;
+	public boolean skipSceneImage(){
+		if(this.current_scene + 1 < this.images.size()){
+			this.current_scene++;
+			return true;
+		}
+		else{
+			return false;
+		}
+		
 	}
 	public Integer getCurrentBackgound(){
 		return images.get(current_scene);
@@ -102,6 +113,14 @@ public class Scene {
 
 	public int getSound_exit() {
 		return sound_exit;
+	}
+
+	public void setSound_final(int sound_final) {
+		this.sound_final = sound_final;
+	}
+
+	public int getSound_final() {
+		return sound_final;
 	}
 
 }

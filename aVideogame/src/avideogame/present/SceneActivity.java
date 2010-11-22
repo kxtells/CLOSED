@@ -48,7 +48,8 @@ public class SceneActivity extends Activity {
 						menuGrabAction(shs);
 						break;
 					case Constants.MENU_OBJ:
-						Utilities.drawText(getString(R.string.no_hs_object_text),getBaseContext());
+						boolean done = menuUseAction(shs,DomainController.getPlayer().getCurrent_object());
+						if(!done)Utilities.drawText(getString(R.string.no_hs_object_text),getBaseContext());
 						break;
 				}				
 			}
@@ -60,6 +61,36 @@ public class SceneActivity extends Activity {
 	}
     
     /**
+     * Action to do when a HotSpot is clicked and the action is a specific object
+     * @param shs SceneHotSpot touched
+     * @param object Object selected
+     */
+    public boolean menuUseAction(SceneHotSpot shs, int objectid){
+    	if(shs.getUseobj() != null && shs.getUseobj().getId() == objectid){
+    		if(sc.skipSceneImage()){
+    			if(sc.isFinalImage()){
+    				Utilities.playSound(sc.getSound_final(), getBaseContext());
+    				applyCustomChanges(shs);
+    			}
+    			else{
+    				Utilities.playSound(shs.getUsesoundres(), getBaseContext());
+    			}
+				view.invalidate();
+    		}
+    		return true;
+    	}
+    	return false;
+    }
+    
+    private void applyCustomChanges(SceneHotSpot shs) {
+		switch(sc.getId()){
+		case R.drawable.schabporta:
+			sc.dropHotSpot(shs);
+		default:
+		}
+	}
+
+	/**
      * Action to do when a HotSpot is clicked and the action is Grab/Interact
      * @param shs
      */
@@ -93,7 +124,7 @@ public class SceneActivity extends Activity {
 		menu.add(0, Constants.MENU_INFO, 0, getString(R.string.menu_info)).setIcon(R.drawable.magnifier_menu);
 		menu.add(0, Constants.MENU_GRAB, 0, getString(R.string.menu_touch)).setIcon(R.drawable.grab);
 		menu.add(0, Constants.MENU_BAG,  0, getString(R.string.menu_bag)).setIcon(R.drawable.briefcase);
-		SubMenu s = menu.addSubMenu(1, Constants.MENU_OBJ, 1, getString(R.string.menu_bag)).setIcon(R.drawable.usar);
+		SubMenu s = menu.addSubMenu(1, Constants.MENU_OBJ, 1, getString(R.string.menu_use)).setIcon(R.drawable.usar);
 
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -161,6 +192,9 @@ public class SceneActivity extends Activity {
 		}
 	}
 
+	/**
+	 * Used for playing a sound when leaving the scene
+	 */
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if(keyCode == KeyEvent.KEYCODE_BACK){

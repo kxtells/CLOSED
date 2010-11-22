@@ -3,10 +3,10 @@
 <scene id="@drawable/sccuinapomes1" note="Cuina amb pomes">
 		<image image="@drawable/sccuinapomes1"></image>
 		<image image="@drawable/sccuinapomes2"></image>
-		<hs x="190" y="84" w="105" h="155" infotext="Un pot ple de pomes verdes" grabtext="Ara mateix no tinc gana, si em servís per algo ja sé on és" objectid="-1" sceneid="-1" note="Pot de pomes" id="10"></hs>
+		<hs x="190" y="84" w="105" h="155" infotext="Un pot ple de pomes verdes" grabtext="Ara mateix no tinc gana, si em servís per algo ja sé on és" note="Pot de pomes" id="10"></hs>
 		<hs x="160" y="180" w="30" h="20" infotext="Un encenedor"
 			grabtext="Això ha de ser per mi" objectid="@drawable/zippo"
-			sceneid="-1" note="HotSpot per a l'objecte zippo" id="11">
+			note="HotSpot per a l'objecte zippo" id="11">
 		</hs>
 </scene><scene id="@drawable/sccuina" note="kitchen principal">
 	<image image="@drawable/sccuina"></image>
@@ -111,5 +111,28 @@
 				<hs x="150" y="43" w="35" h="79" infotext="Un tros de fusta que simula un quadre" grabtext="No vull fusta" objectid="-1"
 			sceneid="-1" note="" id="74">
 		</hs>		
+		</scene>
+	<scene id="@drawable/schabporta" note="" sound_final="@raw/trencaporta">
+		<image image="@drawable/schabporta"></image>
+		<hs x="218" y="34" w="74" h="235" id="100"
+			infotext="Una entrada tancada amb fusta."
+			grabtext="si home, com ho obro això?" sound="@raw/trucaporta" useobject="@drawable/hammer" useobjectsound="@raw/copmartell"></hs>
+		<hs x="218" y="34" w="74" h="235" id="100"
+			infotext="La porta que he trencat a cops"
+			grabtext="Està molt fosc, no veig res, em podria fer mal"></hs>
+		<hs x="349" y="76" w="89" h="123" id="100"
+			infotext="Un quadre famós que van robar una vegada"
+			grabtext="Ja l'han robat una vegada, no cal tornar-hi">
+		</hs>
+		<image image="@drawable/schabporta1"></image>
+		<image image="@drawable/schabporta2"></image>
+		<image image="@drawable/schabporta3"></image>
+		<image image="@drawable/schabporta4"></image>
+		<image image="@drawable/schabporta5"></image>
+		<image image="@drawable/schabporta6"></image>
+		<image image="@drawable/schabporta7"></image>
+		<image image="@drawable/schabporta8"></image>
+		<image image="@drawable/schabporta9"></image>
+		<image image="@drawable/schabportafinal"></image>
 		</scene>
 </resources>

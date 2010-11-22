@@ -137,9 +137,11 @@ public class DomainController {
 					if(s.equals("scene")){
 						int id   = xrp.getAttributeResourceValue(null, "id",-1);
 						int sound_exit = xrp.getAttributeResourceValue(null, "sound_exit",-1);
+						int sound_final = xrp.getAttributeResourceValue(null, "sound_final",-1);
 						currentscene = new Scene();
 						currentscene.setId(id);
 						currentscene.setSound_exit(sound_exit);
+						currentscene.setSound_final(sound_final);
 						scenes.add(currentscene);
 					}
 					if(s.equals("image")){ //per a cada tag d'imatge afegir
@@ -157,6 +159,8 @@ public class DomainController {
 						int sceneid 	= xrp.getAttributeResourceValue(null, "sceneid",-1);
 						int objid 		= xrp.getAttributeResourceValue(null, "objectid",-1);
 						int soundid		= xrp.getAttributeResourceValue(null,"sound",-1);
+						int useobjid	= xrp.getAttributeResourceValue(null,"useobject",-1);
+						int usesoundid  = xrp.getAttributeResourceValue(null,"useobjectsound",-1);
 						
 						SceneHotSpot shs = new SceneHotSpot();
 						currentscene.addHotSpot(shs);
@@ -170,6 +174,8 @@ public class DomainController {
 						shs.setObject(getObjectById(objid));
 						shs.setScene(getSceneById(sceneid));
 						shs.setSound(soundid);
+						shs.setUseobj(getObjectById(useobjid));
+						shs.setUsesoundres(usesoundid);
 						
 					}
 				}
