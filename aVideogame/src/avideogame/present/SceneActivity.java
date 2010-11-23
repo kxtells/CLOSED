@@ -144,7 +144,7 @@ public class SceneActivity extends Activity {
 		menu.removeItem(Constants.MENU_OBJ);
 		int ln = DomainController.getPlayer().getBag().size();
 		if(ln>0){
-			SubMenu s = menu.addSubMenu(0,Constants.MENU_OBJ,0,getString(R.string.menu_bag)).setIcon(R.drawable.usar);
+			SubMenu s = menu.addSubMenu(0,Constants.MENU_OBJ,0,getString(R.string.menu_use)).setIcon(R.drawable.usar);
 			
 			for(int i=0;i<ln;i++){
 				int id = DomainController.getPlayer().getBag().get(i).getId();

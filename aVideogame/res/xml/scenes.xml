@@ -126,7 +126,7 @@
 			infotext="Una entrada tancada amb fusta."
 			grabtext="si home, com ho obro això?" sound="@raw/trucaporta" useobject="@drawable/hammer" useobjectsound="@raw/copmartell"></hs>
 		<hs x="218" y="34" w="74" h="235" id="100"
-			infotext="La porta que he trencat a cops" grabtext="A invesigar!"
+			infotext="La porta que he trencat a cops" grabtext="Espero no trobar res desagradable"
 			sceneid="@drawable/habfosca">
 		</hs>
 		<hs x="349" y="76" w="89" h="123" id="100"

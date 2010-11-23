@@ -16,7 +16,8 @@ import android.os.CountDownTimer;
 
 
 public class MapActivity extends Activity {
-	MapView view;
+	private MapView view;
+	private boolean touchedplayer;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,21 +31,27 @@ public class MapActivity extends Activity {
 		// TODO Auto-generated method stub
 		switch(event.getAction()){
 			case MotionEvent.ACTION_DOWN:
+				touchedplayer = DomainController.isPlayer(event.getX(), event.getY());
 				view.setMoving(false);
 				view.clearPointList();
+				view.stopWalk();
 				break;
 			case MotionEvent.ACTION_UP:
-				view.setMoving(true);
-				view.startWalk();
+				if(touchedplayer){
+					view.setMoving(true);
+					view.startWalk();
+				}
 				break;
 			case MotionEvent.ACTION_MOVE:
-				int npoints = event.getHistorySize();
-				int i;
-				for(i=0;i<npoints;i++){
-					Point p = new Point((int)event.getHistoricalX(i),(int)event.getHistoricalY(i));
-					view.addPoint(p);
+				if(touchedplayer){
+					int npoints = event.getHistorySize();
+					int i;
+					for(i=0;i<npoints;i++){
+						Point p = new Point((int)event.getHistoricalX(i),(int)event.getHistoricalY(i));
+						view.addPoint(p);
+					}
+					view.invalidate();
 				}
-				view.invalidate();
 				break;
 			default:
 				break;

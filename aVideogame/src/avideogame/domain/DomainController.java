@@ -20,6 +20,7 @@ public class DomainController {
 	private static Player player;
 	private static ArrayList<Scene> scenes = new ArrayList<Scene>();
 	private static ArrayList<CollectableObject> objects = new ArrayList<CollectableObject>();
+	private static int TOUCH_ERROR = 20;
 	
 	public DomainController() {
 		super();
@@ -66,7 +67,7 @@ public class DomainController {
 	 */
 	private static void InitializeDomainController(Resources resources) throws XmlPullParserException {
 		Log.d("INITDATA","INITDATA");
-		setPlayer(new Player(0,0));
+		setPlayer(new Player(50,300));
 		getPlayer().setCurrent_action(0);
 		
 		parseObjectsXML(resources);
@@ -84,6 +85,10 @@ public class DomainController {
 
 	public static Player getPlayer() {
 		return player;
+	}
+	
+	public static Map getMap(){
+		return map;
 	}
 	
 	
@@ -188,6 +193,26 @@ public class DomainController {
 			}
 		}
 		xrp.close();
+	}
+	
+	/**
+	 * Checks if a touched point is touching the player
+	 * @param x Touched Point x
+	 * @param y Touched Point y
+	 * 
+	 * @NOTE: This function uses a TOUCH ERROR attribute defined
+	 * in DomainController.
+	 * @return
+	 */
+	public static boolean isPlayer(double x, double y){
+		double px = player.getX();
+		double py = player.getY();
+		
+		double distance = Math.sqrt(Math.pow((y-py), 2) + Math.pow((x-px), 2));
+		Log.d("DomainController","y:"+y+" x:"+x+"  px:"+px+" py:"+py);
+		Log.d("DomainController","distance:"+distance);
+		if(distance < TOUCH_ERROR) return true;
+		else return false;
 	}
 	
 }

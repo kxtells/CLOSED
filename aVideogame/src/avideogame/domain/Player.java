@@ -8,6 +8,7 @@ public class Player {
 	private ArrayList<CollectableObject> bag = new ArrayList<CollectableObject>();
 	private int current_action; //info,grab o usar objecte (veure constants MENU_XXX)
 	private int current_object;
+	private int radius = 5;
 	
 	/**
 	 * Adds an object to the player's bag
@@ -89,6 +90,14 @@ public class Player {
 
 	public int getCurrent_object() {
 		return current_object;
+	}
+
+	public void setRadius(int radius) {
+		this.radius = radius;
+	}
+
+	public int getRadius() {
+		return radius;
 	}
 	
 	

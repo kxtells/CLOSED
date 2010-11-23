@@ -3,6 +3,7 @@ package avideogame.domain;
 import java.util.ArrayList;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
 
 /**
  * A class that represents the game map
@@ -21,9 +22,26 @@ public class Map {
 	 * @ToImplement
 	 * @param x position x
 	 * @param y position y
+	 * @param r distance
 	 * @return boolean saying if this map point is wall or not
 	 */
-	public boolean isWall(int x, int y){
+	public boolean collides(int x, int y,int r){
+		if(isWall(x+r/2,y)) return true;
+		else if(isWall(x-r/2,y)) return true;
+		else if(isWall(x,y+r/2)) return true;
+		else if(isWall(x,y-r/2)) return true;
+		return false;
+	}
+	
+	/**
+	 * Checks the walkability map in a specified point and 
+	 * returns true if this point is a wall.
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	private boolean isWall(int x, int y){
+		if(imagemap.getPixel(x, y) == Color.BLACK) return true;
 		return false;
 	}
 	

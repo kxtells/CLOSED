@@ -32,12 +32,13 @@ public class MapView extends View{
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		canvas.drawBitmap(DomainController.map.getImage(), 0, 0, null);
+		canvas.drawBitmap(DomainController.getMap().getImage(), 0, 0, null);
 		
 		paint.setColor(Color.RED);
 		double x = DomainController.getPlayer().getX();
 		double y = DomainController.getPlayer().getY();
-		canvas.drawCircle((int)x, (int)y, 5, paint);
+		int pradius = DomainController.getPlayer().getRadius();
+		canvas.drawCircle((int)x, (int)y, pradius, paint);
 		
 		paint.setColor(Color.DKGRAY);
 		paint.setStrokeWidth(10);
@@ -46,7 +47,6 @@ public class MapView extends View{
 		int ln = pointlst.size();
 		if(ln > 0){
 			if(!moving){
-				Log.d("MapActivity","!moving");
 				for(int i = 0;i<ln-1;i++){
 					float x1 = pointlst.get(i).x;
 					float y1 = pointlst.get(i).y;
@@ -74,12 +74,26 @@ public class MapView extends View{
 			    	 int x = pointlst.get(z).x;
 			         int y = pointlst.get(z).y;
 			         z++;
+			         int pradius = DomainController.getPlayer().getRadius();
+			         
+			         if(DomainController.getMap().collides(x,y,pradius)){
+				    	 if(z>20)z = z - 20;
+				    	 else z = 0;
+			        	 int npx = pointlst.get(z).x;  
+				    	 int npy = pointlst.get(z).y;
+			        	 DomainController.getPlayer().setX(npx);
+				    	 DomainController.getPlayer().setY(npy);
+			        	 clearPointList();
+			        	 cancel();
+			         }
+			         
 			         DomainController.getPlayer().setX(x);
 			         DomainController.getPlayer().setY(y);
 			         Log.d("A","A");
 			         invalidate();
 		         }
 		         else{
+			    	 clearPointList();
 		        	 cancel();
 		         }
 		     }
@@ -92,7 +106,7 @@ public class MapView extends View{
 	}
 	
 	public void stopWalk(){
-		cdt.cancel();
+		if(cdt!=null)cdt.cancel();
 	}
 	/**
 	 * Adds a point to the point list
