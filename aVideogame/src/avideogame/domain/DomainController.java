@@ -21,6 +21,7 @@ public class DomainController {
 	private static ArrayList<Scene> scenes = new ArrayList<Scene>();
 	private static ArrayList<CollectableObject> objects = new ArrayList<CollectableObject>();
 	private static int TOUCH_ERROR = 20;
+	private static int PLAYER_SINGLE_MOVE = 5;
 	
 	public DomainController() {
 		super();
@@ -213,6 +214,14 @@ public class DomainController {
 		Log.d("DomainController","distance:"+distance);
 		if(distance < TOUCH_ERROR) return true;
 		else return false;
+	}
+
+	public static void setPLAYER_SINGLE_MOVE(int pLAYER_SINGLE_MOVE) {
+		PLAYER_SINGLE_MOVE = pLAYER_SINGLE_MOVE;
+	}
+
+	public static int getPLAYER_SINGLE_MOVE() {
+		return PLAYER_SINGLE_MOVE;
 	}
 	
 }

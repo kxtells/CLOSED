@@ -32,11 +32,23 @@ public class MapView extends View{
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		canvas.drawBitmap(DomainController.getMap().getImage(), 0, 0, null);
-		
 		paint.setColor(Color.RED);
 		double x = DomainController.getPlayer().getX();
 		double y = DomainController.getPlayer().getY();
+		int tx = (int)x-getWidth()/2;
+		
+		if(tx+getWidth()>=DomainController.getMap().getMapWidth()){
+			tx = DomainController.getMap().getMapWidth() - getWidth();
+		}
+		if(tx<=0){
+			tx = 0;
+		}
+		/*Scroll map*/
+		canvas.translate((float) -tx, 0);
+		
+		canvas.drawBitmap(DomainController.getMap().getImage(), 0, 0, null);
+		
+		
 		int pradius = DomainController.getPlayer().getRadius();
 		canvas.drawCircle((int)x, (int)y, pradius, paint);
 		
@@ -59,6 +71,8 @@ public class MapView extends View{
 			}
 		}
 		
+		
+		
 	}
 
 	/**
@@ -77,12 +91,6 @@ public class MapView extends View{
 			         int pradius = DomainController.getPlayer().getRadius();
 			         
 			         if(DomainController.getMap().collides(x,y,pradius)){
-				    	 if(z>20)z = z - 20;
-				    	 else z = 0;
-			        	 int npx = pointlst.get(z).x;  
-				    	 int npy = pointlst.get(z).y;
-			        	 DomainController.getPlayer().setX(npx);
-				    	 DomainController.getPlayer().setY(npy);
 			        	 clearPointList();
 			        	 cancel();
 			         }

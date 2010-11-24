@@ -68,6 +68,14 @@ public class Map {
 		return null;
 	}
 	
+	/**
+	 * Returns the map width
+	 * @return
+	 */
+	public int getMapWidth(){
+		return this.image.getWidth();
+	}
+	
 	//Getters and Setters
 	public Bitmap getImage() {
 		return image;
