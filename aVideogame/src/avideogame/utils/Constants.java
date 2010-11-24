@@ -11,4 +11,9 @@ public class Constants {
 	public static final int OBJ_COMB = 5;
 	public static final int OBJ_DROP = 6;
 	public static final int OBJ_INTE = 7;
+	
+	public static final int BUTTON_W = 10;
+	public static final int BUTTON_H = 10;
+	public static final int BUTTON_W_PX = 64;
+	public static final int BUTTON_H_PX = 64;
 }

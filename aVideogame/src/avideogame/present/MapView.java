@@ -3,13 +3,19 @@ package avideogame.present;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import avideogame.domain.DomainController;
+import avideogame.domain.MapHotSpot;
+import avideogame.utils.Constants;
 import android.graphics.Point;
 
 public class MapView extends View{
@@ -17,10 +23,13 @@ public class MapView extends View{
 	private ArrayList<Point> pointlst = new ArrayList<Point>();
 	private boolean moving = false;
 	private CountDownTimer cdt = null;
-
+	private MapHotSpot mhs = null;
+	Resources res;
+	
 	public MapView(Context context) {
 		super(context);
         setFocusable(true);
+        res = getResources();
 	}
 
 	@Override
@@ -32,18 +41,20 @@ public class MapView extends View{
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		paint.setColor(Color.RED);
 		double x = DomainController.getPlayer().getX();
 		double y = DomainController.getPlayer().getY();
 		int tx = (int)x-getWidth()/2;
+		mhs = DomainController.getMap().getMapHotSpot((int)x, (int)y);
 		
+		paint.setColor(Color.RED);
 		if(tx+getWidth()>=DomainController.getMap().getMapWidth()){
 			tx = DomainController.getMap().getMapWidth() - getWidth();
 		}
-		if(tx<=0){
+		else if(tx<=0){
 			tx = 0;
 		}
 		/*Scroll map*/
+		canvas.save();
 		canvas.translate((float) -tx, 0);
 		
 		canvas.drawBitmap(DomainController.getMap().getImage(), 0, 0, null);
@@ -71,8 +82,45 @@ public class MapView extends View{
 			}
 		}
 		
+		drawHintSquares(canvas);
+		canvas.restore();
+		drawInfoSquare(canvas,mhs);
+	}
+
+	/**
+	 * Draw every hotspot in the map
+	 * @param canvas
+	 */
+	private void drawHintSquares(Canvas canvas) {
+		ArrayList<MapHotSpot> mhs = DomainController.getMap().getMhs();
+		int ln = mhs.size();
+		int i;
+		paint.setColor(res.getColor(R.color.HIGHLIGHT_HINT_COLOR));
 		
+		for(i=0;i<ln;i++){
+			canvas.drawRect((float)mhs.get(i).getX(), 
+					(float)mhs.get(i).getY(), 
+					(float)mhs.get(i).getX() + (float)mhs.get(i).getWidth(), 
+					(float)mhs.get(i).getY() + (float)mhs.get(i).getHeight(), 
+					paint);	
+		}
 		
+	}
+	
+	/**
+	 * Draw the clickable info button
+	 * @param canvas
+	 */
+	private void drawInfoSquare(Canvas canvas,MapHotSpot mhs2){
+		paint.setColor(res.getColor(R.color.BUTTON));
+		RectF rd = new RectF(0,0,65,65);
+		Rect rect = new Rect(0,0,64,64);
+		canvas.drawRoundRect(rd, Constants.BUTTON_W, Constants.BUTTON_H, paint);
+		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.info), null, rect, null);
+		if(mhs2==null){
+			paint.setColor(res.getColor(R.color.BUTTON_OFF_SHADOW));
+			canvas.drawRoundRect(rd, Constants.BUTTON_W, Constants.BUTTON_H, paint);
+		}
 	}
 
 	/**
@@ -97,7 +145,6 @@ public class MapView extends View{
 			         
 			         DomainController.getPlayer().setX(x);
 			         DomainController.getPlayer().setY(y);
-			         Log.d("A","A");
 			         invalidate();
 		         }
 		         else{
@@ -131,8 +178,18 @@ public class MapView extends View{
 		this.pointlst.clear();
 	}
 	
+	
+	//Getter & Setter
 	public void setMoving(boolean moving) {
 		this.moving = moving;
+	}
+	
+	public MapHotSpot getMapHotSpot(){
+		return this.mhs;
+	}
+	
+	public void setMapHotSpot(MapHotSpot mhsparam){
+		this.mhs = mhsparam;
 	}
 
 }

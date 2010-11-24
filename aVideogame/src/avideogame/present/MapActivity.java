@@ -2,8 +2,10 @@ package avideogame.present;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -11,7 +13,9 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import avideogame.domain.DomainController;
+import avideogame.domain.MapHotSpot;
 import avideogame.utils.Constants;
+import avideogame.utils.Utilities;
 import android.graphics.Point;
 import android.os.CountDownTimer;
 
@@ -33,10 +37,30 @@ public class MapActivity extends Activity {
 		switch(event.getAction()){
 			case MotionEvent.ACTION_DOWN:
 				Log.d("MapActivity","DOWN");
-				touchedplayer = DomainController.isPlayer(event.getX(), event.getY());
-				view.setMoving(false);
-				view.clearPointList();
-				view.stopWalk();
+				float tx = event.getX();
+				float ty = event.getY();
+				
+				//Only active if player is over a hotspot
+				if(tx < Constants.BUTTON_W_PX && ty < Constants.BUTTON_H_PX){
+					MapHotSpot mh = view.getMapHotSpot();
+					if(mh!=null){
+						// Get instance of Vibrator from current Context
+						Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+						v.vibrate(100);
+						
+						Intent sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
+						sceneIntent.putExtra("SceneIndex", mh.getScene().getId()); //the main drawable id is the scene id
+						startActivity(sceneIntent);
+					}
+				}
+				else{
+					touchedplayer = DomainController.isPlayer(Utilities.ScreenXtoMapX((int)event.getX(),
+																					(int)DomainController.getPlayer().getX(), 
+																					view.getWidth()), event.getY());
+					view.setMoving(false);
+					view.clearPointList();
+					view.stopWalk();
+				}
 				break;
 			case MotionEvent.ACTION_UP:
 				Log.d("MapActivity","UP");

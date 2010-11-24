@@ -61,11 +61,22 @@ public class Map {
 	 * @ToImplement
 	 * @param x position x
 	 * @param y position y
-	 * @return MapHotSpot returns the NearestHotSpot in a given radius, null if there's no near hot spot
-	 * @note Potser seria interessant que retornés directament la escena associada al hotspot
+	 * @return MapHotSpot returns the HotSpot in a given point
 	 */
-	public MapHotSpot getNearestHotSpot(int x, int y){
+	public MapHotSpot getMapHotSpot(int x, int y){
+		int ln = mhs.size();
+		for(int i=0;i<ln;i++){
+			if(mhs.get(i).isInside(x, y)){return mhs.get(i);}
+		}
 		return null;
+	}
+	
+	/**
+	 * Add a hot spot to the map
+	 * @param mhsparam
+	 */
+	public void addHotSpot(MapHotSpot mhsparam){
+		this.mhs.add(mhsparam);
 	}
 	
 	/**

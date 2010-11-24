@@ -73,12 +73,13 @@ public class DomainController {
 		
 		parseObjectsXML(resources);
 		parseScenesXML(resources);
-		
+		parseMapsXML(resources);
 		//Define all Map data
-		map = new Map();
-		map.setImage(BitmapFactory.decodeResource(resources, R.drawable.planta1));
-		map.setImagemap(BitmapFactory.decodeResource(resources, R.drawable.walkability));
+		//map = new Map();
+		//map.setImage(BitmapFactory.decodeResource(resources, R.drawable.planta1));
+		//map.setImagemap(BitmapFactory.decodeResource(resources, R.drawable.walkability));
 	}
+
 
 	public static void setPlayer(Player player) {
 		DomainController.player = player;
@@ -92,7 +93,49 @@ public class DomainController {
 		return map;
 	}
 	
+	private static void parseMapsXML(Resources resources) throws XmlPullParserException {
+		XmlResourceParser xrp = resources.getXml(R.xml.maps);
+		Map c = null;
+		while (xrp.getEventType() != XmlResourceParser.END_DOCUMENT) {
+			if(xrp.getEventType() == XmlResourceParser.START_TAG){
+				String s = xrp.getName();
+				if(s.equals("Map")){
+					int img 	= xrp.getAttributeResourceValue(null, "image",-1);
+					int imgwmap = xrp.getAttributeResourceValue(null, "walkability",-1);
+					c = new Map();
+					c.setImage(BitmapFactory.decodeResource(resources,img));
+					c.setImagemap(BitmapFactory.decodeResource(resources,imgwmap));
+					map = c;
+				}
+				else if(s.equals("hs")){
+					double x = Double.parseDouble(xrp.getAttributeValue(null, "x"));
+					double y = Double.parseDouble(xrp.getAttributeValue(null, "y"));
+					double w = Double.parseDouble(xrp.getAttributeValue(null, "w"));
+					double h = Double.parseDouble(xrp.getAttributeValue(null, "h"));
+					int sceneid 	= xrp.getAttributeResourceValue(null, "sceneid",-1);
+					
+					MapHotSpot mhs = new MapHotSpot(getSceneById(sceneid));
+					mhs.setX(x);
+					mhs.setY(y);
+					mhs.setWidth(w);
+					mhs.setHeight(h);
+					c.addHotSpot(mhs);
+				}
+			}
+			try {
+				xrp.next();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 	
+	/**
+	 * Parse the objects XML
+	 * @param resources
+	 * @throws XmlPullParserException
+	 */
 	private static void parseObjectsXML(Resources resources) throws XmlPullParserException{
 		XmlResourceParser xrp = resources.getXml(R.xml.collectableobjects);
 		CollectableObject c = null;

@@ -1,8 +1,10 @@
 package avideogame.present;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -69,11 +71,10 @@ public class SceneActivity extends Activity {
     	if(shs.getUseobj() != null && shs.getUseobj().getId() == objectid){
     		if(sc.skipSceneImage()){
     			if(sc.isFinalImage()){
-    				if(sc.getSound_final()!= -1) Utilities.playSound(sc.getSound_final(), getBaseContext());
-    				applyCustomChanges(shs);
+    				applyCustomFinalChanges(shs);
     			}
     			else{
-    				Utilities.playSound(shs.getUsesoundres(), getBaseContext());
+    				applyCustomChange(shs);
     			}
 				view.invalidate();
     		}
@@ -82,9 +83,33 @@ public class SceneActivity extends Activity {
     	return false;
     }
     
-    private void applyCustomChanges(SceneHotSpot shs) {
+    /**
+     * Apply specific changes for specific use-hotspot-object and scene
+     * @param shs
+     */
+    private void applyCustomChange(SceneHotSpot shs) {
 		switch(sc.getId()){
 		case R.drawable.schabporta:
+			Utilities.playSound(shs.getUsesoundres(), getBaseContext());
+			Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+			v.vibrate(100);
+		case R.drawable.habfosca:
+			Utilities.playSound(shs.getUsesoundres(), getBaseContext());
+		default:
+		}
+		
+	}
+
+    /**
+     * Apply final changes on use-hotspot-object and scene
+     * @param shs
+     */
+	private void applyCustomFinalChanges(SceneHotSpot shs) {
+		switch(sc.getId()){
+		case R.drawable.schabporta:
+			if(sc.getSound_final()!= -1) Utilities.playSound(sc.getSound_final(), getBaseContext());
+			Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+			v.vibrate(300);
 			sc.dropHotSpot(shs);
 		case R.drawable.habfosca:
 			sc.dropHotSpot(shs);
