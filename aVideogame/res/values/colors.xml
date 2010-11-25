@@ -3,4 +3,5 @@
 <color name="BUTTON">#880011FF</color>
 <color name="BUTTON_OFF_SHADOW">#BBAAAAAA</color>
 <color name="HIGHLIGHT_HINT_COLOR">#55FF0000</color>
+<color name="CONTROL_BUTTONS">#77CCCCCC</color>
 </resources>

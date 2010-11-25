@@ -16,15 +16,14 @@ import android.view.View;
 import avideogame.domain.DomainController;
 import avideogame.domain.MapHotSpot;
 import avideogame.utils.Constants;
+import avideogame.utils.GameControls;
 import android.graphics.Point;
 
 public class MapView extends View{
 	private Paint paint = new Paint();
-	private ArrayList<Point> pointlst = new ArrayList<Point>();
-	private boolean moving = false;
-	private CountDownTimer cdt = null;
 	private MapHotSpot mhs = null;
 	Resources res;
+	GameControls gc = null;
 	
 	public MapView(Context context) {
 		super(context);
@@ -53,7 +52,8 @@ public class MapView extends View{
 		else if(tx<=0){
 			tx = 0;
 		}
-		/*Scroll map*/
+		
+		/*Paint scrolled map*/
 		canvas.save();
 		canvas.translate((float) -tx, 0);
 		
@@ -62,29 +62,15 @@ public class MapView extends View{
 		
 		int pradius = DomainController.getPlayer().getRadius();
 		canvas.drawCircle((int)x, (int)y, pradius, paint);
-		
-		paint.setColor(Color.DKGRAY);
-		paint.setStrokeWidth(10);
-		paint.setStrokeCap(Paint.Cap.ROUND);
-		paint.setStrokeJoin(Paint.Join.ROUND);
-		int ln = pointlst.size();
-		if(ln > 0){
-			if(!moving){
-				for(int i = 0;i<ln-1;i++){
-					float x1 = pointlst.get(i).x;
-					float y1 = pointlst.get(i).y;
-					float x2 = pointlst.get(i+1).x;
-					float y2 = pointlst.get(i+1).y;					
-					//canvas.drawCircle(x1, y1, 5, paint);
-					
-					canvas.drawLine(x1, y1, x2, y2, paint);
-				}
-			}
-		}
+
 		
 		drawHintSquares(canvas);
+		
+		/*Restore the matrix*/
 		canvas.restore();
+		//drawControls(canvas);
 		drawInfoSquare(canvas,mhs);
+		
 	}
 
 	/**
@@ -113,10 +99,9 @@ public class MapView extends View{
 	 */
 	private void drawInfoSquare(Canvas canvas,MapHotSpot mhs2){
 		paint.setColor(res.getColor(R.color.BUTTON));
-		RectF rd = new RectF(0,0,65,65);
-		Rect rect = new Rect(0,0,64,64);
-		canvas.drawRoundRect(rd, Constants.BUTTON_W, Constants.BUTTON_H, paint);
-		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.info), null, rect, null);
+		RectF rd = new RectF(Constants.BUTTON_X_PX,Constants.BUTTON_Y_PX,Constants.BUTTON_W_PX,Constants.BUTTON_H_PX);
+		canvas.drawRoundRect(rd, 10, 10, paint);
+		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.magnifier), null, rd, null);
 		if(mhs2==null){
 			paint.setColor(res.getColor(R.color.BUTTON_OFF_SHADOW));
 			canvas.drawRoundRect(rd, Constants.BUTTON_W, Constants.BUTTON_H, paint);
@@ -124,65 +109,22 @@ public class MapView extends View{
 	}
 
 	/**
-	 * Start a coundownTimer that updates the
-	 * player position
+	 * Draw the touch controls on the screen
+	 * @param canvas
 	 */
-	public void startWalk(){
-		int ln = pointlst.size();
-		cdt = new CountDownTimer((ln+1)*100, 10) {
-			int z = 0;
-		     public void onTick(long millisUntilFinished) {
-		         if (z<pointlst.size()){
-			    	 int x = pointlst.get(z).x;
-			         int y = pointlst.get(z).y;
-			         z++;
-			         int pradius = DomainController.getPlayer().getRadius();
-			         
-			         if(DomainController.getMap().collides(x,y,pradius)){
-			        	 clearPointList();
-			        	 cancel();
-			         }
-			         
-			         DomainController.getPlayer().setX(x);
-			         DomainController.getPlayer().setY(y);
-			         invalidate();
-		         }
-		         else{
-			    	 clearPointList();
-		        	 cancel();
-		         }
-		     }
-
-		     public void onFinish() {
-		    	 clearPointList();
-		     }
-		  }.start();
-
+	private void drawControls(Canvas canvas){
+		paint.setColor(res.getColor(R.color.CONTROL_BUTTONS));
+		
+		canvas.drawRoundRect(gc.getLeftbutton(), 10,10, paint);		
+		canvas.drawRoundRect(gc.getRightbutton(), 10,10, paint);
+		canvas.drawRoundRect(gc.getUpbutton(), 10,10, paint);
+		canvas.drawRoundRect(gc.getDownbutton(),10,10,paint);
+		canvas.drawRoundRect(gc.getDownleftbutton(), 10,10, paint);
+		canvas.drawRoundRect(gc.getDownrightbutton(), 10,10, paint);
+		canvas.drawRoundRect(gc.getUpleftbutton(), 10,10, paint);
+		canvas.drawRoundRect(gc.getUprightbutton(),10,10,paint);
 	}
 	
-	public void stopWalk(){
-		if(cdt!=null)cdt.cancel();
-	}
-	/**
-	 * Adds a point to the point list
-	 * @param p
-	 */
-	public void addPoint(Point p) {
-		this.pointlst.add(p);
-	}
-
-	/**
-	 * Removes all points from the pointlist
-	 */
-	public void clearPointList(){
-		this.pointlst.clear();
-	}
-	
-	
-	//Getter & Setter
-	public void setMoving(boolean moving) {
-		this.moving = moving;
-	}
 	
 	public MapHotSpot getMapHotSpot(){
 		return this.mhs;
@@ -190,6 +132,10 @@ public class MapView extends View{
 	
 	public void setMapHotSpot(MapHotSpot mhsparam){
 		this.mhs = mhsparam;
+	}
+	
+	public void setGameControls(GameControls sgc){
+		this.gc = sgc;
 	}
 
 }

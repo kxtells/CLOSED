@@ -21,7 +21,7 @@ public class DomainController {
 	private static ArrayList<Scene> scenes = new ArrayList<Scene>();
 	private static ArrayList<CollectableObject> objects = new ArrayList<CollectableObject>();
 	private static int TOUCH_ERROR = 20;
-	private static int PLAYER_SINGLE_MOVE = 5;
+	private static int PLAYER_SINGLE_MOVE = 4;
 	
 	public DomainController() {
 		super();
@@ -70,6 +70,7 @@ public class DomainController {
 		Log.d("INITDATA","INITDATA");
 		setPlayer(new Player(50,300));
 		getPlayer().setCurrent_action(0);
+		getPlayer().setRadius(10);
 		
 		parseObjectsXML(resources);
 		parseScenesXML(resources);

@@ -1,6 +1,7 @@
 package avideogame.present;
 
 
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,18 +12,17 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.view.View;
 import avideogame.domain.DomainController;
 import avideogame.domain.MapHotSpot;
 import avideogame.utils.Constants;
+import avideogame.utils.GameControls;
 import avideogame.utils.Utilities;
-import android.graphics.Point;
-import android.os.CountDownTimer;
 
 
 public class MapActivity extends Activity {
 	private MapView view;
-	private boolean touchedplayer;
+	private GameControls gc;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,17 +31,27 @@ public class MapActivity extends Activity {
         setContentView(view);
     }
 
+    /**
+     * When the window recieves the focus hasFocus = true,
+     * so we can check view size
+     */
+	public void onWindowFocusChanged(boolean hasFocus) {
+		if(hasFocus){
+	        gc = new GameControls(view.getWidth(),view.getHeight());
+	        view.setGameControls(gc);
+		}
+	}
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		// TODO Auto-generated method stub
+		float tx = event.getX();
+		float ty = event.getY();
+		
 		switch(event.getAction()){
 			case MotionEvent.ACTION_DOWN:
 				Log.d("MapActivity","DOWN");
-				float tx = event.getX();
-				float ty = event.getY();
 				
-				//Only active if player is over a hotspot
-				if(tx < Constants.BUTTON_W_PX && ty < Constants.BUTTON_H_PX){
+				//Only active if player is over a hotspot, change to specific scene
+				if(Utilities.touchedInfoButton((int)tx, (int)ty)){
 					MapHotSpot mh = view.getMapHotSpot();
 					if(mh!=null){
 						// Get instance of Vibrator from current Context
@@ -53,33 +63,12 @@ public class MapActivity extends Activity {
 						startActivity(sceneIntent);
 					}
 				}
-				else{
-					touchedplayer = DomainController.isPlayer(Utilities.ScreenXtoMapX((int)event.getX(),
-																					(int)DomainController.getPlayer().getX(), 
-																					view.getWidth()), event.getY());
-					view.setMoving(false);
-					view.clearPointList();
-					view.stopWalk();
-				}
-				break;
-			case MotionEvent.ACTION_UP:
-				Log.d("MapActivity","UP");
-				if(touchedplayer){
-					view.setMoving(true);
-					view.startWalk();
+				else{ //movement
+					doMovement(gc.movementHzTouched((int)tx, (int)ty));
 				}
 				break;
 			case MotionEvent.ACTION_MOVE:
-				Log.d("MapActivity","MOVE");
-				if(touchedplayer){
-					int npoints = event.getHistorySize();
-					int i;
-					for(i=0;i<npoints;i++){
-						Point p = new Point((int)event.getHistoricalX(i),(int)event.getHistoricalY(i));
-						view.addPoint(p);
-					}
-					view.invalidate();
-				}
+					doMovement(gc.movementHzTouched((int)tx, (int)ty));
 				break;
 			default:
 				break;
@@ -89,8 +78,52 @@ public class MapActivity extends Activity {
 		return super.onTouchEvent(event);
 	}
 
-	
-	
+	/**
+	 * Create the movement, depending on which part of the screen is touched
+	 * @param mov
+	 */
+	public void doMovement(int mov){
+		int newx = (int) DomainController.getPlayer().getX();
+		int newy = (int) DomainController.getPlayer().getY();
+		
+		switch(mov){
+		case GameControls.DOWNBUTTON:
+			newy += DomainController.getPLAYER_SINGLE_MOVE();
+			break;
+		case GameControls.UPBUTTON:
+			newy -= DomainController.getPLAYER_SINGLE_MOVE();
+			break;
+		case GameControls.LEFTBUTTON:
+			newx -= DomainController.getPLAYER_SINGLE_MOVE();
+			break;
+		case GameControls.RIGHTBUTTON:
+			newx += DomainController.getPLAYER_SINGLE_MOVE();
+			break;
+		case GameControls.UPRIGHTBUTTON:
+			newx += DomainController.getPLAYER_SINGLE_MOVE()/2;
+			newy -= DomainController.getPLAYER_SINGLE_MOVE()/2;
+			break;
+		case GameControls.UPLEFTBUTTON:
+			newx -= DomainController.getPLAYER_SINGLE_MOVE()/2;
+			newy -= DomainController.getPLAYER_SINGLE_MOVE()/2;
+			break;
+		case GameControls.DOWNLEFTBUTTON:
+			newx -= DomainController.getPLAYER_SINGLE_MOVE()/2;
+			newy += DomainController.getPLAYER_SINGLE_MOVE()/2;
+			break;
+		case GameControls.DOWNRIGHTBUTTON:
+			newx += DomainController.getPLAYER_SINGLE_MOVE()/2;
+			newy += DomainController.getPLAYER_SINGLE_MOVE()/2;
+			break;
+		}
+		
+		if(!DomainController.getMap().collides(newx, newy, DomainController.getPlayer().getRadius())){
+			DomainController.getPlayer().setX(newx);
+			DomainController.getPlayer().setY(newy);
+		}
+		view.invalidate();
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, Constants.MENU_BAG,  0, getString(R.string.menu_bag)).setIcon(R.drawable.briefcase);
@@ -104,6 +137,10 @@ public class MapActivity extends Activity {
 		return true;
 	}
 
+	/**
+	 * Key Handling
+	 * 
+	 */
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		int movement = DomainController.getPLAYER_SINGLE_MOVE();
@@ -131,6 +168,8 @@ public class MapActivity extends Activity {
 		view.invalidate();
 		return super.onKeyDown(keyCode, event);
 	}
+
+
 
 	
 	

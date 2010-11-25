@@ -31,7 +31,6 @@ public class SceneView extends View {
 		//canvas.drawBitmap(scene.getImages().get(scene.getCurrentScene()),0,0, null);
 		
 		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), scene.getCurrentBackgound()),0,0,null);
-		
 		drawInfoSquare(canvas);
 
 		//drawHintSquares(canvas);
