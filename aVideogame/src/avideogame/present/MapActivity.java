@@ -27,8 +27,10 @@ public class MapActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("MapActivity","A");
         view = new MapView(this); 
         setContentView(view);
+        Log.d("MapActivity","Z");
     }
 
     /**

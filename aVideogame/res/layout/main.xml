@@ -3,10 +3,15 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="#FFFFFFFF"
     >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
+<ImageView android:id="@+id/ImageView01" android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageView>
+<TextView android:id="@+id/pressmenutext"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:text="@string/main_menu_text"
+  android:textColor="#FF000000"
+  android:gravity="center"
+  android:textSize="30sp"
+  />
 </LinearLayout>

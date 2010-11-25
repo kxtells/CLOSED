@@ -13,4 +13,10 @@
 <string name="menu_use">Usar Objecte</string>
 <string name="menu_comb">combinar</string>
 <string name="menu_drop">Tirar</string>
+<string name="NEW_GAME">Nova Partida</string>
+<string name="main_menu_text">Pitja Menú</string>
+<string name="CONTINUE_GAME">continuar partida</string>
+<string name="CONFIGURATION">Configuració</string>
+<string name="HELP">Ajuda</string>
+<string name="ABOUT">Crèdits</string>
 </resources>
