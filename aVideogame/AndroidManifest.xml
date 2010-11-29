@@ -17,6 +17,7 @@
 		<activity android:name=".SceneActivity" android:screenOrientation="landscape"></activity>
 		<activity android:name=".MapActivity" android:screenOrientation="landscape"></activity>
 		<activity android:name=".InfoActivity" android:screenOrientation="landscape"></activity>
+		<activity android:name=".SlidesActivity" android:screenOrientation="landscape"></activity>
 
     </application>
 

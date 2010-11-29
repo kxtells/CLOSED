@@ -70,8 +70,7 @@ public class aVideogame extends Activity {
 			break;
 		case R.string.CONFIGURATION:
 			//Utilities.drawText("No implementat", getBaseContext());
-			sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
-			sceneIntent.putExtra("SceneIndex", R.drawable.scsofa); //the main drawable id is the scene id
+			sceneIntent = new Intent(getBaseContext(), SlidesActivity.class);
 			startActivity(sceneIntent);
 			break;
 		case R.string.ABOUT:
