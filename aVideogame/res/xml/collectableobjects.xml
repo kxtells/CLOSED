@@ -18,4 +18,7 @@
 		<transformsto newobj="@drawable/shoes2"></transformsto>
 		<transformsto newobj="@drawable/cords"></transformsto>
 	</c_object>
+	<c_object id="@drawable/penny" infotext="Un centau, o 'penny' com li diuen" interacttext="Té la cara d'un personatge famós" name="Centau"
+		combines="-1">
+	</c_object>
 </resources>

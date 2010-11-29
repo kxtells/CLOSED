@@ -3,6 +3,7 @@ package avideogame.present;
 import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,7 +31,7 @@ public class BagActivity extends Activity {
         view = (GridView) findViewById(R.id.gridview);
         view.setBackgroundResource(R.drawable.bagactbackground);
         view.setAdapter(new ImageAdapter(this));
-        
+        view.setBackgroundColor(Color.WHITE);
         
         
     }

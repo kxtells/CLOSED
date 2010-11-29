@@ -56,7 +56,7 @@ public class SceneActivity extends Activity {
 				}				
 			}
 			else{
-				Utilities.drawText("x:"+x+" y:"+y,getBaseContext());
+				//Utilities.drawText("x:"+x+" y:"+y,getBaseContext());
 			}
 		}
 		return true;

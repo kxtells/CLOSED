@@ -10,11 +10,9 @@ import avideogame.domain.DomainController;
 
 public class BagView extends View {
 	private Paint paint = new Paint();
-	private DomainController dc;
 	
 	public BagView(Context context) {
 		super(context);
-		dc = DomainController.instance(this.getResources());
 	}
 
 	@Override

@@ -144,4 +144,46 @@
 		<image image="@drawable/schabporta9"></image>
 		<image image="@drawable/schabportafinal"></image>
 		</scene>
+	<scene id="@drawable/scpicturehall" note="">
+		<image image="@drawable/scpicturehall"></image></scene>
+	<scene id="@drawable/scsofain" note="Un sofà">
+		<image image="@drawable/scsofain"></image>
+		<image image="@drawable/scsofain2"></image>
+		<hs x="173" y="140" w="39" h="36"
+			grabtext="Quina sort! Un centau per comprar un xiclet" id="130"
+			infotext="Hi ha una espècie de taca" objectid="@drawable/penny"></hs>
+		<hs x="236" y="19" w="206" h="283"
+			grabtext="Nope" id="131"
+			infotext="Coixí color de passió, quedaria bé a casa meva si puc sortir d'aquí">
+		</hs>
+		<hs x="20" y="3" w="152" h="174"
+			grabtext="No cal un coixí al meu inventari" id="132"
+			infotext="Coixí igual que tots els altres que ja he mirat, tots són iguals">
+		</hs>		
+		</scene>
+	<scene id="@drawable/scsofa" note="el sofà principal">
+		<image image="@drawable/scsofa"></image>
+		<hs x="248" y="159" w="132" h="77" note="els coixins amb un centau amagat" id="120" infotext="Uns coixins molt vermells" grabtext="sembla ser que hi ha alguna cosa"
+			sceneid="@drawable/scsofain">
+		</hs>
+		<hs x="148" y="14" w="168" h="120" note="el quadre" id="121" infotext="Un trist quadre gris" grabtext="Em sembla interessant"
+			sceneid="@drawable/scpicturehall">
+		</hs>
+		<hs x="0" y="151" w="83" h="121" note="la tauleta" id="122" infotext="Una tauleta molt cutre per ser de menjador" grabtext="Res curiós per veure">
+		</hs>
+		<hs x="107" y="177" w="119" h="59" note="coixins vermells" id="123" infotext="Quin color més lleig per uns coixins" grabtext="Nah!">
+		</hs>
+		</scene>
+	<scene id="@drawable/scportasortida" note="La porta de sortida i el seu voltant">
+		<image image="@drawable/scportasortida"></image>
+		<hs x="283" y="29" w="117" h="250" id="140"
+			note="La porta de sortida" grabtext="Res a fer-hi"
+			infotext="Maleïda porta tancada!" sound="@raw/trucaporta">
+		</hs>
+		<hs x="120" y="15" w="157" h="185" id="141"
+			note="quadre de disseny" grabtext="Mhm, aquest quadre em transmet masses colors"
+			infotext="Mira que n'hi ha de quadres, i havien de posar aquest">
+		</hs>
+		
+	</scene>
 </resources>

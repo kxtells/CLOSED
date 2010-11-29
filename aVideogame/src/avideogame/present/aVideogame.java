@@ -56,10 +56,10 @@ public class aVideogame extends Activity {
 
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-		Log.d("MAIN","Groupid: "+item.getGroupId());
+		Intent sceneIntent;
 		switch(item.getItemId()){
 		case R.string.NEW_GAME:
-			Intent sceneIntent = new Intent(getBaseContext(), MapActivity.class);
+			sceneIntent = new Intent(getBaseContext(), MapActivity.class);
 			startActivity(sceneIntent);
 			break;
 		case R.string.CONTINUE_GAME:
@@ -69,10 +69,14 @@ public class aVideogame extends Activity {
 			Utilities.drawText("No implementat", getBaseContext());
 			break;
 		case R.string.CONFIGURATION:
-			Utilities.drawText("No implementat", getBaseContext());
+			//Utilities.drawText("No implementat", getBaseContext());
+			sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
+			sceneIntent.putExtra("SceneIndex", R.drawable.scsofa); //the main drawable id is the scene id
+			startActivity(sceneIntent);
 			break;
 		case R.string.ABOUT:
-			Utilities.drawText("No implementat", getBaseContext());
+			sceneIntent = new Intent(getBaseContext(), InfoActivity.class);
+			startActivity(sceneIntent);
 			break;
 		default:
 			break;
