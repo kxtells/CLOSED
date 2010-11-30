@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+	<scene id="@drawable/animslideh1s1">
+		<slide anim="@drawable/animslideh1s1">
+			<text string="Em trobava esperant el metro..." colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="La noia m'havia enviat un sms" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="per trobar-nos a un bar al que no havia anat mai" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="era un xic estrany, però no m'importava" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+		</slide>
+		<slide anim="@drawable/animslideh1s2">
+			<text string="Quan vaig arribar al lloc em vaig sorpendre" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="Una música estrident i sense estil" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="Molta llum i soroll" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="En definitiva, un lloc desagradable per mi" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+		</slide>
+	</scene>
+</resources>

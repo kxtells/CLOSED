@@ -11,8 +11,10 @@ import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.util.Log;
 import avideogame.present.R;
+import avideogame.utils.SlidePack;
 
 public class DomainController {
 	protected static DomainController dc;
@@ -268,4 +270,65 @@ public class DomainController {
 		return PLAYER_SINGLE_MOVE;
 	}
 	
+	/**
+	 * 
+	 * @param scene Scene identifier
+	 * @param slide Slide index
+	 * @param textindex textindex to retrieve  
+	 * @return SlidePack pack of data, null if there's no text
+	 */
+	public static SlidePack getSlideString(Resources resources,int scene, int slide, int text){
+		XmlResourceParser xrp = resources.getXml(R.xml.slides);
+		int scid = 0;
+		int slideindex = 0;
+		int textindex = 0;
+		int slideid = 0;
+		
+		try {
+			while (xrp.getEventType() != XmlResourceParser.END_DOCUMENT) {
+				if(xrp.getEventType() == XmlResourceParser.START_TAG){
+					String s = xrp.getName();
+
+					if(s.equals("scene")){
+						scid = xrp.getAttributeResourceValue(null,"id",-1);
+						slideindex = -1;
+					}
+					else if(s.equals("slide")){
+						slideid = xrp.getAttributeResourceValue(null,"anim",-1);
+						slideindex++;
+						textindex = 0;
+					}
+					else if(s.equals("text")){
+						if(scid == scene && slideindex == slide && textindex == text){
+							String ginfo 	= xrp.getAttributeValue(null, "string");
+							String backcol 	= xrp.getAttributeValue(null, "colorback");
+							String textcol 	= xrp.getAttributeValue(null, "colortext");
+							
+							SlidePack sp = new SlidePack(ginfo,Color.parseColor(backcol),Color.parseColor(textcol),slideid);
+							xrp.close();
+							return sp;
+						}
+						else{
+							textindex++;
+						}
+					}
+				}
+				try {
+					xrp.next();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					xrp.close();
+					return null;
+				}
+			}
+		} catch (XmlPullParserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			xrp.close();
+			return null;
+		}
+		
+		return null;
+	}
 }
