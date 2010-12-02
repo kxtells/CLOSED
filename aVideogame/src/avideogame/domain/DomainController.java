@@ -277,12 +277,13 @@ public class DomainController {
 	 * @param textindex textindex to retrieve  
 	 * @return SlidePack pack of data, null if there's no text
 	 */
-	public static SlidePack getSlideString(Resources resources,int scene, int slide, int text){
+	public static SlidePack getSlideTextData(Resources resources,int scene, int slide, int text){
 		XmlResourceParser xrp = resources.getXml(R.xml.slides);
 		int scid = 0;
 		int slideindex = 0;
 		int textindex = 0;
 		int slideid = 0;
+		int musicid = -1;
 		
 		try {
 			while (xrp.getEventType() != XmlResourceParser.END_DOCUMENT) {
@@ -295,6 +296,7 @@ public class DomainController {
 					}
 					else if(s.equals("slide")){
 						slideid = xrp.getAttributeResourceValue(null,"anim",-1);
+						musicid = xrp.getAttributeResourceValue(null,"bgmusic",-1);
 						slideindex++;
 						textindex = 0;
 					}
@@ -303,8 +305,13 @@ public class DomainController {
 							String ginfo 	= xrp.getAttributeValue(null, "string");
 							String backcol 	= xrp.getAttributeValue(null, "colorback");
 							String textcol 	= xrp.getAttributeValue(null, "colortext");
+							int sndid = xrp.getAttributeResourceValue(null,"id",-1);
+							int newmusic = -1;
+							if(text==0) newmusic = musicid;
 							
-							SlidePack sp = new SlidePack(ginfo,Color.parseColor(backcol),Color.parseColor(textcol),slideid);
+							//the last one is -1 because here there's no new bgmusic, when there's a petition for the slidetext0 means that you
+							//need all the possible slide info
+							SlidePack sp = new SlidePack(ginfo,Color.parseColor(backcol),Color.parseColor(textcol),slideid,sndid,newmusic);
 							xrp.close();
 							return sp;
 						}
@@ -332,3 +339,4 @@ public class DomainController {
 		return null;
 	}
 }
+

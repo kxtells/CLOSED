@@ -64,7 +64,7 @@ public class MapView extends View{
 		canvas.drawCircle((int)x, (int)y, pradius, paint);
 
 		
-		drawHintSquares(canvas);
+		//drawHintSquares(canvas);
 		
 		/*Restore the matrix*/
 		canvas.restore();

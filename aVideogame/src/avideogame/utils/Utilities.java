@@ -21,6 +21,13 @@ public class Utilities {
 		mp.start();
 	}
 	
+	public static MediaPlayer playMusic(int resourceid,Context context){
+		MediaPlayer mp = MediaPlayer.create(context, resourceid);
+		mp.setLooping(true);
+		mp.start();
+		return mp;
+	}
+	
 	/**
 	 * This function given a touched screen point, the actual Map position
 	 * of the player and the width returns the Map Point touched.

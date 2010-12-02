@@ -33,7 +33,7 @@ public class SceneView extends View {
 		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), scene.getCurrentBackgound()),0,0,null);
 		drawInfoSquare(canvas);
 
-		drawHintSquares(canvas);
+		//drawHintSquares(canvas);
 		
 		super.onDraw(canvas);
 	}
