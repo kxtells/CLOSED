@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<Map image="@drawable/planta1" walkability="@drawable/walkability">
-		<hs x="228" y="136" w="22" h="38" sceneid="@drawable/schabporta"></hs>
+		<hs x="228" y="136" w="22" h="38"></hs>
 		<hs x="260" y="116" w="92" h="28" sceneid="@drawable/schabllit"></hs>
-		<hs x="483" y="82" w="58" h="44" sceneid="@drawable/sccuina"></hs>
+		<hs x="483" y="82" w="58" h="44" sceneid="@drawable/schabporta"></hs>
 		<hs x="688" y="18" w="56" h="32" sceneid="@drawable/scestanteriafront"></hs>
 		<hs x="556" y="150" w="154" h="53" sceneid="@drawable/scsofa"></hs>
 		<hs x="573" y="18" w="116" h="57" sceneid="@drawable/scportasortida"></hs>
 		<hs x="216" y="18" w="47" h="45" sceneid="@drawable/schabtauletaesq"></hs>
 		<hs x="340" y="18" w="51" h="45" sceneid="@drawable/schabtauletadret"></hs>
-	</Map></resources>
+		<hs x="200" y="83" w="37" h="139" sceneid="@drawable/sctrastero"></hs>
+		<hs x="59" y="163" w="45" h="40" sceneid="@drawable/scbany_banyera_buida"></hs>
+		<hs x="110" y="150" w="50" h="29" sceneid="@drawable/scbany_dutxa">123</hs>
+		<hs x="90" y="48" w="47" h="17" sceneid="@drawable/scbany_pica"></hs>
+		<hs x="478" y="225" w="33" h="28" sceneid="@drawable/schall_taula"></hs></Map></resources>

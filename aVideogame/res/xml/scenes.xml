@@ -186,4 +186,15 @@
 		</hs>
 		
 	</scene>
-</resources>
+	<scene id="@drawable/sctrastero" note="Vista frontal de l'habitacio dels mals endreços">
+		<image image="@drawable/sctrastero"></image>
+		<hs x="192" y="192" w="71" h="51" id="150" note="el bagul" grabtext="Esta tancat" infotext="Em sembla un antic bagul"></hs>
+	</scene>
+	<scene id="@drawable/scbany_banyera_buida" note="">
+		<image image="@drawable/scbany_banyera_buida"></image></scene>
+	<scene id="@drawable/scbany_dutxa" note="Vista de la dutxa">
+		<image image="@drawable/scbany_dutxa"></image></scene>
+	<scene id="@drawable/scbany_pica" note="Pica del bany">
+		<image image="@drawable/scbany_pica"></image></scene>
+	<scene id="@drawable/schall_taula" note="Taula del menjador">
+		<image image="@drawable/schall_taula"></image></scene></resources>
