@@ -186,10 +186,6 @@
 		</hs>
 		
 	</scene>
-	<scene id="@drawable/sctrastero" note="Vista frontal de l'habitacio dels mals endreços">
-		<image image="@drawable/sctrastero"></image>
-		<hs x="192" y="192" w="71" h="51" id="150" note="el bagul" grabtext="Esta tancat" infotext="Em sembla un antic bagul"></hs>
-	</scene>
 	<scene id="@drawable/scbany_banyera_buida" note="">
 		<image image="@drawable/scbany_banyera_buida"></image></scene>
 	<scene id="@drawable/scbany_dutxa" note="Vista de la dutxa">
@@ -197,4 +193,12 @@
 	<scene id="@drawable/scbany_pica" note="Pica del bany">
 		<image image="@drawable/scbany_pica"></image></scene>
 	<scene id="@drawable/schall_taula" note="Taula del menjador">
-		<image image="@drawable/schall_taula"></image></scene></resources>
+		<image image="@drawable/schall_taula"></image></scene>
+	<scene id="@drawable/scbany_pica_esq" note="Pica esquerra amb la llenterna">
+		<image image="@drawable/scbany_pica_esq"></image>
+		<image image="@drawable/scbany_pica_esq2"></image>
+		<hs x="141" y="168" h="24" w="31" id="161"
+			infotext="Es una llenterna mig amagada"
+			grabtext="Sembla que té piles i funciona bé"
+			objectid="@drawable/flashlight" note="HotSpot per a l'objecte llenterna">
+		</hs></scene></resources>
