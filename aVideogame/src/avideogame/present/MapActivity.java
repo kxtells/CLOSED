@@ -27,10 +27,16 @@ public class MapActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("MapActivity","A");
+        
+        int type = this.getIntent().getIntExtra("type", -1);
+        if(type==0){
+			Intent sceneIntent = new Intent(getBaseContext(), SlidesActivity.class);
+			sceneIntent.putExtra("history", R.drawable.animslideh1s1);
+			startActivity(sceneIntent);
+        }
+        
         view = new MapView(this); 
         setContentView(view);
-        Log.d("MapActivity","Z");
     }
 
     /**

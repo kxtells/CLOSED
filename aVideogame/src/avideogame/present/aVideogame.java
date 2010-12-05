@@ -60,10 +60,12 @@ public class aVideogame extends Activity {
 		switch(item.getItemId()){
 		case R.string.NEW_GAME:
 			sceneIntent = new Intent(getBaseContext(), MapActivity.class);
+			sceneIntent.putExtra("type", 0);
 			startActivity(sceneIntent);
 			break;
 		case R.string.CONTINUE_GAME:
-			Utilities.drawText("No implementat", getBaseContext());
+			sceneIntent = new Intent(getBaseContext(), MapActivity.class);
+			sceneIntent.putExtra("type", 1);
 			break;
 		case R.string.HELP:
 			Utilities.drawText("No implementat", getBaseContext());
@@ -71,6 +73,7 @@ public class aVideogame extends Activity {
 		case R.string.CONFIGURATION:
 			//Utilities.drawText("No implementat", getBaseContext());
 			sceneIntent = new Intent(getBaseContext(), SlidesActivity.class);
+			sceneIntent.putExtra("history", R.drawable.animslideh1s1);
 			startActivity(sceneIntent);
 			break;
 		case R.string.ABOUT:

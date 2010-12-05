@@ -1,63 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+	
 
 	<scene id="@drawable/animslideh1s1">
-		<slide anim="@drawable/animslideh1s1" bgmusic="">
+		<slide anim="@drawable/animslideh1s1" bgmusic="@raw/trainst_ambient">
 			<text string="A les tantes de la matinada, em trobava esperant el metro" colortext="#FFFFFFFF" colorback="#AA000000" sound=""></text>
 			<text string="Havia quedat amb una noia en un local desconegut per mi" colortext="#FFFFFFFF" colorback="#AA000000"></text>
 			<text string="Faltaven un parell d'hores, però volia arribar a temps" colortext="#FFFFFFFF" colorback="#AA000000"></text>
 			<text string="Ella s'ho valia" colortext="#FFFFFFFF" colorback="#AA000000"></text>
 		</slide>
 		<slide anim="@drawable/animslideh1s2">
-			<text string="Quan vaig arribar al lloc em vaig sorpendre"
-				colortext="#FFFFFFFF" colorback="#AA000000">
-			</text>
-			<text string="No feia cap bona pinta"
-				colortext="#FFFFFFFF" colorback="#AA000000">
-			</text>
+			<text string="Quan vaig arribar al lloc em vaig sorpendre" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="No feia cap bona pinta" colortext="#FFFFFFFF" colorback="#AA000000"></text>
 		</slide>		
 		<slide anim="@drawable/animslideh1s3" bgmusic="@raw/disco">
-			<text string="A dins era pitjor que a fora"
-				colortext="#FFFFFFFF" colorback="#AA000000">
-			</text>
-			<text string="Una música estrident i sense estil en un lloc tant petit"
-				colortext="#FFFFFFFF" colorback="#AA000000">
-			</text>
-			<text string="Molta llum i soroll" colortext="#FFFFFFFF"
-				colorback="#AA000000">
-			</text>
-			<text string="En definitiva, un lloc desagradable per mi"
-				colortext="#FFFFFFFF" colorback="#AA000000">
-			</text>
-			<text string="Però havíem quedat allà, "
-				colortext="#FFFFFFFF" colorback="#AA000000">
-			</text>
-			<text string="així que em vaig disposar a esperar fent un cigarret"
-				colortext="#FFFFFFFF" colorback="#AA000000">
-			</text>						
+			<text string="A dins era pitjor que a fora" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="Una música estrident i sense estil en un lloc tant petit" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="Molta llum i soroll" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="En definitiva, un lloc desagradable per mi" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="Però havíem quedat allà, " colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="així que em vaig disposar a esperar fent un cigarret" colortext="#FFFFFFFF" colorback="#AA000000"></text>						
 		</slide>
 		<slide anim="@drawable/animslideh1s4" bgmusic="@raw/disco">
-			<text string="Una noia desconeguda se'm va acostar"
-				colortext="#FFFFFFFF" colorback="#AA000000">
+			<text string="Una noia desconeguda se'm va acostar" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="No estava malament del tot" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="Potser tens foc?" colortext="#FFFFFFFF" colorback="#AAFF0000"></text>
+			<text string="És clar que si" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="Fantàstic" colortext="#FFFFFFFF" colorback="#AAFF0000"></text>
+			<text string="No vols pas una copa?" colortext="#FFFFFFFF" colorback="#AAFF0000"></text>
+			<text string="A partir d'aquí, la nit es va accelerar" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+		</slide>
+		<slide anim="@drawable/animslideh1s6blur">
+			<text string="El mal de cap em va despertar" colortext="#FFFFFFFF" colorback="#AA000000">
 			</text>
-			<text string="No estava malament del tot"
-				colortext="#FFFFFFFF" colorback="#AA000000">
+			<text string="Notava que estava estirat" colortext="#FFFFFFFF" colorback="#AA000000">
 			</text>
-			<text string="Potser tens foc?" colortext="#FFFFFFFF"
-				colorback="#AAFF0000">
-			</text>
-			<text string="És clar que si" colortext="#FFFFFFFF"
-				colorback="#AA000000">
-			</text>
-			<text string="Fantàstic" colortext="#FFFFFFFF"
-				colorback="#AAFF0000">
-			</text>
-			<text string="No vols pas una copa?" colortext="#FFFFFFFF"
-				colorback="#AAFF0000">
-			</text>
-			<text string="A partir d'aquí, la nit es va accelerar"
-				colortext="#FFFFFFFF" colorback="#AA000000">
-			</text>
+			<text string="Passada una estona, tot es va tornar més clar..." colortext="#FFFFFFFF" colorback="#AA000000"></text>
+		</slide>
+		<slide anim="@drawable/animslideh1s6">
+			<text string="Ostres, quina migranya..." colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="On sóc?" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="De qui és aquest llit?" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="uff" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="Chsk! Chask!" colortext="#FFFFFFFF" colorback="#AA3F250A" sound="@raw/frontdoor_lock"></text>
+			<text string="Què ha estat això?" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="Millor que m'aixequi" colortext="#FFFFFFFF" colorback="#AA000000"></text>
+			<text string="i marxi d'aquí" colortext="#FFFFFFFF" colorback="#AA000000"></text>			
+		</slide>
+	</scene>
+	<scene id="@drawable/animslideh2s1">
+		<slide anim="@drawable/animslideh2s1">
+			<text string="Intento obrir la porta" colorback="#AA000000" colortext="#FFFFFFFF" sound="@raw/locked_door"></text>
+			<text string="Però està tancada amb pany" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="I sembla molt dura com per tira-la a terra" colorback="#AA000000" colortext="#FFFFFFFF"></text>
 		</slide>
 	</scene>
 </resources>

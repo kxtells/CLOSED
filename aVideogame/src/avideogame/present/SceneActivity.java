@@ -139,6 +139,11 @@ public class SceneActivity extends Activity {
 		if(shs.getSound() != -1){
 			Utilities.playSound(shs.getSound(), getBaseContext());
 		}
+		if(shs.getHistoryscene()!=-1){
+			Intent sceneIntent = new Intent(getBaseContext(), SlidesActivity.class);
+			sceneIntent.putExtra("history", shs.getHistoryscene());
+			startActivity(sceneIntent);
+		}
     }
 
 

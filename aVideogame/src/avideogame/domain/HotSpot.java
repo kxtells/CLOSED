@@ -9,6 +9,7 @@ public class HotSpot {
 	protected Scene s = null;
 	private int soundres = -1;
 	private int usesoundres = -1;
+	private int historyscene = -1;
 	
 	/**
 	 * NEEDS REVISION, NOT CHECKED for ANDROID
@@ -77,5 +78,13 @@ public class HotSpot {
 
 	public int getUsesoundres() {
 		return usesoundres;
+	}
+
+	public void setHistoryscene(int historyscene) {
+		this.historyscene = historyscene;
+	}
+
+	public int getHistoryscene() {
+		return historyscene;
 	}
 }

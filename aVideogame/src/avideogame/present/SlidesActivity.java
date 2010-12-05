@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,7 +18,7 @@ public class SlidesActivity extends Activity {
 	TextView maintv;
 	ImageView mainimg;
 	View v;
-	int sceneid;
+	int histid;
 	int slideindex = 0;
 	int textindex = 0;
 	MediaPlayer mp = new MediaPlayer();
@@ -27,13 +28,17 @@ public class SlidesActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.slides);
         
+        histid = this.getIntent().getIntExtra("history", -1);
+        //no sceneid found, finish
+        if(histid==-1){this.finish();}
+        
         mainimg = (ImageView) findViewById(R.id.slide);
         maintv = (TextView)findViewById(R.id.slidetext);
         
-        mainimg.setBackgroundResource(R.drawable.animslideh1s1);
+        mainimg.setBackgroundResource(histid);
         slideanimation = (AnimationDrawable) mainimg.getBackground();
         
-        SlidePack sp = DomainController.getSlideTextData(getResources(), R.drawable.animslideh1s1, slideindex, textindex);
+        SlidePack sp = DomainController.getSlideTextData(getResources(), histid, slideindex, textindex);
         if(sp.bgmusic!=-1) this.mp = Utilities.playMusic(sp.bgmusic, getBaseContext());
         maintv.setBackgroundColor(sp.background);
         maintv.setTextColor(sp.textcolor);
@@ -45,7 +50,7 @@ public class SlidesActivity extends Activity {
 	public boolean onTouchEvent(MotionEvent event) {
 		if(event.getAction() == MotionEvent.ACTION_DOWN){
 			textindex++;
-			SlidePack sp = DomainController.getSlideTextData(getResources(), R.drawable.animslideh1s1, slideindex, textindex);
+			SlidePack sp = DomainController.getSlideTextData(getResources(), histid, slideindex, textindex);
 	        if(sp!=null){
 		        if(sp.sound!=-1)Utilities.playSound(sp.sound, getBaseContext());
 				maintv.setBackgroundColor(sp.background);
@@ -56,7 +61,7 @@ public class SlidesActivity extends Activity {
 	        else{
 	        	textindex = 0;
 	        	slideindex++;
-	        	sp = DomainController.getSlideTextData(getResources(), R.drawable.animslideh1s1, slideindex, textindex);
+	        	sp = DomainController.getSlideTextData(getResources(), histid, slideindex, textindex);
         		this.mp.stop();
 	        	if(sp==null){
 	        		this.finish();
@@ -87,4 +92,12 @@ public class SlidesActivity extends Activity {
 		}
 		super.onWindowFocusChanged(hasFocus);
 	}
+
+	@Override
+	protected void onStop() {
+		mp.stop();
+		super.onStop();
+	}
+	
+	
 }

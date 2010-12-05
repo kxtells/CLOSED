@@ -14,4 +14,5 @@
 		<hs x="110" y="150" w="50" h="29" sceneid="@drawable/scbany_dutxa"></hs>
 		<hs x="90" y="48" w="47" h="17" sceneid="@drawable/scbany_pica"></hs>
 		<hs x="478" y="225" w="33" h="28" sceneid="@drawable/schall_taula"></hs>
-		<hs x="73" y="48" w="47" h="17" sceneid="@drawable/scbany_pica_esq"></hs></Map></resources>
+		</Map>
+		</resources>

@@ -24,6 +24,8 @@ public class DomainController {
 	private static ArrayList<CollectableObject> objects = new ArrayList<CollectableObject>();
 	private static int TOUCH_ERROR = 20;
 	private static int PLAYER_SINGLE_MOVE = 4;
+	private static int PLAYER_START_X = 354;
+	private static int PLAYER_START_Y = 80;
 	
 	public DomainController() {
 		super();
@@ -70,7 +72,7 @@ public class DomainController {
 	 */
 	private static void InitializeDomainController(Resources resources) throws XmlPullParserException {
 		Log.d("INITDATA","INITDATA");
-		setPlayer(new Player(50,300));
+		setPlayer(new Player(PLAYER_START_X,PLAYER_START_Y));
 		getPlayer().setCurrent_action(0);
 		getPlayer().setRadius(10);
 		
@@ -83,6 +85,9 @@ public class DomainController {
 		//map.setImagemap(BitmapFactory.decodeResource(resources, R.drawable.walkability));
 	}
 
+	private static void clearDomainController(){
+		dc = null;
+	}
 
 	public static void setPlayer(Player player) {
 		DomainController.player = player;
@@ -207,6 +212,8 @@ public class DomainController {
 						double w = Double.parseDouble(xrp.getAttributeValue(null, "w"));
 						double h = Double.parseDouble(xrp.getAttributeValue(null, "h"));
 						int hsid = Integer.parseInt(xrp.getAttributeValue(null,"id"));
+
+						
 						String sinfo 	= xrp.getAttributeValue(null, "infotext");
 						String ginfo 	= xrp.getAttributeValue(null, "grabtext");
 						int sceneid 	= xrp.getAttributeResourceValue(null, "sceneid",-1);
@@ -214,6 +221,7 @@ public class DomainController {
 						int soundid		= xrp.getAttributeResourceValue(null,"sound",-1);
 						int useobjid	= xrp.getAttributeResourceValue(null,"useobject",-1);
 						int usesoundid  = xrp.getAttributeResourceValue(null,"useobjectsound",-1);
+						int histid 		= xrp.getAttributeResourceValue(null,"historyid",-1);
 						
 						SceneHotSpot shs = new SceneHotSpot();
 						currentscene.addHotSpot(shs);
@@ -229,6 +237,7 @@ public class DomainController {
 						shs.setSound(soundid);
 						shs.setUseobj(getObjectById(useobjid));
 						shs.setUsesoundres(usesoundid);
+						shs.setHistoryscene(histid);
 						
 					}
 				}
@@ -305,7 +314,7 @@ public class DomainController {
 							String ginfo 	= xrp.getAttributeValue(null, "string");
 							String backcol 	= xrp.getAttributeValue(null, "colorback");
 							String textcol 	= xrp.getAttributeValue(null, "colortext");
-							int sndid = xrp.getAttributeResourceValue(null,"id",-1);
+							int sndid = xrp.getAttributeResourceValue(null,"sound",-1);
 							int newmusic = -1;
 							if(text==0) newmusic = musicid;
 							
