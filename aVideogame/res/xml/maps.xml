@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<Map image="@drawable/planta1" walkability="@drawable/walkability">
-		<hs x="228" y="136" w="22" h="38"></hs>
+		<hs x="228" y="136" w="22" h="38" sceneid="@drawable/schabporta"></hs>
 		<hs x="260" y="116" w="92" h="28" sceneid="@drawable/schabllit"></hs>
-		<hs x="483" y="82" w="58" h="44" sceneid="@drawable/schabporta"></hs>
+		<hs x="483" y="82" w="58" h="44" sceneid="@drawable/sccuina"></hs>
 		<hs x="688" y="18" w="56" h="32" sceneid="@drawable/scestanteriafront"></hs>
 		<hs x="556" y="150" w="154" h="53" sceneid="@drawable/scsofa"></hs>
 		<hs x="573" y="18" w="116" h="57" sceneid="@drawable/scportasortida"></hs>
@@ -14,5 +14,5 @@
 		<hs x="110" y="150" w="50" h="29" sceneid="@drawable/scbany_dutxa"></hs>
 		<hs x="90" y="48" w="47" h="17" sceneid="@drawable/scbany_pica"></hs>
 		<hs x="478" y="225" w="33" h="28" sceneid="@drawable/schall_taula"></hs>
-		</Map>
-		</resources>
+		
+	</Map></resources>
