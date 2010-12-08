@@ -93,8 +93,11 @@ public class SceneActivity extends Activity {
 			Utilities.playSound(shs.getUsesoundres(), getBaseContext());
 			Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 			v.vibrate(100);
-		case R.drawable.habfosca:
-			Utilities.playSound(shs.getUsesoundres(), getBaseContext());
+			break;
+		case R.drawable.schabfosca:
+			if(shs.getUsesoundres()!=-1) Utilities.playSound(shs.getUsesoundres(), getBaseContext());
+			sc.dropHotSpot(shs);
+			break;
 		default:
 		}
 		
@@ -111,8 +114,10 @@ public class SceneActivity extends Activity {
 			Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 			v.vibrate(300);
 			sc.dropHotSpot(shs);
-		case R.drawable.habfosca:
+			break;
+		case R.drawable.schabfosca:
 			sc.dropHotSpot(shs);
+			break;
 		default:
 		}
 	}

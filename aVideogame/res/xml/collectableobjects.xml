@@ -21,4 +21,7 @@
 	<c_object id="@drawable/penny" infotext="Un centau, o 'penny' com li diuen" interacttext="Té la cara d'un personatge famós" name="Centau"
 		combines="-1">
 	</c_object>
+	<c_object id="@drawable/flashlight" infotext="Llanterna de tota la vida, amb piles" interacttext="Millor deixo les piles a dins" name="Llanterna"
+		combines="-1">
+	</c_object>	
 </resources>

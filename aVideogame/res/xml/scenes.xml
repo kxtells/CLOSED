@@ -112,14 +112,29 @@
 			sceneid="-1" note="" id="74">
 		</hs>		
 		</scene>
-	<scene id="@drawable/habfosca" note="habitació fosca que per defecte surt tot negre">
-		<image image="@drawable/habfosca"></image>
+		<scene id="@drawable/sctrunk1" note="la caixa">
+			<image image="@drawable/sctrunk1"></image>
+			<image image="@drawable/sctrunk2"></image>
+		</scene>
+	<scene id="@drawable/schabfosca" note="habitació fosca que per defecte surt tot negre">
+		<image image="@drawable/schabfosca"></image>
+		<image image="@drawable/sctrastero"></image>
+		<image image="@drawable/sctrastero2"></image>
 		<hs x="0" y="0" w="480" h="320"
 			infotext="Mare meva, no veig res"
-			grabtext="Ves a saber què estic tocant" useobject="@drawable/hammer"
+			grabtext="Ves a saber què estic tocant" useobject="@drawable/flashlight"
 			id="110">
 		</hs>
-		<image image="@drawable/sccuinapomes1"></image></scene>
+		<hs x="440" y="180" w="40" h="120" infotext="Una vella maleta de viatge" grabtext="Buïda" id="323"></hs>
+		<hs x="195" y="190" w="75" h="60" infotext="Una caixa tancada amb clau i al centre" grabtext="No puc obrir-la" id="327" sceneid="@drawable/sctrunk1"></hs>
+		<hs x="15" y="200" w="90" h="67" infotext="Caixa de cartró" grabtext="Res d'interés" id="322"></hs>
+		<hs x="284" y="170" w="140" h="105" infotext="Més caixes" grabtext="Més caixes buides" id="326"></hs>
+		<hs x="5" y="25" w="155" h="250" infotext="Un armari" grabtext="No hi ha res a dins" id="321"></hs>
+		<hs x="380" y="20" w="106" h="250" infotext="Jukebox!!!" grabtext="Oh!! no funciona" id="324"></hs>
+		<hs x="350" y="110" w="26" h="79" infotext="Un tros de fusta que llisca" grabtext="No som a la neu" id="325"></hs>
+		
+				
+		</scene>
 	<scene id="@drawable/schabporta" note="" sound_final="@raw/trencaporta">
 		<image image="@drawable/schabporta"></image>
 		<hs x="218" y="34" w="74" h="235" id="100"
@@ -127,7 +142,7 @@
 			grabtext="si home, com ho obro això?" sound="@raw/trucaporta" useobject="@drawable/hammer" useobjectsound="@raw/copmartell"></hs>
 		<hs x="218" y="34" w="74" h="235" id="100"
 			infotext="La porta que he trencat a cops" grabtext="Espero no trobar res desagradable"
-			sceneid="@drawable/habfosca">
+			sceneid="@drawable/schabfosca">
 		</hs>
 		<hs x="349" y="76" w="89" h="123" id="100"
 			infotext="Un quadre famós que van robar una vegada"
@@ -201,4 +216,5 @@
 			infotext="Es una llenterna mig amagada"
 			grabtext="Sembla que té piles i funciona bé"
 			objectid="@drawable/flashlight" note="HotSpot per a l'objecte llenterna">
-		</hs></scene></resources>
+		</hs></scene>
+		</resources>
