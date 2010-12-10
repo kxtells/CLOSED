@@ -10,7 +10,7 @@
 		<hs x="216" y="18" w="47" h="45" sceneid="@drawable/schabtauletaesq"></hs>
 		<hs x="340" y="18" w="51" h="45" sceneid="@drawable/schabtauletadret"></hs>
 		<hs x="200" y="83" w="37" h="139" sceneid="@drawable/sctrastero"></hs>
-		<hs x="22" y="70" w="70" h="90" sceneid="@drawable/scbany_banyera_buida"></hs>
+		<hs x="22" y="70" w="70" h="90" sceneid="@drawable/scbanyera_buida"></hs>
 		<hs x="110" y="90" w="88" h="88" sceneid="@drawable/scbany_dutxa"></hs>
 		<hs x="100" y="20" w="80" h="50" sceneid="@drawable/scbany_pica"></hs>
 		<hs x="20" y="20" w="90" h="50" sceneid="@drawable/scbany_pica_esq"></hs>

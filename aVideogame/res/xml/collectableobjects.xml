@@ -23,5 +23,6 @@
 	</c_object>
 	<c_object id="@drawable/flashlight" infotext="Llanterna de tota la vida, amb piles" interacttext="Millor deixo les piles a dins" name="Llanterna"
 		combines="-1">
-	</c_object>	
+	</c_object>
+	<c_object id="@drawable/key" infotext="Una clau sense res d'especial" name="Clau" interacttext="Que deu obrir aquesta clau?"></c_object>
 </resources>

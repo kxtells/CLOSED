@@ -201,20 +201,43 @@
 		</hs>
 		
 	</scene>
-	<scene id="@drawable/scbany_banyera_buida" note="">
-		<image image="@drawable/scbany_banyera_buida"></image></scene>
-	<scene id="@drawable/scbany_dutxa" note="Vista de la dutxa">
-		<image image="@drawable/scbany_dutxa"></image></scene>
 	<scene id="@drawable/scbany_pica" note="Pica del bany">
-		<image image="@drawable/scbany_pica"></image></scene>
-	<scene id="@drawable/schall_taula" note="Taula del menjador">
-		<image image="@drawable/schall_taula"></image></scene>
-	<scene id="@drawable/scbany_pica_esq" note="Pica esquerra amb la llenterna">
+		<image image="@drawable/scbany_pica"></image>
+		<hs x="46" y="127" w="433" h="180" infotext="Sembla que no hi ha res" grabtext="No hi ha res interessant" id="151"></hs></scene><scene id="@drawable/scbany_pica_esq" note="Pica esquerra amb la llenterna">
 		<image image="@drawable/scbany_pica_esq"></image>
 		<image image="@drawable/scbany_pica_esq2"></image>
-		<hs x="141" y="168" h="24" w="31" id="161"
-			infotext="Es una llenterna mig amagada"
-			grabtext="Sembla que té piles i funciona bé"
-			objectid="@drawable/flashlight" note="HotSpot per a l'objecte llenterna">
+		<hs x="141" y="168" h="24" w="31" id="161" infotext="Es una llenterna mig amagada" grabtext="Sembla que té piles i funciona bé" objectid="@drawable/flashlight" note="HotSpot per a l'objecte llenterna">
+		</hs></scene><scene id="@drawable/scbanyera_buida" note="">
+		<image image="@drawable/scbanyera_buida"></image>
+		<hs x="65" y="120" w="361" h="183" infotext="Esta molt neta" grabtext="No crec que sigui moment de banyar-se" id="171"></hs></scene>
+	<scene id="@drawable/scbany_dutxa" note="Vista de la dutxa">
+		<image image="@drawable/scbany_dutxa"></image>
+		<hs x="8" y="89" w="181" h="183" infotext="Una pica de les mans" grabtext="Fem-hi un cop d'ull" id="181"
+			sceneid="@drawable/scbany_pica">
+		</hs>
+		<hs x="146" y="25" w="313" h="293" infotext="Una dutxa molt moderna " grabtext="No es hora de dutxar-se" id="192">
 		</hs></scene>
-		</resources>
+	
+	<scene id="@drawable/schall_taula" note="Taula del menjador">
+		<image image="@drawable/schall_taula"></image></scene><scene id="@drawable/sctrastero2" note="Vista dreta de l'habitacio">
+		<image image="@drawable/sctrastero2"></image></scene>
+	<scene id="@drawable/sctrastero4" note="Vista armari">
+		<image image="@drawable/sctrastero4"></image></scene><scene id="@drawable/sctrunk1" note="Primera vista del bagul">
+		<image image="@drawable/sctrunk1"></image></scene><scene id="@drawable/sctrastero" note="">
+		<image image="@drawable/sctrastero"></image>
+		<hs x="333" y="29" w="147" h="263"
+			infotext="Fem-hi un cop d'ull"
+			grabtext="Sembla que no hi ha res interessant" id="191"
+			note="Part dreta de l'habitacio" sceneid="@drawable/sctrastero2">
+		</hs>
+		<hs x="5" y="24" w="199" h="260" infotext="Es un armari" grabtext="No es pot obrir la porta" note="Armari de l'habitacio dels mals endreços" id="192"
+			sceneid="@drawable/sctrastero4">
+		</hs>
+		<hs x="179" y="185" w="94" h="71" infotext="Es un vell bagul" grabtext="Que hi deu haver, esta tancat amb clau" id="193"
+			sceneid="@drawable/sctrunk1">
+		</hs></scene>
+	
+	
+	
+
+</resources>
