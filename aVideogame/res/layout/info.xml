@@ -1,17 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#FFFFFFFF"
-    >
-<ImageView android:id="@+id/ImageView01" android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageView>
-<TextView android:id="@+id/infotext"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:text="@string/info_text"
-  android:textColor="#FF000000"
-  android:gravity="center"
-  android:textSize="30sp"
-  />
-</LinearLayout>
+    android:layout_height="fill_parent">
+
+    <ImageView
+    	android:id="@+id/ImageView01"
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent" 
+    
+        android:scaleType="center"
+        android:src="@drawable/infobackground" />
+    
+    <TextView
+    	android:id="@+id/titletext"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginBottom="20dip"
+        android:padding="12dip"
+        android:textSize="20px"
+        
+        android:background="#AA000000"
+        android:textColor="#ff000000"
+        
+        android:layout_gravity="center_horizontal|top"/>
+        
+   <TextView
+    	android:id="@+id/namestext"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_marginBottom="20dip"
+        android:padding="12dip"
+        android:autoLink="web"
+        
+        android:background="#11000000"
+        android:textColor="#ff000000"
+        
+        android:layout_gravity="center_vertical|center_horizontal"/>
+
+</FrameLayout>

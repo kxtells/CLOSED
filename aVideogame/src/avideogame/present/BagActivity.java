@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,9 @@ import avideogame.utils.Utilities;
 public class BagActivity extends Activity {
 	private GridView view;
 	protected int current_action;
+	protected int selected1_id = -1;
+	protected int selected2_id = -1;
+	protected ArrayList<View> selectedviews = new ArrayList<View>();
 	
     /** Called when the activity is first created. */
     @Override
@@ -111,6 +115,91 @@ public class BagActivity extends Activity {
 			return 0;
 		}
 
+		/**
+		 * Controls the object combination in the bagView
+		 * 
+		 * two class attributes selected1_id and selected2_id 
+		 * store the selected items (-1 when no selected item)
+		 * 
+		 * This function recieves the selected_id and checks if there's
+		 * another object selected. If that's the case tries the combination.
+		 * 
+		 * @param selected_id
+		 */
+		private void objectCombination(int selected_id){
+			if(selected1_id == -1) selected1_id = selected_id;
+			else selected2_id = selected_id;
+			
+			if(selected2_id != -1){
+				unHighlightAll();
+    			//Combinació correcte
+    			if(DomainController.getObjectById(selected1_id).getCombines_with() == selected2_id ||
+    					DomainController.getObjectById(selected2_id).getCombines_with() == selected1_id){
+    				Log.d("COMB","combines");
+    				int newobjidA = DomainController.getObjectById(selected1_id).getComb_creates();
+    				int newobjidB = DomainController.getObjectById(selected2_id).getComb_creates();
+    				int newobjid = 0;
+    				
+    				//comprovar per quin costat està feta l'assignació de nou objecte
+    				if(newobjidA == -1) newobjid = newobjidB;
+    				else newobjid = newobjidA;
+    				
+    				DomainController.getPlayer().dropObject(DomainController.getObjectById(selected2_id));
+    				DomainController.getPlayer().dropObject(DomainController.getObjectById(selected1_id));
+    				DomainController.getPlayer().addObject(DomainController.getObjectById(newobjid));
+    			
+        			//regenerar llista d'objectes a mostrar
+        			fillImageIds();
+    				notifyDataSetChanged();
+    			}
+    			else{
+    				Utilities.drawText(getString(R.string.NOCOMB), getBaseContext());
+    			}
+    			//posar la combinació a 0
+    			selected1_id = -1;
+    			selected2_id = -1;
+			}
+			
+		}
+		
+		/**
+		 * Interaction action with a specific object.
+		 * 
+		 * There's 2 possible results:
+		 *  - Only a message appears
+		 *  - A message + the object transforms in another object
+		 * @param objectid
+		 */
+		private void objectInteract(int objectid){
+			Utilities.drawText(DomainController.getObjectById(objectid).getInteracttext(), getBaseContext());
+    		if(DomainController.getObjectById(objectid).getCombines_with() == -1){
+    			//si hi ha objectes en la seva llista de transformacions
+    			int size = DomainController.getObjectById(objectid).getTransforms_to().size(); 
+    			if(size>0){
+    				//afegeix tots els objectes a la bossa del jugador
+    				for(int i=0;i<size;i++){
+    					int id = DomainController.getObjectById(objectid).getTransforms_to().get(i);
+    					DomainController.getPlayer().addObject(DomainController.getObjectById(id));
+    				}
+    				//esborra l'objecte original de la bossa del jugador
+    				DomainController.getPlayer().dropObject(DomainController.getObjectById(objectid));
+    				fillImageIds();
+    				notifyDataSetChanged();
+    			}
+    		}			
+		}
+		
+		/**
+		 * unhighlight all selected items
+		 */
+		private void unHighlightAll(){
+			int i;
+			int ln = selectedviews.size();
+			for(i=0;i<ln;i++){
+				selectedviews.get(i).setBackgroundColor(Color.TRANSPARENT);
+			}
+		}
+		
 		@Override
 		public View getView(final int position, View convertView, ViewGroup arg2) {
 	        ImageView imageView;
@@ -127,7 +216,9 @@ public class BagActivity extends Activity {
 	                	//s'haurà de fer un switch segons acció
 	                	switch(current_action){
 	                	case Constants.OBJ_COMB:
-		                	Utilities.drawText("No Implementat", mContext);
+	                		selectedviews.add(view);
+	                		view.setBackgroundColor(getResources().getColor(R.color.SELECTED_OBJECT));
+	                		objectCombination(bag_items_id.get(position));
 	                		break;
 	                	case Constants.OBJ_DROP:
 		                	Utilities.drawText("No Implementat", mContext);
@@ -137,25 +228,7 @@ public class BagActivity extends Activity {
 		                	Utilities.drawText(text, mContext);
 	                		break;
 	                	case Constants.OBJ_INTE: //Interactuar amb objecte recollit
-	                		int objectid = bag_items_id.get(position);
-	                		Utilities.drawText(DomainController.getObjectById(objectid).getInteracttext(), getBaseContext());
-	                		//si no combina amb res
-	                		if(DomainController.getObjectById(objectid).getCombines_with() == -1){
-	                			//si hi ha objectes en la seva llista de transformacions
-	                			int size = DomainController.getObjectById(objectid).getTransforms_to().size(); 
-	                			if(size>0){
-	                				//afegeix tots els objectes a la bossa del jugador
-	                				for(int i=0;i<size;i++){
-	                					int id = DomainController.getObjectById(objectid).getTransforms_to().get(i);
-	                					DomainController.getPlayer().addObject(DomainController.getObjectById(id));
-	                				}
-	                				//esborra l'objecte original de la bossa del jugador
-	                				DomainController.getPlayer().dropObject(DomainController.getObjectById(objectid));
-	                				fillImageIds();
-	                				notifyDataSetChanged();
-	                			}
-	                		}
-
+	                		objectInteract(bag_items_id.get(position));
 	                		break;
 	                	}
 	                }

@@ -8,16 +8,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.RectF;
-import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
 import avideogame.domain.DomainController;
 import avideogame.domain.MapHotSpot;
 import avideogame.utils.Constants;
 import avideogame.utils.GameControls;
-import android.graphics.Point;
 
 public class MapView extends View{
 	private Paint paint = new Paint();
@@ -64,7 +60,7 @@ public class MapView extends View{
 		canvas.drawCircle((int)x, (int)y, pradius, paint);
 
 		
-		//drawHintSquares(canvas);
+		drawHintSquares(canvas);
 		
 		/*Restore the matrix*/
 		canvas.restore();

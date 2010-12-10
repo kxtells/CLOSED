@@ -20,6 +20,7 @@ public class CollectableObject {
 	private String info;
 	private String interacttext;
 	private int combines_with = -1;
+	private int comb_creates = -1;
 	private ArrayList<Integer> transforms_to = new ArrayList<Integer>();
 	
 	
@@ -71,6 +72,14 @@ public class CollectableObject {
 
 	public String getInteracttext() {
 		return interacttext;
+	}
+
+	public void setComb_creates(int comb_creates) {
+		this.comb_creates = comb_creates;
+	}
+
+	public int getComb_creates() {
+		return comb_creates;
 	}
 
 	
