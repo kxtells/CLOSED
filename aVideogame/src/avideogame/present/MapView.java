@@ -25,6 +25,7 @@ public class MapView extends View{
 		super(context);
         setFocusable(true);
         res = getResources();
+        
 	}
 
 	@Override
@@ -41,7 +42,7 @@ public class MapView extends View{
 		int tx = (int)x-getWidth()/2;
 		mhs = DomainController.getMap().getMapHotSpot((int)x, (int)y);
 		
-		paint.setColor(Color.RED);
+		
 		if(tx+getWidth()>=DomainController.getMap().getMapWidth()){
 			tx = DomainController.getMap().getMapWidth() - getWidth();
 		}
@@ -51,15 +52,10 @@ public class MapView extends View{
 		
 		/*Paint scrolled map*/
 		canvas.save();
-		canvas.translate((float) -tx, 0);
-		
+		canvas.translate((float) -tx, 0);		
 		canvas.drawBitmap(DomainController.getMap().getImage(), 0, 0, null);
 		
-		
-		int pradius = DomainController.getPlayer().getRadius();
-		canvas.drawCircle((int)x, (int)y, pradius, paint);
-
-		
+		drawPlayer(canvas);		
 		drawHintSquares(canvas);
 		
 		/*Restore the matrix*/
@@ -67,6 +63,20 @@ public class MapView extends View{
 		//drawControls(canvas);
 		drawInfoSquare(canvas,mhs);
 		
+	}
+
+	private void drawPlayer(Canvas canvas) {
+		double x = DomainController.getPlayer().getX();
+		double y = DomainController.getPlayer().getY();
+		
+		paint.setAntiAlias(true);
+		
+		paint.setColor(Color.BLACK);
+		
+		int pradius = DomainController.getPlayer().getRadius();
+		canvas.drawCircle((int)x, (int)y, pradius, paint);
+		
+		paint.setAntiAlias(false);
 	}
 
 	/**

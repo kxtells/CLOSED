@@ -118,6 +118,9 @@ public class SceneActivity extends Activity {
 		case R.drawable.schabfosca:
 			sc.dropHotSpot(shs);
 			break;
+		case R.drawable.sctrastero:
+			sc.dropHotSpot(shs);
+			break;
 		default:
 		}
 	}
@@ -148,6 +151,7 @@ public class SceneActivity extends Activity {
 			Intent sceneIntent = new Intent(getBaseContext(), SlidesActivity.class);
 			sceneIntent.putExtra("history", shs.getHistoryscene());
 			startActivity(sceneIntent);
+			shs.setHistoryscene(-1); //Sols activar la escena 1 vegada
 		}
     }
 

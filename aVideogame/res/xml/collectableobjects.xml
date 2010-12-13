@@ -18,11 +18,13 @@
 		<transformsto newobj="@drawable/shoes2"></transformsto>
 		<transformsto newobj="@drawable/cords"></transformsto>
 	</c_object>
-	<c_object id="@drawable/penny" infotext="Un centau, o 'penny' com li diuen" interacttext="Té la cara d'un personatge famós" name="Centau"
-		combines="@drawable/hammer" creates="@drawable/zippo">
-	</c_object>
+	<c_object id="@drawable/penny" infotext="Un centau, o 'penny' com li diuen" interacttext="Té la cara d'un personatge famós" name="Centau"></c_object>
 	<c_object id="@drawable/flashlight" infotext="Llanterna de tota la vida, amb piles" interacttext="Millor deixo les piles a dins" name="Llanterna"
 		combines="-1">
 	</c_object>
 	<c_object id="@drawable/key" infotext="Una clau sense res d'especial" name="Clau" interacttext="Que deu obrir aquesta clau?"></c_object>
+	<c_object id="@drawable/tntambfil" infotext="L'explosiu amb el cordó enganxat" name="TNT amb metxa" interacttext="No ho puc encendre amb el dit"></c_object>
+	<c_object id="@drawable/tntsensefil" infotext="Un tub de Trinitrotolué" name="TNT" interacttext="Això és perillós de manipular!"
+				combines="@drawable/cords" creates="@drawable/tntambfil">
+	</c_object>
 </resources>

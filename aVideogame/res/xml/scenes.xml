@@ -116,6 +116,15 @@
 			<image image="@drawable/sctrunk1"></image>
 			<image image="@drawable/sctrunk2"></image>
 		</scene>
+	<scene id="@drawable/sctrunkdinamita" note="Vista interior del bagul">
+		<image image="@drawable/sctrunkdinamita"></image>
+		<image image="@drawable/sctrunksindinamita"></image>
+		<hs x="113" y="139" w="105" h="116" infotext="Woo! TNT!" grabtext="Dinamita a la butxaca" id="370"
+			objectid="@drawable/tntsensefil"></hs>
+		<hs x="113" y="139" w="105" h="116" infotext="Woo! més TNT!" grabtext="no cal dur més material explosiu a la butxaca" id="371">
+		</hs>
+	</scene>
+	
 	<scene id="@drawable/schabfosca" note="habitació fosca que per defecte surt tot negre">
 		<image image="@drawable/schabfosca"></image>
 		<image image="@drawable/sctrastero"></image>
@@ -126,15 +135,16 @@
 			id="110">
 		</hs>
 		<hs x="440" y="180" w="40" h="120" infotext="Una vella maleta de viatge" grabtext="Buïda" id="323"></hs>
-		<hs x="195" y="190" w="75" h="60" infotext="Una caixa tancada amb clau i al centre" grabtext="No puc obrir-la" id="327" sceneid="@drawable/sctrunk1"></hs>
+		<hs x="195" y="190" w="75" h="60" infotext="Una caixa tancada amb clau i al centre" grabtext="No puc obrir-la" id="327" useobject="@drawable/key"></hs>
+		<hs x="195" y="190" w="75" h="60" infotext="Una caixa oberta amb clau i al centre" grabtext="Hi ha alguna cosa" id="327" sceneid="@drawable/sctrunkdinamita"></hs>
 		<hs x="15" y="200" w="90" h="67" infotext="Caixa de cartró" grabtext="Res d'interés" id="322"></hs>
 		<hs x="284" y="170" w="140" h="105" infotext="Més caixes" grabtext="Més caixes buides" id="326"></hs>
 		<hs x="5" y="25" w="155" h="250" infotext="Un armari" grabtext="No hi ha res a dins" id="321"></hs>
 		<hs x="380" y="20" w="106" h="250" infotext="Jukebox!!!" grabtext="Oh!! no funciona" id="324"></hs>
-		<hs x="350" y="110" w="26" h="79" infotext="Un tros de fusta que llisca" grabtext="No som a la neu" id="325"></hs>
+		<hs x="350" y="110" w="26" h="79" infotext="Un tros de fusta que llisca" grabtext="No som a la neu" id="325"></hs>		
+	</scene>
 		
-				
-		</scene>
+	
 	<scene id="@drawable/schabporta" note="" sound_final="@raw/trencaporta">
 		<image image="@drawable/schabporta"></image>
 		<hs x="218" y="34" w="74" h="235" id="100"
@@ -219,25 +229,8 @@
 		</hs></scene>
 	
 	<scene id="@drawable/schall_taula" note="Taula del menjador">
-		<image image="@drawable/schall_taula"></image></scene><scene id="@drawable/sctrastero2" note="Vista dreta de l'habitacio">
-		<image image="@drawable/sctrastero2"></image></scene>
-	<scene id="@drawable/sctrastero4" note="Vista armari">
-		<image image="@drawable/sctrastero4"></image></scene><scene id="@drawable/sctrunk1" note="Primera vista del bagul">
-		<image image="@drawable/sctrunk1"></image></scene><scene id="@drawable/sctrastero" note="">
-		<image image="@drawable/sctrastero"></image>
-		<hs x="333" y="29" w="147" h="263"
-			infotext="Fem-hi un cop d'ull"
-			grabtext="Sembla que no hi ha res interessant" id="191"
-			note="Part dreta de l'habitacio" sceneid="@drawable/sctrastero2">
-		</hs>
-		<hs x="5" y="24" w="199" h="260" infotext="Es un armari" grabtext="No es pot obrir la porta" note="Armari de l'habitacio dels mals endreços" id="192"
-			sceneid="@drawable/sctrastero4">
-		</hs>
-		<hs x="179" y="185" w="94" h="71" infotext="Es un vell bagul" grabtext="Que hi deu haver, esta tancat amb clau" id="193"
-			sceneid="@drawable/sctrunk1">
-		</hs></scene>
-	
-	
+		<image image="@drawable/schall_taula"></image>
+	</scene>
 	
 
 </resources>

@@ -19,9 +19,9 @@
 <string name="CONFIGURATION">Configuració</string>
 <string name="HELP">Ajuda</string>
 <string name="ABOUT">Crèdits</string>
-<string name="NOCOMB">No puc combinar aquests dos objectes</string>
+<string name="NOCOMB">No puc combinar </string>
 <string-array name="CREDITS">
-<item>Jordi Castells Sala \n Sandra del Moral Lazo</item>
+<item>Jordi Castells Sala \nSandra del Moral Lazo</item>
 <item>xjumpit</item>
 <item>www.freesound.org\nha estat la principal font de sons</item>
 <item>By Leady\n(http://www.freesound.org/usersViewSingle.php?id=34346)\nlocked door.wav\n (http://www.freesound.org/samplesViewSingle.php?id=12739)

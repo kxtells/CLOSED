@@ -153,7 +153,9 @@ public class BagActivity extends Activity {
     				notifyDataSetChanged();
     			}
     			else{
-    				Utilities.drawText(getString(R.string.NOCOMB), getBaseContext());
+    				String n1 = DomainController.getObjectById(selected1_id).getName();
+    				String n2 = DomainController.getObjectById(selected2_id).getName();
+    				Utilities.drawText(getString(R.string.NOCOMB)+" "+n1+" i "+n2, getBaseContext());
     			}
     			//posar la combinació a 0
     			selected1_id = -1;

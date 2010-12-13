@@ -68,7 +68,7 @@ public class DomainController {
 	 * Initializes all the Domain Data
 	 * @TODO initialize from a xml, or plain text data file for easy changing
 	 * @param resources Resources given from android front-end, needed to assign bitmaps
-	 * @throws XmlPullParserException 
+	 * @throws XmlPullParserException o	
 	 */
 	private static void InitializeDomainController(Resources resources) throws XmlPullParserException {
 		Log.d("INITDATA","INITDATA");
@@ -79,10 +79,13 @@ public class DomainController {
 		parseObjectsXML(resources);
 		parseScenesXML(resources);
 		parseMapsXML(resources);
-		//Define all Map data
-		//map = new Map();
-		//map.setImage(BitmapFactory.decodeResource(resources, R.drawable.planta1));
-		//map.setImagemap(BitmapFactory.decodeResource(resources, R.drawable.walkability));
+		
+		getPlayer().addObject(getObjectById(R.drawable.tntsensefil));
+		getPlayer().addObject(getObjectById(R.drawable.cords));
+		getPlayer().addObject(getObjectById(R.drawable.hammer));
+		getPlayer().addObject(getObjectById(R.drawable.flashlight));
+		getPlayer().addObject(getObjectById(R.drawable.key));
+
 	}
 
 	private static void clearDomainController(){
@@ -155,6 +158,8 @@ public class DomainController {
 					String s = xrp.getName();
 					if(s.equals("c_object")){
 						int id 			= xrp.getAttributeResourceValue(null, "id",-1);
+						int combid 		= xrp.getAttributeResourceValue(null, "combines",-1);
+						int createid 	= xrp.getAttributeResourceValue(null, "creates",-1);
 						String sname 	= xrp.getAttributeValue(null, "name");
 						String sinfo 	= xrp.getAttributeValue(null, "infotext");
 						String sinter 	= xrp.getAttributeValue(null, "interacttext");
@@ -165,6 +170,8 @@ public class DomainController {
 						c.setName(sname);
 						c.setInfo(sinfo);
 						c.setId(id);
+						c.setCombines_with(combid);
+						c.setComb_creates(createid);
 						c.setInteracttext(sinter);
 						
 						objects.add(c);
