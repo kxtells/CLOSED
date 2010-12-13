@@ -227,20 +227,24 @@
 	</scene>
 	<scene id="@drawable/scbany_pica" note="Pica del bany">
 		<image image="@drawable/scbany_pica"></image>
-		<hs x="46" y="127" w="433" h="180" infotext="Sembla que no hi ha res" grabtext="No hi ha res interessant" id="151"></hs></scene><scene id="@drawable/scbany_pica_esq" note="Pica esquerra amb la llenterna">
+		<hs x="43" y="178" w="314" h="124" infotext="Quina aixeta més estranya" grabtext="No hi ha aigua" id="151"></hs>
+		<hs x="243" y="147" w="140" h="33" infotext="Que deu ser?" grabtext="Són espelmes amb olor" id="152"></hs>
+		<hs x="1" y="1" w="328" h="102" infotext="Quin mirall més gran" grabtext="Quin aspecte que tinc" id="153"></hs></scene><scene id="@drawable/scbany_pica_esq" note="Pica esquerra amb la llenterna">
 		<image image="@drawable/scbany_pica_esq"></image>
 		<image image="@drawable/scbany_pica_esq2"></image>
 		<hs x="141" y="168" h="24" w="31" id="161" infotext="Es una llenterna mig amagada" grabtext="Sembla que té piles i funciona bé" objectid="@drawable/flashlight" note="HotSpot per a l'objecte llenterna">
-		</hs></scene><scene id="@drawable/scbanyera_buida" note="">
+		</hs>
+		<hs x="140" y="221" w="216" h="199" infotext="Un calaix" grabtext="Esta completament buit" id="162"></hs></scene><scene id="@drawable/scbanyera_buida" note="">
 		<image image="@drawable/scbanyera_buida"></image>
-		<hs x="65" y="120" w="361" h="183" infotext="Esta molt neta" grabtext="No crec que sigui moment de banyar-se" id="171"></hs></scene>
+		<hs x="50" y="134" w="398" h="180" infotext="Esta molt neta" grabtext="No crec que sigui moment de banyar-se" id="171"></hs>
+		<hs x="82" y="1" w="298" h="97" infotext="Un quadre molt abstracte" grabtext="No aconsegueixo saber que es" id="172"></hs></scene>
 	<scene id="@drawable/scbany_dutxa" note="Vista de la dutxa">
 		<image image="@drawable/scbany_dutxa"></image>
 		<hs x="8" y="89" w="181" h="183" infotext="Una pica de les mans" grabtext="Fem-hi un cop d'ull" id="181"
 			sceneid="@drawable/scbany_pica">
 		</hs>
-		<hs x="146" y="25" w="313" h="293" infotext="Una dutxa molt moderna " grabtext="No es hora de dutxar-se" id="192">
-		</hs></scene>
+		<hs x="307" y="70" w="67" h="73" infotext="Un mirall" id="182" grabtext="Millor no m'acosto la dutxa rellisca"></hs>
+		<hs x="360" y="210" w="111" h="60" infotext="Un pot de sabo a  mitjes" grabtext="" id="183"></hs></scene>
 	
 	<scene id="@drawable/schall_taula" note="Taula del menjador">
 		<image image="@drawable/schall_taula"></image>
