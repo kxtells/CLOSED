@@ -24,11 +24,9 @@ public class DomainController {
 	private static ArrayList<CollectableObject> objects = new ArrayList<CollectableObject>();
 	private static int TOUCH_ERROR = 20;
 	private static int PLAYER_SINGLE_MOVE = 4;
-	//private static int PLAYER_START_X = 354;
-	//private static int PLAYER_START_Y = 80;
-	
-	private static int PLAYER_START_X = 650;
-	private static int PLAYER_START_Y = 50;
+	private static int PLAYER_START_X = 354;
+	private static int PLAYER_START_Y = 80;
+
 	
 	public DomainController() {
 		super();
@@ -82,12 +80,6 @@ public class DomainController {
 		parseObjectsXML(resources);
 		parseScenesXML(resources);
 		parseMapsXML(resources);
-		
-		getPlayer().addObject(getObjectById(R.drawable.tntsensefil));
-		getPlayer().addObject(getObjectById(R.drawable.cords));
-		getPlayer().addObject(getObjectById(R.drawable.hammer));
-		getPlayer().addObject(getObjectById(R.drawable.flashlight));
-		getPlayer().addObject(getObjectById(R.drawable.key));
 
 	}
 
