@@ -48,7 +48,6 @@ public class BagActivity extends Activity {
 		menu.add(0, Constants.OBJ_INFO, 0, getString(R.string.menu_info)).setIcon(R.drawable.magnifier_menu);
 		menu.add(0, Constants.OBJ_INTE, 0, getString(R.string.menu_touch)).setIcon(R.drawable.grab);
 		menu.add(0, Constants.OBJ_COMB, 0, getString(R.string.menu_comb)).setIcon(R.drawable.combine);
-		menu.add(0, Constants.OBJ_DROP,  0, getString(R.string.menu_drop)).setIcon(R.drawable.trash);
 		return super.onCreateOptionsMenu(menu);
 	}
 	

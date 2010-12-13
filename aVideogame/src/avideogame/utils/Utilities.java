@@ -12,6 +12,7 @@ import avideogame.domain.DomainController;
 public class Utilities {
 	
 	public static void drawText(String text,Context context){
+		if(text.equals("") || text.equals(" ")) return;
 		Log.d("Toast",""+text);
 		Toast.makeText(context, text, text.length() * 20).show();
 	}

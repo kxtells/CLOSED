@@ -30,7 +30,6 @@ public class Scene {
 	}
 
 	/**
-	 * @ToImplement
 	 * @param x position x
 	 * @param y position y
 	 * @return SceneHotSpot The nearest SceneHotSpot in a defined radius, null if no hotspot found 
@@ -43,6 +42,19 @@ public class Scene {
 		return null;
 	}
 
+	/**
+	 * Returns a hotspot given its id
+	 * @param id
+	 * @return
+	 */
+	public SceneHotSpot getSceneHotSpotById(int id){
+		int ln = hotspots.size();
+		for(int i=0;i<ln;i++){
+			if(hotspots.get(i).getId()==id){return hotspots.get(i);}
+		}
+		return null;
+	}
+	
 	public void addHotSpot(SceneHotSpot shs){
 		this.hotspots.add(shs);
 	}

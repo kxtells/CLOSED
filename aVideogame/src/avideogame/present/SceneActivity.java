@@ -121,6 +121,11 @@ public class SceneActivity extends Activity {
 		case R.drawable.sctrastero:
 			sc.dropHotSpot(shs);
 			break;
+		case R.drawable.scportasortida:
+			DomainController.getPlayer().dropObject(DomainController.getObjectById(shs.getUseobj().getId()));
+			sc.dropHotSpot(sc.getSceneHotSpotById(142));
+			sc.skipSceneImage();
+			break;
 		default:
 		}
 	}

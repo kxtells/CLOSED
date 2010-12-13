@@ -201,15 +201,29 @@
 		</scene>
 	<scene id="@drawable/scportasortida" note="La porta de sortida i el seu voltant">
 		<image image="@drawable/scportasortida"></image>
+		<image image="@drawable/scportasortida2"></image>
+		<hs x="251" y="194" w="66" h="87" id="142"
+			note="dummy hot spot, tapa la zona on hi ha el hotspot de la dinamita" 
+			grabtext=""
+			infotext="">
+		</hs>
+		<hs x="251" y="194" w="66" h="87" id="143"
+			note="La dinamita que serà afegida per sortir de l'habitació" 
+			grabtext="No cal recollir-la, està on vull!"
+			infotext="La dinamita amb el cordó preparada per esclatar"
+			useobject="@drawable/zippo"
+			useobjecthistory="null"
+			>
+		</hs>
 		<hs x="283" y="29" w="117" h="250" id="140"
 			note="La porta de sortida" grabtext="Res a fer-hi"
-			infotext="Maleïda porta tancada!" sound="@raw/locked_door" historyid="@drawable/animslideh2s1">
+			infotext="Maleïda porta tancada!" sound="@raw/locked_door" historyid="@drawable/animslideh2s1"
+			useobject="@drawable/tntambfil">
 		</hs>
 		<hs x="120" y="15" w="157" h="185" id="141"
 			note="quadre de disseny" grabtext="Mhm, aquest quadre em transmet masses colors"
 			infotext="Mira que n'hi ha de quadres, i havien de posar aquest">
 		</hs>
-		
 	</scene>
 	<scene id="@drawable/scbany_pica" note="Pica del bany">
 		<image image="@drawable/scbany_pica"></image>

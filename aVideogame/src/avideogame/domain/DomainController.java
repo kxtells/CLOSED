@@ -24,8 +24,11 @@ public class DomainController {
 	private static ArrayList<CollectableObject> objects = new ArrayList<CollectableObject>();
 	private static int TOUCH_ERROR = 20;
 	private static int PLAYER_SINGLE_MOVE = 4;
-	private static int PLAYER_START_X = 354;
-	private static int PLAYER_START_Y = 80;
+	//private static int PLAYER_START_X = 354;
+	//private static int PLAYER_START_Y = 80;
+	
+	private static int PLAYER_START_X = 650;
+	private static int PLAYER_START_Y = 50;
 	
 	public DomainController() {
 		super();
