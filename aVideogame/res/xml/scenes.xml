@@ -228,7 +228,7 @@
 	<scene id="@drawable/scbany_pica" note="Pica del bany">
 		<image image="@drawable/scbany_pica"></image>
 		<hs x="43" y="178" w="314" h="124" infotext="Quina aixeta més estranya" grabtext="No hi ha aigua" id="151"></hs>
-		<hs x="243" y="147" w="140" h="33" infotext="Que deu ser?" grabtext="Són espelmes amb olor" id="152"></hs>
+		<hs x="243" y="147" w="140" h="33" infotext="Que deu ser?" grabtext="Són espelmes amb olor, no les necessito per res" id="152"></hs>
 		<hs x="1" y="1" w="328" h="102" infotext="Quin mirall més gran" grabtext="Quin aspecte que tinc" id="153"></hs></scene><scene id="@drawable/scbany_pica_esq" note="Pica esquerra amb la llenterna">
 		<image image="@drawable/scbany_pica_esq"></image>
 		<image image="@drawable/scbany_pica_esq2"></image>
@@ -244,11 +244,22 @@
 			sceneid="@drawable/scbany_pica">
 		</hs>
 		<hs x="307" y="70" w="67" h="73" infotext="Un mirall" id="182" grabtext="Millor no m'acosto la dutxa rellisca"></hs>
-		<hs x="360" y="210" w="111" h="60" infotext="Un pot de sabo a  mitjes" grabtext="" id="183"></hs></scene>
+		<hs x="360" y="210" w="111" h="60" infotext="Un pot de sabo a  mitjes" grabtext="Fa bona olor" id="183"></hs></scene>
 	
-	<scene id="@drawable/schall_taula" note="Taula del menjador">
+	<scene id="@drawable/sctaulaclau">
+		<image image="@drawable/sctaulaclau"></image>
+		<image image="@drawable/sctaulasenseclau"></image>
+		<hs x="160" y="96" w="126" h="103" id="191" infotext="Una clau enganchada amb celo!" grabtext="Que deu obrir?" objectid="@drawable/key" sceneid="@drawable/sctaulasenseclau">
+		</hs>
+	</scene><scene id="@drawable/schall_taula" note="Taula del menjador">
 		<image image="@drawable/schall_taula"></image>
+		<image image="@drawable/sctaulaclau"></image><hs x="51" y="201" w="416" h="118" id="201"
+			grabtext="Fem-hi un cop d'ull a sota" infotext="No hi ha res"
+			sceneid="@drawable/sctaulaclau">
+		</hs>
+		
 	</scene>
 	
+
 
 </resources>
