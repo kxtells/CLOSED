@@ -55,4 +55,46 @@
 			<text string="I sembla molt dura com per tira-la a terra" colorback="#AA000000" colortext="#FFFFFFFF"></text>
 		</slide>
 	</scene>
+	<scene id="@drawable/animslidehfs1">
+		<slide anim="@drawable/animslidehfs1" bgmusic="@raw/wick">
+			<text string="Engego la metxa amb l'encenedor " colorback="#AA000000" colortext="#FFFFFFFF" sound="@raw/locked_door"></text>
+			<text string="I marxo corrents" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+		</slide>
+		<slide anim="@drawable/animslidehfs2">
+			<text string="Em tapo les orelles i espero " colorback="#AA000000" colortext="#FFFFFFFF" sound="@raw/locked_door"></text>
+			<text string="espero..." colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="..." colorback="#AA000000" colortext="#FFFFFFFF"></text>
+		</slide>
+		<slide anim="@drawable/animslidehfs3">
+			<text string="BOOM!!" colorback="#AA3F250A" colortext="#FFFFFFFF" sound="@raw/explosion"></text>
+			<text string="Wow" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="Segur que ja no queda porta" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+		</slide>
+		<slide anim="@drawable/animslidehfs4">
+			<text string="Amb la porta destruida m'espavilo a marxar" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="No vull estar aquí quan qui m'hagi tancat torni" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="baixo les escales corrent" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="i em trobo molts curiosos" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="que treuen el cap a veure què ha passat" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="ja arribo a la sortida de l'edifici" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="i sembla que puc sortir" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+		</slide>
+		<slide anim="@drawable/animslidehfs5">
+			<text string="Arrenco a córrer" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="Fins a una distància prudencial" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="Llavors em giro" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+		</slide>
+		<slide anim="@drawable/animslidehfs6">
+			<text string="Tinc curiositat per aquest edifici" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="Se'l veu força antic" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="Mentre el miro" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="Em fixo en l'habitació on M'havien tancat" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+		</slide>
+		<slide anim="@drawable/animslidehfs6">
+			<text string="És la noia!" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="Qui és?" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="M'ha tancat ella?" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+			<text string="------" colorback="#AA000000" colortext="#FFFFFFFF"></text>
+		</slide>
+	</scene>
 </resources>
