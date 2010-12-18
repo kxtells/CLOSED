@@ -10,6 +10,7 @@ public class HotSpot {
 	private int soundres = -1;
 	private int usesoundres = -1;
 	private int historyscene = -1;
+	private CollectableObject histobj = null;	//objecte per usar i que començi història
 	
 	/**
 	 * NEEDS REVISION, NOT CHECKED for ANDROID
@@ -86,5 +87,13 @@ public class HotSpot {
 
 	public int getHistoryscene() {
 		return historyscene;
+	}
+
+	public void setHistobj(CollectableObject histobj) {
+		this.histobj = histobj;
+	}
+
+	public CollectableObject getHistobj() {
+		return histobj;
 	}
 }

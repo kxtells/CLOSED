@@ -1,21 +1,24 @@
 package avideogame.domain;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import org.xmlpull.v1.XmlPullParserException;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.util.Log;
 import avideogame.present.R;
 import avideogame.utils.SlidePack;
 
+/**
+ * A class responsible to hold all the information
+ * 
+ * @author Controller Class
+ *
+ */
 public class DomainController {
 	protected static DomainController dc;
 	public static Map map;
@@ -26,7 +29,7 @@ public class DomainController {
 	private static int PLAYER_SINGLE_MOVE = 4;
 	private static int PLAYER_START_X = 354;
 	private static int PLAYER_START_Y = 80;
-
+	
 	
 	public DomainController() {
 		super();
@@ -186,6 +189,11 @@ public class DomainController {
 		xrp.close();
 	}
 	
+	/**
+	 * A function to parse scenes.xml and create corresponding classes
+	 * @param resources
+	 * @throws XmlPullParserException
+	 */
 	private static void parseScenesXML(Resources resources) throws XmlPullParserException{
 		XmlResourceParser xrp = resources.getXml(R.xml.scenes);
 		Scene currentscene = null;
@@ -224,6 +232,7 @@ public class DomainController {
 						int useobjid	= xrp.getAttributeResourceValue(null,"useobject",-1);
 						int usesoundid  = xrp.getAttributeResourceValue(null,"useobjectsound",-1);
 						int histid 		= xrp.getAttributeResourceValue(null,"historyid",-1);
+						int objhistid 		= xrp.getAttributeResourceValue(null,"usehistobj",-1);
 						
 						SceneHotSpot shs = new SceneHotSpot();
 						currentscene.addHotSpot(shs);
@@ -240,6 +249,7 @@ public class DomainController {
 						shs.setUseobj(getObjectById(useobjid));
 						shs.setUsesoundres(usesoundid);
 						shs.setHistoryscene(histid);
+						shs.setHistobj(getObjectById(objhistid));
 						
 					}
 				}

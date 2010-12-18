@@ -56,7 +56,7 @@ public class MapView extends View{
 		canvas.drawBitmap(DomainController.getMap().getImage(), 0, 0, null);
 		
 		drawPlayer(canvas);		
-		drawHintSquares(canvas);
+		//drawHintSquares(canvas);
 		
 		/*Restore the matrix*/
 		canvas.restore();

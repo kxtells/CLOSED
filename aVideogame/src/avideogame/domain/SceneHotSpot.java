@@ -7,8 +7,9 @@ public class SceneHotSpot extends HotSpot {
 	//string a mostrar quan es demani informació sobre el punt
 	private String  info;
 	private String  grabtext;
-	private CollectableObject co = null;
-	private CollectableObject useobj = null;
+	private CollectableObject co = null;  		//objecte per recollir
+	private CollectableObject useobj = null;	//possible objecte per usar
+	
 	
 	
 	/**
@@ -90,6 +91,7 @@ public class SceneHotSpot extends HotSpot {
 	public CollectableObject getUseobj() {
 		return useobj;
 	}
-	
+
+
 	
 }

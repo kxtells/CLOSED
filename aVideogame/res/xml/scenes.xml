@@ -211,9 +211,7 @@
 			note="La dinamita que serà afegida per sortir de l'habitació" 
 			grabtext="No cal recollir-la, està on vull!"
 			infotext="La dinamita amb el cordó preparada per esclatar"
-			useobject="@drawable/zippo"
-			historyid="@drawable/animslidehfs1"
-			>
+			historyid="@drawable/animslidehfs1" usehistobj="@drawable/zippo">
 		</hs>
 		<hs x="283" y="29" w="117" h="250" id="140"
 			note="La porta de sortida" grabtext="Res a fer-hi"

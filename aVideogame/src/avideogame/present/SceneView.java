@@ -39,7 +39,7 @@ public class SceneView extends View {
 	}
 
 	/**
-	 * This function draws squares where the HotSpots are
+	 * This function draws squares where the HotSpots are for easy debugging
 	 * @param canvas the canvas where the squares are drawn
 	 */
 	private void drawHintSquares(Canvas canvas){
@@ -54,11 +54,12 @@ public class SceneView extends View {
 							paint);	
 		}
 	}
-	public void setScene(Scene scene) {
-		this.scene = scene;
-	}
 
-	
+
+	/**
+	 * Draws the top-left square with the current option.
+	 * @param canvas
+	 */
 	private void drawInfoSquare(Canvas canvas){
 		int draw_identifier = 0;
 		switch(DomainController.getPlayer().getCurrent_action()){
@@ -73,12 +74,21 @@ public class SceneView extends View {
 			break;
 		}
 		
-		if(draw_identifier == -1) draw_identifier = R.drawable.error;
+		/*If there's an error with an identifier, simply return to INFO*/
+		if(draw_identifier == -1) {
+			DomainController.getPlayer().setCurrent_action(Constants.MENU_INFO);
+			draw_identifier = R.drawable.magnifier;
+		}
 		paint.setColor(res.getColor(R.color.BUTTON));
 		RectF rd = new RectF(0,0,Constants.BUTTON_W_PX,Constants.BUTTON_H_PX);
 		Rect rect = new Rect(0,0,Constants.BUTTON_W_PX,Constants.BUTTON_H_PX);
 		canvas.drawRoundRect(rd, Constants.BUTTON_W, Constants.BUTTON_H, paint);
 		canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), draw_identifier), null, rect, null);
+	}
+	
+	//GETTERS and SETTERS
+	public void setScene(Scene scene) {
+		this.scene = scene;
 	}
 	
 }

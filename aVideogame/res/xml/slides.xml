@@ -61,7 +61,7 @@
 			<text string="I marxo corrents" colorback="#AA000000" colortext="#FFFFFFFF"></text>
 		</slide>
 		<slide anim="@drawable/animslidehfs2">
-			<text string="Em tapo les orelles i espero " colorback="#AA000000" colortext="#FFFFFFFF" sound="@raw/locked_door"></text>
+			<text string="Em tapo les orelles i espero " colorback="#AA000000" colortext="#FFFFFFFF" sound="@raw/explosion"></text>
 			<text string="espero..." colorback="#AA000000" colortext="#FFFFFFFF"></text>
 			<text string="..." colorback="#AA000000" colortext="#FFFFFFFF"></text>
 		</slide>

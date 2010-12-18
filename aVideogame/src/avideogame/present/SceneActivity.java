@@ -17,11 +17,18 @@ import avideogame.domain.SceneHotSpot;
 import avideogame.utils.Constants;
 import avideogame.utils.Utilities;
 
+/**
+ * Activity Responsible for scene viewing and interacting.
+ * @author Jordi Castells
+ *
+ */
 public class SceneActivity extends Activity {
 	private SceneView view;
 	private Scene sc;
 	
-    /** Called when the activity is first created. */
+    /** 
+     * Called when the activity is first created. 
+     * */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +37,6 @@ public class SceneActivity extends Activity {
         view = new SceneView(this);
         sc = DomainController.getSceneById(scene_index);
         view.setScene(sc);
-        DomainController.getPlayer().setCurrent_action(Constants.MENU_INFO);
         setContentView(view);
         
     }
@@ -68,17 +74,24 @@ public class SceneActivity extends Activity {
      * @param object Object selected
      */
     public boolean menuUseAction(SceneHotSpot shs, int objectid){
+    	//use a normal object in a hotspot
     	if(shs.getUseobj() != null && shs.getUseobj().getId() == objectid){
-    		if(sc.skipSceneImage()){
-    			if(sc.isFinalImage()){
-    				applyCustomFinalChanges(shs);
-    			}
-    			else{
-    				applyCustomChange(shs);
-    			}
-				view.invalidate();
-    		}
+	    		if(sc.skipSceneImage()){
+	    			if(sc.isFinalImage()){
+	    				applyCustomFinalChanges(shs);
+	    			}
+	    			else{
+	    				applyCustomChange(shs);
+	    			}
+					view.invalidate();
+	    		}
+    		
     		return true;
+    	}
+    	else if(shs.getHistobj() != null && shs.getHistoryscene() != -1 && shs.getHistobj().getId() == objectid){
+    		loadHistoryAnim(shs.getHistoryscene());
+			shs.setHistoryscene(-1); //Sols activar la Peli 1 vegada
+			return true;
     	}
     	return false;
     }
@@ -136,6 +149,11 @@ public class SceneActivity extends Activity {
      */
     public void menuGrabAction(SceneHotSpot shs){
     	Utilities.drawText(shs.getGrabtext(),getBaseContext());
+    	if(shs.getHistoryscene()!=-1 && shs.getHistobj()==null){ //Activar Peli sense necessitat d'objecte
+    		loadHistoryAnim(shs.getHistoryscene());
+			shs.setHistoryscene(-1); //Sols activar la Peli 1 vegada
+			return;
+		}
 		if(shs.getScene()!=null){ //el hotspot té una escena per activar
 			int id = shs.getScene().getId();
 			Intent sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
@@ -152,15 +170,18 @@ public class SceneActivity extends Activity {
 		if(shs.getSound() != -1){
 			Utilities.playSound(shs.getSound(), getBaseContext());
 		}
-		if(shs.getHistoryscene()!=-1){
-			Intent sceneIntent = new Intent(getBaseContext(), SlidesActivity.class);
-			sceneIntent.putExtra("history", shs.getHistoryscene());
-			startActivity(sceneIntent);
-			shs.setHistoryscene(-1); //Sols activar la escena 1 vegada
-		}
+		
     }
 
-
+    /**
+     * Loads a History Activity
+     * @param idhist
+     */
+    private void loadHistoryAnim(int idhist){
+		Intent sceneIntent = new Intent(getBaseContext(), SlidesActivity.class);
+		sceneIntent.putExtra("history",idhist);
+		startActivity(sceneIntent);
+    }
 
     /**
      * The basic menu creation function
