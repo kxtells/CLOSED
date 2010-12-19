@@ -29,6 +29,7 @@ public class DomainController {
 	private static int PLAYER_SINGLE_MOVE = 4;
 	private static int PLAYER_START_X = 354;
 	private static int PLAYER_START_Y = 80;
+	private static boolean gameover = false;
 	
 	
 	public DomainController() {
@@ -358,6 +359,14 @@ public class DomainController {
 		}
 		
 		return null;
+	}
+
+	public static void setGameover(boolean gameover) {
+		DomainController.gameover = gameover;
+	}
+
+	public static boolean isGameover() {
+		return gameover;
 	}
 }
 

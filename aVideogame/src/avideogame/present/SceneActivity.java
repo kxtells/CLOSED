@@ -98,6 +98,19 @@ public class SceneActivity extends Activity {
     }
     
     /**
+     * Function to check and kill the game if necessary
+     * 
+     *  @NOTE Now is done with constant, there's a need to program this as configurable
+     * @param historyscene
+     */
+    private void killIfGameOver(int historyscene) {
+    	if(historyscene==R.drawable.animslidehfs1){
+    		DomainController.setGameover(true);
+    		this.finish();
+    	}
+	}
+
+	/**
      * Apply specific changes for specific use-hotspot-object and scene
      * @param shs
      */
@@ -182,6 +195,7 @@ public class SceneActivity extends Activity {
 		Intent sceneIntent = new Intent(getBaseContext(), SlidesActivity.class);
 		sceneIntent.putExtra("history",idhist);
 		startActivity(sceneIntent);
+		killIfGameOver(idhist);
     }
 
     /**

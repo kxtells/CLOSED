@@ -1,6 +1,7 @@
 package avideogame.present;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -64,6 +65,7 @@ public class SlidesActivity extends Activity {
 	        	sp = DomainController.getSlideTextData(getResources(), histid, slideindex, textindex);
         		this.mp.stop();
 	        	if(sp==null){
+	        		startCreditsIfGameOver();
 	        		this.finish();
 	        		return true;
 	        	}
@@ -85,6 +87,17 @@ public class SlidesActivity extends Activity {
 		return true;
 	}
 	
+	/**
+	 * Starts the credits Activity if game finished
+	 * @NOTE Now the GameOver is checked with a constant, in the future better with XML config
+	 */
+	private void startCreditsIfGameOver() {
+		if(DomainController.isGameover()){
+			Intent creditsIntent = new Intent(getBaseContext(), InfoActivity.class);
+			startActivity(creditsIntent);
+		}
+	}
+
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
 		if(hasFocus){

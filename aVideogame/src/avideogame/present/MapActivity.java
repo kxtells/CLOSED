@@ -43,6 +43,7 @@ public class MapActivity extends Activity {
         setContentView(view);
     }
 
+    
     /**
      * When the window recieves the focus hasFocus = true,
      * so we can check view size
@@ -188,8 +189,18 @@ public class MapActivity extends Activity {
 	}
 
 
+	@Override
+	protected void onRestart() {
+		if(DomainController.isGameover()) this.finish();
+		super.onRestart();
+	}
 
-	
+
+	@Override
+	protected void onResume() {
+		if(DomainController.isGameover()) this.finish();
+		super.onResume();
+	}	
 	
     
 }

@@ -1,6 +1,7 @@
 package avideogame.present;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.animation.Animation;
@@ -21,6 +22,7 @@ public class InfoActivity extends Activity {
 	TextView infotext;
 	TextView titletext;
 	Animation titleAnim,textAnim;
+	MediaPlayer mp = new MediaPlayer();
 	
     /** Called when the activity is first created. */
     @Override
@@ -42,6 +44,8 @@ public class InfoActivity extends Activity {
         
         textAnim = AnimationUtils.loadAnimation(this, R.anim.animinfotext);
         infotext.startAnimation(textAnim);
+        
+        this.mp = Utilities.playMusic(R.raw.song_info,getBaseContext());
         
     }
     
@@ -80,5 +84,11 @@ public class InfoActivity extends Activity {
 			titletext.setText(titlecredits[currenttitle]);
 		}
 		return true;
+	}
+	
+	@Override
+	protected void onStop() {
+		mp.stop();
+		super.onStop();
 	}
 }
