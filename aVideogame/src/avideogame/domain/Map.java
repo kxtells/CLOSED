@@ -19,7 +19,8 @@ public class Map {
 	
 	
 	/**
-	 * @ToImplement
+	 * Checks if a given position with a given radius collides with a Wall
+	 * 
 	 * @param x position x
 	 * @param y position y
 	 * @param r distance
@@ -45,23 +46,12 @@ public class Map {
 		return false;
 	}
 	
-	/**
-	 * @ToImplement
-	 * @param imgmappath path to the image map (black&white)
-	 * 
-	 * Aqui s'hauria de carregar la imatge del mapa de manera que es
-	 * pugui consultar a nivell de píxel si hi ha paret o no.
-	 */
-	public void loadImageMap(String imgmappath){
-		
-	}
 	
 	/**
-	 * Returns the nearest hot spot given a position
-	 * @ToImplement
+	 * Returns the hot spot in a given a position (if exists, null otherwise)
 	 * @param x position x
 	 * @param y position y
-	 * @return MapHotSpot returns the HotSpot in a given point
+	 * @return MapHotSpot returns the HotSpot in a given point, null if there's no hot spot
 	 */
 	public MapHotSpot getMapHotSpot(int x, int y){
 		int ln = mhs.size();

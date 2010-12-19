@@ -8,6 +8,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import avideogame.utils.Utilities;
 
+/**
+ * Credit Show Activity
+ * @author Jordi Castells
+ *
+ */
 public class InfoActivity extends Activity {
 	private String[] credits;
 	private String[] titlecredits;
@@ -56,7 +61,11 @@ public class InfoActivity extends Activity {
 	public boolean onTouchEvent(MotionEvent event) {
 		if(event.getAction() == MotionEvent.ACTION_DOWN){
 			int ln = credits.length;
-			if(current++ > ln-1) current = 0;
+			current++;
+			if(current >= ln-1) {
+				this.finish();
+				return false;
+			}
 			
 			String s = credits[current];
 			if(s.equals(getString(R.string.JUMP_SIGNAL_STRING))){

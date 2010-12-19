@@ -72,7 +72,7 @@ public class BagActivity extends Activity {
 	/**
 	 * Subclass ImageAdapter to fill the
 	 * grid with player's object images
-	 * @author kxtells
+	 * @author Jordi Castells
 	 *
 	 */
 	public class ImageAdapter extends BaseAdapter {

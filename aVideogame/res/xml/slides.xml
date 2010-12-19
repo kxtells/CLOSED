@@ -61,12 +61,12 @@
 			<text string="I marxo corrents" colorback="#AA000000" colortext="#FFFFFFFF"></text>
 		</slide>
 		<slide anim="@drawable/animslidehfs2">
-			<text string="Em tapo les orelles i espero " colorback="#AA000000" colortext="#FFFFFFFF" sound="@raw/explosion"></text>
+			<text string="Em tapo les orelles i espero " colorback="#AA000000" colortext="#FFFFFFFF"></text>
 			<text string="espero..." colorback="#AA000000" colortext="#FFFFFFFF"></text>
 			<text string="..." colorback="#AA000000" colortext="#FFFFFFFF"></text>
 		</slide>
 		<slide anim="@drawable/animslidehfs3">
-			<text string="BOOM!!" colorback="#AA3F250A" colortext="#FFFFFFFF" sound="@raw/explosion"></text>
+			<text string="BOOM!!" colorback="#AA3F250A" colortext="#FFFFFFFF" sound="@raw/bomb"></text>
 			<text string="Wow" colorback="#AA000000" colortext="#FFFFFFFF"></text>
 			<text string="Segur que ja no queda porta" colorback="#AA000000" colortext="#FFFFFFFF"></text>
 		</slide>
@@ -90,7 +90,7 @@
 			<text string="Mentre el miro" colorback="#AA000000" colortext="#FFFFFFFF"></text>
 			<text string="Em fixo en l'habitació on M'havien tancat" colorback="#AA000000" colortext="#FFFFFFFF"></text>
 		</slide>
-		<slide anim="@drawable/animslidehfs6">
+		<slide anim="@drawable/animslidehfs7">
 			<text string="És la noia!" colorback="#AA000000" colortext="#FFFFFFFF"></text>
 			<text string="Qui és?" colorback="#AA000000" colortext="#FFFFFFFF"></text>
 			<text string="M'ha tancat ella?" colorback="#AA000000" colortext="#FFFFFFFF"></text>

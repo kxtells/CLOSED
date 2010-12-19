@@ -17,7 +17,12 @@ import android.widget.TextView;
 import avideogame.domain.DomainController;
 import avideogame.utils.Utilities;
 
-
+/**
+ * First class. Main Activity
+ * Represents the Main menu
+ * @author Jordi Castells
+ *
+ */
 public class aVideogame extends Activity {	
 	AnimationDrawable backanimation;
 	View v;
@@ -40,20 +45,18 @@ public class aVideogame extends Activity {
     }
 
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {	
-		return super.onTouchEvent(event);
-	}
-
-	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0,R.string.NEW_GAME,0,getString(R.string.NEW_GAME));
-		menu.add(0,R.string.CONTINUE_GAME,0,getString(R.string.CONTINUE_GAME));
-		menu.add(0,R.string.HELP,0,getString(R.string.HELP));
-		menu.add(0,R.string.CONFIGURATION,0,getString(R.string.CONFIGURATION));
+		//menu.add(0,R.string.CONTINUE_GAME,0,getString(R.string.CONTINUE_GAME));
+		//menu.add(0,R.string.HELP,0,getString(R.string.HELP));
+		//menu.add(0,R.string.CONFIGURATION,0,getString(R.string.CONFIGURATION));
 		menu.add(0,R.string.ABOUT,0,getString(R.string.ABOUT));
 		return super.onCreateOptionsMenu(menu);
 	}
 
+	/**
+	 * Starts the activity selected
+	 */
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		Intent sceneIntent;

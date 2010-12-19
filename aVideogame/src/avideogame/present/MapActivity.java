@@ -18,7 +18,11 @@ import avideogame.utils.Constants;
 import avideogame.utils.GameControls;
 import avideogame.utils.Utilities;
 
-
+/**
+ * Activity to show the Map and control the movement
+ * @author Jordi Castells
+ *
+ */
 public class MapActivity extends Activity {
 	private MapView view;
 	private GameControls gc;
@@ -49,6 +53,12 @@ public class MapActivity extends Activity {
 	        view.setGameControls(gc);
 		}
 	}
+	
+	/**
+	 * Captures the touch event and process it:
+	 *  - Touched info square button -> Open Scene
+	 *  - Touched screen, move user
+	 */
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		float tx = event.getX();

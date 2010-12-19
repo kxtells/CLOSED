@@ -91,6 +91,7 @@ public class SceneActivity extends Activity {
     	else if(shs.getHistobj() != null && shs.getHistoryscene() != -1 && shs.getHistobj().getId() == objectid){
     		loadHistoryAnim(shs.getHistoryscene());
 			shs.setHistoryscene(-1); //Sols activar la Peli 1 vegada
+			
 			return true;
     	}
     	return false;

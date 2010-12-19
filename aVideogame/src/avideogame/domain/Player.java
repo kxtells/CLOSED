@@ -2,6 +2,11 @@ package avideogame.domain;
 
 import java.util.ArrayList;
 
+/**
+ * Representation of a Player
+ * @author Jordi Castells
+ *
+ */
 public class Player {
 	private double x;
 	private double y;
@@ -12,7 +17,7 @@ public class Player {
 	
 	/**
 	 * Adds an object to the player's bag
-	 * @param co
+	 * @param co CollectableObject to add
 	 */
 	public void addObject(CollectableObject co){
 		bag.add(co);
@@ -20,7 +25,7 @@ public class Player {
 	
 	/**
 	 * Drops a specific Object from the player's bag
-	 * @param co
+	 * @param co Collectable Object to remove
 	 */
 	public void dropObject(CollectableObject co){
 		bag.remove(co);

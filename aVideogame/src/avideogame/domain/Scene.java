@@ -8,7 +8,11 @@ package avideogame.domain;
 import java.util.ArrayList;
 
 import android.util.Log;
-
+/**
+ * 
+ * @author Jordi Castells
+ *
+ */
 public class Scene {
 	private int id;
 	//Llista d'imatges
@@ -25,6 +29,10 @@ public class Scene {
 		current_scene = 0;
 	}
 
+	/**
+	 * Checks if the current image is the last referencable image for this scene
+	 * @return
+	 */
 	public boolean isFinalImage(){
 		return (this.current_scene == this.images.size()-1);
 	}
@@ -76,6 +84,7 @@ public class Scene {
 		}
 		
 	}
+	
 	public Integer getCurrentBackgound(){
 		return images.get(current_scene);
 	}
