@@ -23,6 +23,8 @@
 <string-array name="CREDITS">
 <item>Jordi Castells Sala \nSandra del Moral Lazo</item>
 <item>xjumpit</item>
+<item>http://www.snap2objects.com/freebies/</item>
+<item>xjumpit</item>
 <item>www.freesound.org\nha estat la principal font de sons</item>
 <item>By Leady\n(http://www.freesound.org/usersViewSingle.php?id=34346)\nlocked door.wav\n (http://www.freesound.org/samplesViewSingle.php?id=12739)
 </item>
@@ -36,12 +38,14 @@
 http://ccmixter.org/files/Zapac/26047\n
 is licensed under a Creative Commons license:\n
 http://creativecommons.org/licenses/by/3.0/
-
 </item>
+
 </string-array>
 <string-array name="TITLECREDITS"><item>Responsables Principals</item>
+<item>Gràfics - Siluetes</item>
 <item>Música - sons</item>
 <item>Música - Cançons</item>
+
 </string-array>
 <string name="JUMP_SIGNAL_STRING">xjumpit</string>
 
