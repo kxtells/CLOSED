@@ -91,4 +91,22 @@ public class InfoActivity extends Activity {
 		mp.stop();
 		super.onStop();
 	}
+
+
+
+	@Override
+	protected void onDestroy() {
+		mp.stop();
+		super.onDestroy();
+	}
+
+
+
+	@Override
+	protected void onPause() {
+		mp.stop();
+		super.onPause();
+	}
+	
+	
 }
