@@ -1,6 +1,7 @@
 package avideogame.present;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -50,14 +51,14 @@ public class SceneActivity extends Activity {
 			if(shs!=null){
 				switch(DomainController.getPlayer().getCurrent_action()){
 					case Constants.MENU_INFO:
-						Utilities.drawText(shs.getInfo(),getBaseContext());
+						Utilities.drawText(shs.getInfo(),this);
 						break;
 					case Constants.MENU_GRAB:
 						menuGrabAction(shs);
 						break;
 					case Constants.MENU_OBJ:
 						boolean done = menuUseAction(shs,DomainController.getPlayer().getCurrent_object());
-						if(!done)Utilities.drawText(getString(R.string.no_hs_object_text),getBaseContext());
+						if(!done)Utilities.drawText(getString(R.string.no_hs_object_text),this);
 						break;
 				}				
 			}
@@ -157,33 +158,44 @@ public class SceneActivity extends Activity {
 		}
 	}
 
+
+
 	/**
      * Action to do when a HotSpot is clicked and the action is Grab/Interact
      * @param shs
      */
     public void menuGrabAction(SceneHotSpot shs){
-    	Utilities.drawText(shs.getGrabtext(),getBaseContext());
+    	
     	if(shs.getHistoryscene()!=-1 && shs.getHistobj()==null){ //Activar Peli sense necessitat d'objecte
+    		Utilities.drawTempText(shs.getGrabtext(),getBaseContext());
     		loadHistoryAnim(shs.getHistoryscene());
 			shs.setHistoryscene(-1); //Sols activar la Peli 1 vegada
 			return;
 		}
 		if(shs.getScene()!=null){ //el hotspot té una escena per activar
+			Utilities.drawTempText(shs.getGrabtext(),getBaseContext());
 			int id = shs.getScene().getId();
 			Intent sceneIntent = new Intent(getBaseContext(), SceneActivity.class);
 			sceneIntent.putExtra("SceneIndex", id);
 			startActivity(sceneIntent);
 		}
-		if(shs.getObject()!=null){ //el hot spot té un objecte per agafar
+		else if(shs.getObject()!=null){ //el hot spot té un objecte per agafar
+			Utilities.drawText(shs.getGrabtext(),this);
 			sc.skipSceneImage(); //passa a seguent imatge (imatge sense objecte)
 			DomainController.getPlayer().addObject(shs.getObject()); //afegeix objecte a jugador
 			sc.dropHotSpot(shs); //treu el hotspot
 			Utilities.playSound(R.raw.ohhh,getBaseContext());
 			view.invalidate(); //invalida la vista per repintar-la
 		}
+		else{
+			Utilities.drawText(shs.getGrabtext(),this);
+		}
+		
 		if(shs.getSound() != -1){
+			Utilities.drawText(shs.getGrabtext(),this);
 			Utilities.playSound(shs.getSound(), getBaseContext());
 		}
+
 		
     }
 
@@ -286,7 +298,6 @@ public class SceneActivity extends Activity {
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-	
 	
 	
     

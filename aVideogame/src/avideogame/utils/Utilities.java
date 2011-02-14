@@ -2,18 +2,36 @@ package avideogame.utils;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
 import android.media.MediaPlayer;
-import android.util.Log;
 import android.widget.Toast;
 import avideogame.domain.DomainController;
+import avideogame.present.CustomDialog;
 
 public class Utilities {
 	
-	public static void drawText(String text,Context context){
+	/**
+	 * Opens a dialog to show a text. Needs user input to remove this text
+	 * @param text String to show
+	 * @param act  Activity that shows the text
+	 */
+	public static void drawText(String text,Activity act){
 		if(text.equals("") || text.equals(" ")) return;
-		Log.d("Toast",""+text);
+		
+		CustomDialog cd = new CustomDialog(act);
+		cd.setText(text);
+		cd.setTitle("");
+		cd.show();
+	}
+	
+	/**
+	 * Draws a temporary text using an Android Toast
+	 * @param text    String to show
+	 * @param context Context
+	 */
+	public static void drawTempText(String text,Context context){
 		Toast.makeText(context, text, text.length() * 20).show();
 	}
 	
@@ -140,4 +158,5 @@ public class Utilities {
 		}
 		return false;
 	}
+
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -108,7 +109,9 @@ public class SlidesActivity extends Activity {
 
 	@Override
 	protected void onStop() {
+		Log.d("Slides","onStop");
 		mp.stop();
+		this.finish();
 		super.onStop();
 	}
 	

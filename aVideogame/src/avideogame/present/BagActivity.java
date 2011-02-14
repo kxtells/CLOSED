@@ -18,6 +18,7 @@ import avideogame.utils.Constants;
 import avideogame.utils.Utilities;
 
 public class BagActivity extends Activity {
+	Activity cact;
 	private GridView view;
 	protected int current_action;
 	protected int selected1_id = -1;
@@ -36,7 +37,7 @@ public class BagActivity extends Activity {
         view.setBackgroundResource(R.drawable.bagactbackground);
         view.setAdapter(new ImageAdapter(this));
         view.setBackgroundColor(Color.WHITE);
-        
+        cact = this;
         
     }
 
@@ -98,17 +99,14 @@ public class BagActivity extends Activity {
 	    	}
 	    }
 	    
-		@Override
 		public int getCount() {
 			return this.bag_items_img_id.size();
 		}
 
-		@Override
 		public Object getItem(int arg0) {
 			return null;
 		}
 
-		@Override
 		public long getItemId(int arg0) {
 			// TODO Auto-generated method stub
 			return 0;
@@ -154,7 +152,7 @@ public class BagActivity extends Activity {
     			else{
     				String n1 = DomainController.getObjectById(selected1_id).getName();
     				String n2 = DomainController.getObjectById(selected2_id).getName();
-    				Utilities.drawText(getString(R.string.NOCOMB)+" "+n1+" i "+n2, getBaseContext());
+    				//Utilities.drawText(getString(R.string.NOCOMB)+" "+n1+" i "+n2, this);
     			}
     			//posar la combinació a 0
     			selected1_id = -1;
@@ -172,7 +170,7 @@ public class BagActivity extends Activity {
 		 * @param objectid
 		 */
 		private void objectInteract(int objectid){
-			Utilities.drawText(DomainController.getObjectById(objectid).getInteracttext(), getBaseContext());
+			//Utilities.drawText(DomainController.getObjectById(objectid).getInteracttext(), this);
     		if(DomainController.getObjectById(objectid).getCombines_with() == -1){
     			//si hi ha objectes en la seva llista de transformacions
     			int size = DomainController.getObjectById(objectid).getTransforms_to().size(); 
@@ -201,7 +199,6 @@ public class BagActivity extends Activity {
 			}
 		}
 		
-		@Override
 		public View getView(final int position, View convertView, ViewGroup arg2) {
 	        ImageView imageView;
 	            imageView = new ImageView(mContext);
@@ -212,7 +209,6 @@ public class BagActivity extends Activity {
 	            imageView.setOnClickListener(new View.OnClickListener() {
 
 	            	/*Que es fa quan es clica un objecte*/
-	                @Override
 	                public void onClick(View view) {
 	                	//s'haurà de fer un switch segons acció
 	                	switch(current_action){
@@ -222,11 +218,11 @@ public class BagActivity extends Activity {
 	                		objectCombination(bag_items_id.get(position));
 	                		break;
 	                	case Constants.OBJ_DROP:
-		                	Utilities.drawText("No Implementat", mContext);
+		                	Utilities.drawText("No Implementat", cact);
 	                		break;
 	                	case Constants.OBJ_INFO:
 	                		String text = DomainController.getPlayer().getBagObjectById(bag_items_id.get(position)).getInfo();
-		                	Utilities.drawText(text, mContext);
+	                		Utilities.drawText(text, cact);
 	                		break;
 	                	case Constants.OBJ_INTE: //Interactuar amb objecte recollit
 	                		objectInteract(bag_items_id.get(position));

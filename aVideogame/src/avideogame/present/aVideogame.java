@@ -71,7 +71,7 @@ public class aVideogame extends Activity {
 			sceneIntent.putExtra("type", 1);
 			break;
 		case R.string.HELP:
-			Utilities.drawText("No implementat", getBaseContext());
+			//Utilities.drawText("No implementat", getBaseContext());
 			break;
 		case R.string.CONFIGURATION:
 			//Utilities.drawText("No implementat", getBaseContext());

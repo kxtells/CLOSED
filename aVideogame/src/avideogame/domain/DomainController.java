@@ -30,6 +30,7 @@ public class DomainController {
 	private static int PLAYER_START_X = 354;
 	private static int PLAYER_START_Y = 80;
 	private static boolean gameover = false;
+	private static boolean history_to_show = true;
 	
 	
 	public DomainController() {
@@ -367,6 +368,12 @@ public class DomainController {
 
 	public static boolean isGameover() {
 		return gameover;
+	}
+
+	public static boolean showHistory() {
+		boolean t = history_to_show;
+		history_to_show = false;
+		return t;
 	}
 }
 

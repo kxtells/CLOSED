@@ -31,9 +31,9 @@ public class MapActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+        Log.d("MapA","onRestart");
         int type = this.getIntent().getIntExtra("type", -1);
-        if(type==0){
+        if(type==0 && DomainController.showHistory()){
 			Intent sceneIntent = new Intent(getBaseContext(), SlidesActivity.class);
 			sceneIntent.putExtra("history", R.drawable.animslideh1s1);
 			startActivity(sceneIntent);
@@ -191,6 +191,7 @@ public class MapActivity extends Activity {
 
 	@Override
 	protected void onRestart() {
+		Log.d("MapA","onRestart");
 		if(DomainController.isGameover()) this.finish();
 		super.onRestart();
 	}
@@ -198,9 +199,32 @@ public class MapActivity extends Activity {
 
 	@Override
 	protected void onResume() {
+		Log.d("MapA","onResume");
 		if(DomainController.isGameover()) this.finish();
 		super.onResume();
 	}	
 	
-    
+	@Override
+	protected void onPause() {
+		Log.d("MapA","onPause");
+		// TODO Auto-generated method stub
+		super.onPause();
+	}
+
+
+	@Override
+	protected void onStart() {
+		Log.d("MapA","onStart");
+		// TODO Auto-generated method stub
+		super.onStart();
+	}
+
+
+	@Override
+	protected void onStop() {
+		Log.d("MapA","onStop");
+		// TODO Auto-generated method stub
+		super.onStop();
+	}
+	
 }
