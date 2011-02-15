@@ -194,7 +194,6 @@ public class SceneActivity extends Activity {
 		}
 		
 		if(shs.getSound() != -1){
-			Utilities.drawText(shs.getGrabtext(),this);
 			Utilities.playSound(shs.getSound(), getBaseContext());
 		}
 
