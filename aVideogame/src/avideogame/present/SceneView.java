@@ -18,12 +18,12 @@ import avideogame.utils.Constants;
 public class SceneView extends View {
 	private Paint paint = new Paint();
 	private Scene scene;
-	Resources res;
+	Resources res = getResources();
+	private DomainController dc;
 	
 	public SceneView(Context context) {
 		super(context);
-		DomainController.instance(this.getResources());
-		res = getResources();
+		dc = DomainController.instance(this.getResources());
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class SceneView extends View {
 	 */
 	private void drawInfoSquare(Canvas canvas){
 		int draw_identifier = 0;
-		switch(DomainController.getPlayer().getCurrent_action()){
+		switch(dc.getPlayer().getCurrent_action()){
 		case Constants.MENU_INFO:
 			draw_identifier = R.drawable.magnifier;
 			break;
@@ -70,13 +70,13 @@ public class SceneView extends View {
 			draw_identifier = R.drawable.grab;		
 			break;
 		case Constants.MENU_OBJ:
-			draw_identifier = DomainController.getPlayer().getCurrentObjectDrawResource();
+			draw_identifier = dc.getPlayer().getCurrentObjectDrawResource();
 			break;
 		}
 		
 		/*If there's an error with an identifier, simply return to INFO*/
 		if(draw_identifier == -1) {
-			DomainController.getPlayer().setCurrent_action(Constants.MENU_INFO);
+			dc.getPlayer().setCurrent_action(Constants.MENU_INFO);
 			draw_identifier = R.drawable.magnifier;
 		}
 		paint.setColor(res.getColor(R.color.BUTTON));

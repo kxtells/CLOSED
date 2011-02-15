@@ -20,6 +20,7 @@ public class MapView extends View{
 	private MapHotSpot mhs = null;
 	Resources res;
 	GameControls gc = null;
+	private DomainController dc = DomainController.instance(getResources());
 	
 	public MapView(Context context) {
 		super(context);
@@ -37,14 +38,14 @@ public class MapView extends View{
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		double x = DomainController.getPlayer().getX();
-		double y = DomainController.getPlayer().getY();
+		double x = dc.getPlayer().getX();
+		double y = dc.getPlayer().getY();
 		int tx = (int)x-getWidth()/2;
-		mhs = DomainController.getMap().getMapHotSpot((int)x, (int)y);
+		mhs = dc.getMap().getMapHotSpot((int)x, (int)y);
 		
 		
-		if(tx+getWidth()>=DomainController.getMap().getMapWidth()){
-			tx = DomainController.getMap().getMapWidth() - getWidth();
+		if(tx+getWidth()>=dc.getMap().getMapWidth()){
+			tx = dc.getMap().getMapWidth() - getWidth();
 		}
 		else if(tx<=0){
 			tx = 0;
@@ -53,7 +54,7 @@ public class MapView extends View{
 		/*Paint scrolled map*/
 		canvas.save();
 		canvas.translate((float) -tx, 0);		
-		canvas.drawBitmap(DomainController.getMap().getImage(), 0, 0, null);
+		canvas.drawBitmap(dc.getMap().getImage(), 0, 0, null);
 		
 		drawPlayer(canvas);		
 		//drawHintSquares(canvas);
@@ -66,14 +67,14 @@ public class MapView extends View{
 	}
 
 	private void drawPlayer(Canvas canvas) {
-		double x = DomainController.getPlayer().getX();
-		double y = DomainController.getPlayer().getY();
+		double x = dc.getPlayer().getX();
+		double y = dc.getPlayer().getY();
 		
 		paint.setAntiAlias(true);
 		
 		paint.setColor(Color.BLACK);
 		
-		int pradius = DomainController.getPlayer().getRadius();
+		int pradius = dc.getPlayer().getRadius();
 		canvas.drawCircle((int)x, (int)y, pradius, paint);
 		
 		paint.setAntiAlias(false);
@@ -84,7 +85,7 @@ public class MapView extends View{
 	 * @param canvas
 	 */
 	private void drawHintSquares(Canvas canvas) {
-		ArrayList<MapHotSpot> mhs = DomainController.getMap().getMhs();
+		ArrayList<MapHotSpot> mhs = dc.getMap().getMhs();
 		int ln = mhs.size();
 		int i;
 		paint.setColor(res.getColor(R.color.HIGHLIGHT_HINT_COLOR));

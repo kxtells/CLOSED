@@ -20,20 +20,20 @@ import avideogame.utils.SlidePack;
  *
  */
 public class DomainController {
-	protected static DomainController dc;
+	protected static DomainController dc = null;
 	public static Map map;
-	private static Player player;
-	private static ArrayList<Scene> scenes = new ArrayList<Scene>();
-	private static ArrayList<CollectableObject> objects = new ArrayList<CollectableObject>();
-	private static int TOUCH_ERROR = 20;
-	private static int PLAYER_SINGLE_MOVE = 4;
-	private static int PLAYER_START_X = 354;
-	private static int PLAYER_START_Y = 80;
-	private static boolean gameover = false;
-	private static boolean history_to_show = true;
+	private Player player;
+	private ArrayList<Scene> scenes = new ArrayList<Scene>();
+	private ArrayList<CollectableObject> objects = new ArrayList<CollectableObject>();
+	private int TOUCH_ERROR = 20;
+	private int PLAYER_SINGLE_MOVE = 4;
+	private int PLAYER_START_X = 354;
+	private int PLAYER_START_Y = 80;
+	private boolean gameover = false;
+	private boolean history_to_show = true;
 	
 	
-	public DomainController() {
+	protected DomainController() {
 		super();
 	}
 	
@@ -41,16 +41,18 @@ public class DomainController {
 		if(dc == null){
 			dc = new DomainController();
 			try {
-				InitializeDomainController(resources);
+				Log.d("INIT","Initialize Resources");
+				dc.InitializeDomainController(resources);
 			} catch (XmlPullParserException e) {
 				// TODO Auto-generated catch block
+				Log.d("INIT","ERROR on PARSE XML");
 				dc = null;
 			}
 		}
 		return dc;
 	}
 
-	public static Scene getSceneById(int sceneid){
+	public Scene getSceneById(int sceneid){
 		int ln = scenes.size();
 		for(int i=0;i<ln;i++){
 			if(scenes.get(i).getId() == sceneid){
@@ -60,7 +62,7 @@ public class DomainController {
 		return null; 
 	}
 	
-	public static CollectableObject getObjectById(int objectid){
+	public CollectableObject getObjectById(int objectid){
 		int ln = objects.size();
 		for(int i=0;i<ln;i++){
 			if(objects.get(i).getId() == objectid){
@@ -76,7 +78,7 @@ public class DomainController {
 	 * @param resources Resources given from android front-end, needed to assign bitmaps
 	 * @throws XmlPullParserException o	
 	 */
-	private static void InitializeDomainController(Resources resources) throws XmlPullParserException {
+	private void InitializeDomainController(Resources resources) throws XmlPullParserException {
 		Log.d("INITDATA","INITDATA");
 		setPlayer(new Player(PLAYER_START_X,PLAYER_START_Y));
 		getPlayer().setCurrent_action(0);
@@ -88,23 +90,23 @@ public class DomainController {
 
 	}
 
-	private static void clearDomainController(){
+	public static void clearDomainController(){
 		dc = null;
 	}
 
-	public static void setPlayer(Player player) {
-		DomainController.player = player;
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
-	public static Player getPlayer() {
+	public Player getPlayer() {
 		return player;
 	}
 	
-	public static Map getMap(){
+	public Map getMap(){
 		return map;
 	}
 	
-	private static void parseMapsXML(Resources resources) throws XmlPullParserException {
+	private void parseMapsXML(Resources resources) throws XmlPullParserException {
 		XmlResourceParser xrp = resources.getXml(R.xml.maps);
 		Map c = null;
 		while (xrp.getEventType() != XmlResourceParser.END_DOCUMENT) {
@@ -147,7 +149,7 @@ public class DomainController {
 	 * @param resources
 	 * @throws XmlPullParserException
 	 */
-	private static void parseObjectsXML(Resources resources) throws XmlPullParserException{
+	private void parseObjectsXML(Resources resources) throws XmlPullParserException{
 		XmlResourceParser xrp = resources.getXml(R.xml.collectableobjects);
 		CollectableObject c = null;
 		while (xrp.getEventType() != XmlResourceParser.END_DOCUMENT) {
@@ -196,7 +198,7 @@ public class DomainController {
 	 * @param resources
 	 * @throws XmlPullParserException
 	 */
-	private static void parseScenesXML(Resources resources) throws XmlPullParserException{
+	private void parseScenesXML(Resources resources) throws XmlPullParserException{
 		XmlResourceParser xrp = resources.getXml(R.xml.scenes);
 		Scene currentscene = null;
 		while (xrp.getEventType() != XmlResourceParser.END_DOCUMENT) {
@@ -274,7 +276,7 @@ public class DomainController {
 	 * in DomainController.
 	 * @return
 	 */
-	public static boolean isPlayer(double x, double y){
+	public boolean isPlayer(double x, double y){
 		double px = player.getX();
 		double py = player.getY();
 		
@@ -285,11 +287,11 @@ public class DomainController {
 		else return false;
 	}
 
-	public static void setPLAYER_SINGLE_MOVE(int pLAYER_SINGLE_MOVE) {
+	public void setPLAYER_SINGLE_MOVE(int pLAYER_SINGLE_MOVE) {
 		PLAYER_SINGLE_MOVE = pLAYER_SINGLE_MOVE;
 	}
 
-	public static int getPLAYER_SINGLE_MOVE() {
+	public int getPLAYER_SINGLE_MOVE() {
 		return PLAYER_SINGLE_MOVE;
 	}
 	
@@ -300,7 +302,7 @@ public class DomainController {
 	 * @param textindex textindex to retrieve  
 	 * @return SlidePack pack of data, null if there's no text
 	 */
-	public static SlidePack getSlideTextData(Resources resources,int scene, int slide, int text){
+	public SlidePack getSlideTextData(Resources resources,int scene, int slide, int text){
 		XmlResourceParser xrp = resources.getXml(R.xml.slides);
 		int scid = 0;
 		int slideindex = 0;
@@ -362,15 +364,15 @@ public class DomainController {
 		return null;
 	}
 
-	public static void setGameover(boolean gameover) {
-		DomainController.gameover = gameover;
+	public void setGameover(boolean gameover) {
+		this.gameover = gameover;
 	}
 
-	public static boolean isGameover() {
+	public boolean isGameover() {
 		return gameover;
 	}
 
-	public static boolean showHistory() {
+	public boolean showHistory() {
 		boolean t = history_to_show;
 		history_to_show = false;
 		return t;

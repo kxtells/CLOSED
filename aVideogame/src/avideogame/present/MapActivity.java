@@ -26,18 +26,20 @@ import avideogame.utils.Utilities;
 public class MapActivity extends Activity {
 	private MapView view;
 	private GameControls gc;
+	private DomainController dc;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("MapA","onRestart");
-        int type = this.getIntent().getIntExtra("type", -1);
-        if(type==0 && DomainController.showHistory()){
+        dc = DomainController.instance(getResources());
+        
+        //int type = this.getIntent().getIntExtra("type", -1);
+        /*if(type==0 && dc.showHistory()){
 			Intent sceneIntent = new Intent(getBaseContext(), SlidesActivity.class);
 			sceneIntent.putExtra("history", R.drawable.animslideh1s1);
 			startActivity(sceneIntent);
-        }
+        }*/
         
         view = new MapView(this); 
         setContentView(view);
@@ -67,7 +69,6 @@ public class MapActivity extends Activity {
 		
 		switch(event.getAction()){
 			case MotionEvent.ACTION_DOWN:
-				Log.d("MapActivity","DOWN");
 				
 				//Only active if player is over a hotspot, change to specific scene
 				if(Utilities.touchedInfoButton((int)tx, (int)ty)){
@@ -102,43 +103,43 @@ public class MapActivity extends Activity {
 	 * @param mov
 	 */
 	public void doMovement(int mov){
-		int newx = (int) DomainController.getPlayer().getX();
-		int newy = (int) DomainController.getPlayer().getY();
+		int newx = (int) dc.getPlayer().getX();
+		int newy = (int) dc.getPlayer().getY();
 		
 		switch(mov){
 		case GameControls.DOWNBUTTON:
-			newy += DomainController.getPLAYER_SINGLE_MOVE();
+			newy += dc.getPLAYER_SINGLE_MOVE();
 			break;
 		case GameControls.UPBUTTON:
-			newy -= DomainController.getPLAYER_SINGLE_MOVE();
+			newy -= dc.getPLAYER_SINGLE_MOVE();
 			break;
 		case GameControls.LEFTBUTTON:
-			newx -= DomainController.getPLAYER_SINGLE_MOVE();
+			newx -= dc.getPLAYER_SINGLE_MOVE();
 			break;
 		case GameControls.RIGHTBUTTON:
-			newx += DomainController.getPLAYER_SINGLE_MOVE();
+			newx += dc.getPLAYER_SINGLE_MOVE();
 			break;
 		case GameControls.UPRIGHTBUTTON:
-			newx += DomainController.getPLAYER_SINGLE_MOVE()/2;
-			newy -= DomainController.getPLAYER_SINGLE_MOVE()/2;
+			newx += dc.getPLAYER_SINGLE_MOVE()/2;
+			newy -= dc.getPLAYER_SINGLE_MOVE()/2;
 			break;
 		case GameControls.UPLEFTBUTTON:
-			newx -= DomainController.getPLAYER_SINGLE_MOVE()/2;
-			newy -= DomainController.getPLAYER_SINGLE_MOVE()/2;
+			newx -= dc.getPLAYER_SINGLE_MOVE()/2;
+			newy -= dc.getPLAYER_SINGLE_MOVE()/2;
 			break;
 		case GameControls.DOWNLEFTBUTTON:
-			newx -= DomainController.getPLAYER_SINGLE_MOVE()/2;
-			newy += DomainController.getPLAYER_SINGLE_MOVE()/2;
+			newx -= dc.getPLAYER_SINGLE_MOVE()/2;
+			newy += dc.getPLAYER_SINGLE_MOVE()/2;
 			break;
 		case GameControls.DOWNRIGHTBUTTON:
-			newx += DomainController.getPLAYER_SINGLE_MOVE()/2;
-			newy += DomainController.getPLAYER_SINGLE_MOVE()/2;
+			newx += dc.getPLAYER_SINGLE_MOVE()/2;
+			newy += dc.getPLAYER_SINGLE_MOVE()/2;
 			break;
 		}
 		
-		if(!DomainController.getMap().collides(newx, newy, DomainController.getPlayer().getRadius())){
-			DomainController.getPlayer().setX(newx);
-			DomainController.getPlayer().setY(newy);
+		if(!dc.getMap().collides(newx, newy, dc.getPlayer().getRadius())){
+			dc.getPlayer().setX(newx);
+			dc.getPlayer().setY(newy);
 		}
 		view.invalidate();
 	}
@@ -162,10 +163,10 @@ public class MapActivity extends Activity {
 	 */
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		int movement = DomainController.getPLAYER_SINGLE_MOVE();
-		int radius = DomainController.getPlayer().getRadius();
-		double px = DomainController.getPlayer().getX();
-		double py = DomainController.getPlayer().getY();
+		int movement = dc.getPLAYER_SINGLE_MOVE();
+		int radius = dc.getPlayer().getRadius();
+		double px = dc.getPlayer().getX();
+		double py = dc.getPlayer().getY();
 		
 		if(keyCode == KeyEvent.KEYCODE_DPAD_UP || keyCode == KeyEvent.KEYCODE_O){
 			py -= movement;
@@ -180,9 +181,9 @@ public class MapActivity extends Activity {
 			px -= movement;	
 		}
 		
-		if(!DomainController.getMap().collides((int)px, (int)py, radius)){
-			DomainController.getPlayer().setX(px);
-			DomainController.getPlayer().setY(py);
+		if(!dc.getMap().collides((int)px, (int)py, radius)){
+			dc.getPlayer().setX(px);
+			dc.getPlayer().setY(py);
 		}
 		view.invalidate();
 		return super.onKeyDown(keyCode, event);
@@ -191,22 +192,19 @@ public class MapActivity extends Activity {
 
 	@Override
 	protected void onRestart() {
-		Log.d("MapA","onRestart");
-		if(DomainController.isGameover()) this.finish();
+		if(dc.isGameover()) this.finish();
 		super.onRestart();
 	}
 
 
 	@Override
 	protected void onResume() {
-		Log.d("MapA","onResume");
-		if(DomainController.isGameover()) this.finish();
+		if(dc.isGameover()) this.finish();
 		super.onResume();
 	}	
 	
 	@Override
 	protected void onPause() {
-		Log.d("MapA","onPause");
 		// TODO Auto-generated method stub
 		super.onPause();
 	}
@@ -214,7 +212,6 @@ public class MapActivity extends Activity {
 
 	@Override
 	protected void onStart() {
-		Log.d("MapA","onStart");
 		// TODO Auto-generated method stub
 		super.onStart();
 	}
@@ -222,7 +219,6 @@ public class MapActivity extends Activity {
 
 	@Override
 	protected void onStop() {
-		Log.d("MapA","onStop");
 		// TODO Auto-generated method stub
 		super.onStop();
 	}

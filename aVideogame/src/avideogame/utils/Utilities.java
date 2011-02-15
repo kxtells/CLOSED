@@ -12,6 +12,7 @@ import avideogame.present.CustomDialog;
 
 public class Utilities {
 	
+	
 	/**
 	 * Opens a dialog to show a text. Needs user input to remove this text
 	 * @param text String to show
@@ -58,11 +59,13 @@ public class Utilities {
 	 * @return
 	 */
 	public static int ScreenXtoMapX(int scx, int screenWidth){
-		int px = (int) DomainController.getPlayer().getX();
+		DomainController dc = DomainController.instance(null);
+		
+		int px = (int) dc.getPlayer().getX();
 		int tx = (int)px-screenWidth/2;
 		
-		if(tx+screenWidth>=DomainController.getMap().getMapWidth()){
-			tx = DomainController.getMap().getMapWidth() - screenWidth;
+		if(tx+screenWidth>=dc.getMap().getMapWidth()){
+			tx = dc.getMap().getMapWidth() - screenWidth;
 		}
 		else if(tx<=0){
 			tx = 0;
@@ -81,11 +84,13 @@ public class Utilities {
 	 * @return
 	 */
 	public static int MapXtoScreenX(int mpx, int screenWidth){
-		int px = (int) DomainController.getPlayer().getX();
+		DomainController dc = DomainController.instance(null);
+		
+		int px = (int) dc.getPlayer().getX();
 		int tx = (int)px-screenWidth/2;
 		
-		if(tx+screenWidth>=DomainController.getMap().getMapWidth()){
-			tx = DomainController.getMap().getMapWidth() - screenWidth;
+		if(tx+screenWidth>=dc.getMap().getMapWidth()){
+			tx = dc.getMap().getMapWidth() - screenWidth;
 		}
 		else if(tx<=0){
 			tx = 0;

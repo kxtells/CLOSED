@@ -24,12 +24,13 @@ public class BagActivity extends Activity {
 	protected int selected1_id = -1;
 	protected int selected2_id = -1;
 	protected ArrayList<View> selectedviews = new ArrayList<View>();
+	DomainController dc;
 	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        dc = DomainController.instance(getResources());
         current_action = Constants.OBJ_INFO;
         
         setContentView(R.layout.baglayout);
@@ -93,9 +94,9 @@ public class BagActivity extends Activity {
 	    private void fillImageIds(){
 	    	bag_items_img_id.clear();
 	    	bag_items_id.clear();
-	    	for(int i = 0;i<DomainController.getPlayer().getBag().size();i++){
-	    		bag_items_img_id.add(DomainController.getPlayer().getBag().get(i).getImage());
-	    		bag_items_id.add(DomainController.getPlayer().getBag().get(i).getId());
+	    	for(int i = 0;i<dc.getPlayer().getBag().size();i++){
+	    		bag_items_img_id.add(dc.getPlayer().getBag().get(i).getImage());
+	    		bag_items_id.add(dc.getPlayer().getBag().get(i).getId());
 	    	}
 	    }
 	    
@@ -130,28 +131,28 @@ public class BagActivity extends Activity {
 			if(selected2_id != -1){
 				unHighlightAll();
     			//Combinació correcte
-    			if(DomainController.getObjectById(selected1_id).getCombines_with() == selected2_id ||
-    					DomainController.getObjectById(selected2_id).getCombines_with() == selected1_id){
+    			if(dc.getObjectById(selected1_id).getCombines_with() == selected2_id ||
+    					dc.getObjectById(selected2_id).getCombines_with() == selected1_id){
     				Log.d("COMB","combines");
-    				int newobjidA = DomainController.getObjectById(selected1_id).getComb_creates();
-    				int newobjidB = DomainController.getObjectById(selected2_id).getComb_creates();
+    				int newobjidA = dc.getObjectById(selected1_id).getComb_creates();
+    				int newobjidB = dc.getObjectById(selected2_id).getComb_creates();
     				int newobjid = 0;
     				
     				//comprovar per quin costat està feta l'assignació de nou objecte
     				if(newobjidA == -1) newobjid = newobjidB;
     				else newobjid = newobjidA;
     				
-    				DomainController.getPlayer().dropObject(DomainController.getObjectById(selected2_id));
-    				DomainController.getPlayer().dropObject(DomainController.getObjectById(selected1_id));
-    				DomainController.getPlayer().addObject(DomainController.getObjectById(newobjid));
+    				dc.getPlayer().dropObject(dc.getObjectById(selected2_id));
+    				dc.getPlayer().dropObject(dc.getObjectById(selected1_id));
+    				dc.getPlayer().addObject(dc.getObjectById(newobjid));
     			
         			//regenerar llista d'objectes a mostrar
         			fillImageIds();
     				notifyDataSetChanged();
     			}
     			else{
-    				String n1 = DomainController.getObjectById(selected1_id).getName();
-    				String n2 = DomainController.getObjectById(selected2_id).getName();
+    				String n1 = dc.getObjectById(selected1_id).getName();
+    				String n2 = dc.getObjectById(selected2_id).getName();
     				//Utilities.drawText(getString(R.string.NOCOMB)+" "+n1+" i "+n2, this);
     			}
     			//posar la combinació a 0
@@ -171,17 +172,17 @@ public class BagActivity extends Activity {
 		 */
 		private void objectInteract(int objectid){
 			//Utilities.drawText(DomainController.getObjectById(objectid).getInteracttext(), this);
-    		if(DomainController.getObjectById(objectid).getCombines_with() == -1){
+    		if(dc.getObjectById(objectid).getCombines_with() == -1){
     			//si hi ha objectes en la seva llista de transformacions
-    			int size = DomainController.getObjectById(objectid).getTransforms_to().size(); 
+    			int size = dc.getObjectById(objectid).getTransforms_to().size(); 
     			if(size>0){
     				//afegeix tots els objectes a la bossa del jugador
     				for(int i=0;i<size;i++){
-    					int id = DomainController.getObjectById(objectid).getTransforms_to().get(i);
-    					DomainController.getPlayer().addObject(DomainController.getObjectById(id));
+    					int id = dc.getObjectById(objectid).getTransforms_to().get(i);
+    					dc.getPlayer().addObject(dc.getObjectById(id));
     				}
     				//esborra l'objecte original de la bossa del jugador
-    				DomainController.getPlayer().dropObject(DomainController.getObjectById(objectid));
+    				dc.getPlayer().dropObject(dc.getObjectById(objectid));
     				fillImageIds();
     				notifyDataSetChanged();
     			}
@@ -221,7 +222,7 @@ public class BagActivity extends Activity {
 		                	Utilities.drawText("No Implementat", cact);
 	                		break;
 	                	case Constants.OBJ_INFO:
-	                		String text = DomainController.getPlayer().getBagObjectById(bag_items_id.get(position)).getInfo();
+	                		String text = dc.getPlayer().getBagObjectById(bag_items_id.get(position)).getInfo();
 	                		Utilities.drawText(text, cact);
 	                		break;
 	                	case Constants.OBJ_INTE: //Interactuar amb objecte recollit

@@ -24,11 +24,13 @@ public class SlidesActivity extends Activity {
 	int slideindex = 0;
 	int textindex = 0;
 	MediaPlayer mp = new MediaPlayer();
+	private DomainController dc;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.slides);
+        dc = DomainController.instance(getResources());
         
         histid = this.getIntent().getIntExtra("history", -1);
         //no sceneid found, finish
@@ -40,7 +42,7 @@ public class SlidesActivity extends Activity {
         mainimg.setBackgroundResource(histid);
         slideanimation = (AnimationDrawable) mainimg.getBackground();
         
-        SlidePack sp = DomainController.getSlideTextData(getResources(), histid, slideindex, textindex);
+        SlidePack sp = dc.getSlideTextData(getResources(), histid, slideindex, textindex);
         if(sp.bgmusic!=-1) this.mp = Utilities.playMusic(sp.bgmusic, getBaseContext());
         maintv.setBackgroundColor(sp.background);
         maintv.setTextColor(sp.textcolor);
@@ -52,7 +54,7 @@ public class SlidesActivity extends Activity {
 	public boolean onTouchEvent(MotionEvent event) {
 		if(event.getAction() == MotionEvent.ACTION_DOWN){
 			textindex++;
-			SlidePack sp = DomainController.getSlideTextData(getResources(), histid, slideindex, textindex);
+			SlidePack sp = dc.getSlideTextData(getResources(), histid, slideindex, textindex);
 	        if(sp!=null){
 		        if(sp.sound!=-1)Utilities.playSound(sp.sound, getBaseContext());
 				maintv.setBackgroundColor(sp.background);
@@ -63,7 +65,7 @@ public class SlidesActivity extends Activity {
 	        else{
 	        	textindex = 0;
 	        	slideindex++;
-	        	sp = DomainController.getSlideTextData(getResources(), histid, slideindex, textindex);
+	        	sp = dc.getSlideTextData(getResources(), histid, slideindex, textindex);
         		this.mp.stop();
 	        	if(sp==null){
 	        		startCreditsIfGameOver();
@@ -93,7 +95,7 @@ public class SlidesActivity extends Activity {
 	 * @NOTE Now the GameOver is checked with a constant, in the future better with XML config
 	 */
 	private void startCreditsIfGameOver() {
-		if(DomainController.isGameover()){
+		if(dc.isGameover()){
 			Intent creditsIntent = new Intent(getBaseContext(), InfoActivity.class);
 			startActivity(creditsIntent);
 		}

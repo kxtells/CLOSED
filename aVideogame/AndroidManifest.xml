@@ -13,9 +13,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MapActivity" android:screenOrientation="landscape"></activity>
         <activity android:name=".BagActivity" android:screenOrientation="landscape"></activity>
 		<activity android:name=".SceneActivity" android:screenOrientation="landscape"></activity>
-		<activity android:name=".MapActivity" android:screenOrientation="landscape"></activity>
 		<activity android:name=".InfoActivity" android:screenOrientation="landscape"></activity>
 		<activity android:name=".SlidesActivity" android:screenOrientation="landscape"></activity>
 

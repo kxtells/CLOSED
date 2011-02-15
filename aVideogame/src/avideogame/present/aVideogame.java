@@ -59,29 +59,36 @@ public class aVideogame extends Activity {
 	 */
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-		Intent sceneIntent;
+		Intent dataIntent;
 		switch(item.getItemId()){
 		case R.string.NEW_GAME:
-			sceneIntent = new Intent(getBaseContext(), MapActivity.class);
-			sceneIntent.putExtra("type", 0);
+			DomainController.clearDomainController();
+			
+			Intent sceneIntent = new Intent(getBaseContext(), SlidesActivity.class);
+			sceneIntent.putExtra("history", R.drawable.animslideh1s1);
+			
+			dataIntent = new Intent(getBaseContext(), MapActivity.class);
+			dataIntent.putExtra("type", 0);
+			
+			startActivity(dataIntent);
 			startActivity(sceneIntent);
 			break;
 		case R.string.CONTINUE_GAME:
-			sceneIntent = new Intent(getBaseContext(), MapActivity.class);
-			sceneIntent.putExtra("type", 1);
+			dataIntent = new Intent(getBaseContext(), MapActivity.class);
+			dataIntent.putExtra("type", 1);
 			break;
 		case R.string.HELP:
 			//Utilities.drawText("No implementat", getBaseContext());
 			break;
 		case R.string.CONFIGURATION:
 			//Utilities.drawText("No implementat", getBaseContext());
-			sceneIntent = new Intent(getBaseContext(), SlidesActivity.class);
-			sceneIntent.putExtra("history", R.drawable.animslideh1s1);
-			startActivity(sceneIntent);
+			dataIntent = new Intent(getBaseContext(), SlidesActivity.class);
+			dataIntent.putExtra("history", R.drawable.animslideh1s1);
+			startActivity(dataIntent);
 			break;
 		case R.string.ABOUT:
-			sceneIntent = new Intent(getBaseContext(), InfoActivity.class);
-			startActivity(sceneIntent);
+			dataIntent = new Intent(getBaseContext(), InfoActivity.class);
+			startActivity(dataIntent);
 			break;
 		default:
 			break;
