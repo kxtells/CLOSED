@@ -35,14 +35,15 @@ public class MapView extends View{
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	}
 
-	@Override
-	protected void onDraw(Canvas canvas) {
-		super.onDraw(canvas);
-		double x = dc.getPlayer().getX();
-		double y = dc.getPlayer().getY();
-		int tx = (int)x-getWidth()/2;
-		mhs = dc.getMap().getMapHotSpot((int)x, (int)y);
-		
+	/**
+	 * Calculates the value of X translation to keep view
+	 * with the user in the middle of the map
+	 * But checking that at the borders there's no scroll
+	 * @return
+	 */
+	public int getTranslateX(){
+		double px = dc.getPlayer().getX();
+		int tx = (int)px-getWidth()/2;
 		
 		if(tx+getWidth()>=dc.getMap().getMapWidth()){
 			tx = dc.getMap().getMapWidth() - getWidth();
@@ -50,6 +51,18 @@ public class MapView extends View{
 		else if(tx<=0){
 			tx = 0;
 		}
+		
+		return tx;
+	}
+	
+	@Override
+	protected void onDraw(Canvas canvas) {
+		super.onDraw(canvas);
+		double x = dc.getPlayer().getX();
+		double y = dc.getPlayer().getY();
+		int tx = getTranslateX();
+		mhs = dc.getMap().getMapHotSpot((int)x, (int)y);
+		
 		
 		/*Paint scrolled map*/
 		canvas.save();

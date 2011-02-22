@@ -27,6 +27,7 @@ public class DomainController {
 	private ArrayList<CollectableObject> objects = new ArrayList<CollectableObject>();
 	private int TOUCH_ERROR = 20;
 	private int PLAYER_SINGLE_MOVE = 4;
+	private static final double PLAYER_SINGLE_MOVE_THREAD = 0.001;
 	private int PLAYER_START_X = 354;
 	private int PLAYER_START_Y = 80;
 	private boolean gameover = false;
@@ -295,6 +296,10 @@ public class DomainController {
 		return PLAYER_SINGLE_MOVE;
 	}
 	
+	public double getPLAYER_SINGLE_MOVE_THREAD() {
+		return PLAYER_SINGLE_MOVE_THREAD;
+	}
+	
 	/**
 	 * 
 	 * @param scene Scene identifier
@@ -377,5 +382,9 @@ public class DomainController {
 		history_to_show = false;
 		return t;
 	}
+
+
+
+
 }
 
