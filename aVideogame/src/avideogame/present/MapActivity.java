@@ -89,7 +89,7 @@ public class MapActivity extends Activity implements Runnable{
 				if(Utilities.touchedInfoButton((int)tx, (int)ty)){
 					MapHotSpot mh = view.getMapHotSpot();
 					if(mh!=null){
-						this.stopAllThreads();
+						stopMovementThread();
 						
 						// Get instance of Vibrator from current Context
 						Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -265,7 +265,7 @@ public class MapActivity extends Activity implements Runnable{
 	/**
 	 * Clean everything before leaving
 	 */
-	private void stopAllThreads(){
+	private void stopMovementThread(){
 		//cancel the update thread
 		this.touching = false;
 	}
@@ -295,7 +295,7 @@ public class MapActivity extends Activity implements Runnable{
 	@Override
 	protected void onPause() {
 		this.stop_thread = true;
-		stopAllThreads();
+		stopMovementThread();
 		super.onPause();
 	}
 
@@ -331,15 +331,14 @@ public class MapActivity extends Activity implements Runnable{
 				double py = dc.getPlayer().getY();
 				int mtx = view.getTranslateX();
 				
-				double dx = (this.tx + mtx - px)/1000;
-				double dy = (this.ty - py)/1000;
+				double dx = (this.tx + mtx - px)/10000;
+				double dy = (this.ty - py)/10000;
+				int radius = dc.getPlayer().getRadius();
 				
-				Log.d("THREAD","mtx:"+ mtx);
-				Log.d("THREAD","y:"+this.ty);
-
-				
-				dc.getPlayer().setX(px+dx);
-				dc.getPlayer().setY(py+dy);
+				if(!dc.getMap().collides((int)(px+dx), (int)(py+dy), radius)){
+					dc.getPlayer().setX(px+dx);
+					dc.getPlayer().setY(py+dy);	
+				}
 
 			}
 		}

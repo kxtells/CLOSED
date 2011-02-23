@@ -13,7 +13,7 @@ public class Player {
 	private ArrayList<CollectableObject> bag = new ArrayList<CollectableObject>();
 	private int current_action; //info,grab o usar objecte (veure constants MENU_XXX)
 	private int current_object;
-	private int radius = 5;
+	private int radius = 10;
 	
 	/**
 	 * Adds an object to the player's bag
